@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="looko.looker.release.dao.AppMapper">
+
+  <resultMap id="BaseResultMap" type="looko.looker.release.entity.App">
+    <id column="appid" jdbcType="INTEGER" property="appid" />
+    <result column="appname" jdbcType="VARCHAR" property="appname" />
+    <result column="chname" jdbcType="VARCHAR" property="chname" />
+    <result column="price" jdbcType="INTEGER" property="price" />
+    <result column="img_icon_url" jdbcType="VARCHAR" property="imgIconUrl" />
+    <result column="img_logo_url" jdbcType="VARCHAR" property="imgLogoUrl" />
+    <result column="pic_logobar" jdbcType="VARCHAR" property="picLogobar" />
+    <result column="pic_screenshot" jdbcType="VARCHAR" property="picScreenshot" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    appid, appname, chname, price, img_icon_url, img_logo_url, pic_logobar, pic_screenshot
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from app
+    where appid = #{appid,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByAppname" parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM app
+    WHERE appname LIKE #{appname,jdbcType=VARCHAR}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from app
+    where appid = #{appid,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="looko.looker.release.entity.App">
+    insert into app (appid, appname, chname, 
+      price, img_icon_url, img_logo_url, 
+      pic_logobar, pic_screenshot)
+    values (#{appid,jdbcType=INTEGER}, #{appname,jdbcType=VARCHAR}, #{chname,jdbcType=VARCHAR}, 
+      #{price,jdbcType=INTEGER}, #{imgIconUrl,jdbcType=VARCHAR}, #{imgLogoUrl,jdbcType=VARCHAR}, 
+      #{picLogobar,jdbcType=VARCHAR}, #{picScreenshot,jdbcType=VARCHAR})
+  </insert>
+
+  <insert id="insertSelective" parameterType="looko.looker.release.entity.App">
+    insert into app
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="appid != null">
+        appid,
+      </if>
+      <if test="appname != null">
+        appname,
+      </if>
+      <if test="chname != null">
+        chname,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="imgIconUrl != null">
+        img_icon_url,
+      </if>
+      <if test="imgLogoUrl != null">
+        img_logo_url,
+      </if>
+      <if test="picLogobar != null">
+        pic_logobar,
+      </if>
+      <if test="picScreenshot != null">
+        pic_screenshot,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="appid != null">
+        #{appid,jdbcType=INTEGER},
+      </if>
+      <if test="appname != null">
+        #{appname,jdbcType=VARCHAR},
+      </if>
+      <if test="chname != null">
+        #{chname,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=INTEGER},
+      </if>
+      <if test="imgIconUrl != null">
+        #{imgIconUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="imgLogoUrl != null">
+        #{imgLogoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="picLogobar != null">
+        #{picLogobar,jdbcType=VARCHAR},
+      </if>
+      <if test="picScreenshot != null">
+        #{picScreenshot,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="looko.looker.release.entity.App">
+    update app
+    <set>
+      <if test="appname != null">
+        appname = #{appname,jdbcType=VARCHAR},
+      </if>
+      <if test="chname != null">
+        chname = #{chname,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=INTEGER},
+      </if>
+      <if test="imgIconUrl != null">
+        img_icon_url = #{imgIconUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="imgLogoUrl != null">
+        img_logo_url = #{imgLogoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="picLogobar != null">
+        pic_logobar = #{picLogobar,jdbcType=VARCHAR},
+      </if>
+      <if test="picScreenshot != null">
+        pic_screenshot = #{picScreenshot,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where appid = #{appid,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="looko.looker.release.entity.App">
+    update app
+    set appname = #{appname,jdbcType=VARCHAR},
+      chname = #{chname,jdbcType=VARCHAR},
+      price = #{price,jdbcType=INTEGER},
+      img_icon_url = #{imgIconUrl,jdbcType=VARCHAR},
+      img_logo_url = #{imgLogoUrl,jdbcType=VARCHAR},
+      pic_logobar = #{picLogobar,jdbcType=VARCHAR},
+      pic_screenshot = #{picScreenshot,jdbcType=VARCHAR}
+    where appid = #{appid,jdbcType=INTEGER}
+  </update>
+
+</mapper>

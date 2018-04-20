@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="looko.looker.release.dao.PlayerAchiMapper">
+
+  <resultMap id="BaseResultMap" type="looko.looker.release.entity.PlayerAchi">
+    <id column="steamid" jdbcType="VARCHAR" property="steamid" />
+    <id column="appid" jdbcType="INTEGER" property="appid" />
+    <id column="achname" jdbcType="VARCHAR" property="achname" />
+    <result column="achieved" jdbcType="INTEGER" property="achieved" />
+    <result column="unlocktime" jdbcType="INTEGER" property="unlocktime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    steamid, appid, achname, achieved, unlocktime
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="looko.looker.release.entity.PlayerAchiKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from player_achi
+    where steamid = #{steamid,jdbcType=VARCHAR}
+      and appid = #{appid,jdbcType=INTEGER}
+      and achname = #{achname,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectAllAchi" parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM player_achi
+    WHERE steamid = #{steamid,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectAchieved" parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM player_achi
+    WHERE steamid = #{steamid,jdbcType=VARCHAR}
+    AND achieved = 1
+  </select>
+
+  <select id="selectNotAchieved" parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM player_achi
+    WHERE steamid = #{steamid,jdbcType=VARCHAR}
+    AND achieved = 0
+  </select>
+
+  <select id="selectAllAchiByGame" parameterType="looko.looker.release.entity.PlayerAchiGameKey" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM player_achi
+    WHERE steamid = #{steamid,jdbcType=VARCHAR}
+    AND appid = #{appid,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectAchievedByGame" parameterType="looko.looker.release.entity.PlayerAchiGameKey" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM player_achi
+    WHERE steamid = #{steamid,jdbcType=VARCHAR}
+    AND appid = #{appid,jdbcType=INTEGER}
+    AND achieved = 1
+  </select>
+
+  <select id="selectNotAchievedByGame" parameterType="looko.looker.release.entity.PlayerAchiGameKey" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM player_achi
+    WHERE steamid = #{steamid,jdbcType=VARCHAR}
+    AND appid = #{appid,jdbcType=INTEGER}
+    AND achieved = 0
+  </select>
+
+  <select id="countAllAchiByGame" parameterType="looko.looker.release.entity.PlayerAchiGameKey" resultType="java.lang.Integer">
+    SELECT count(*)
+    FROM player_achi
+    WHERE steamid = #{steamid,jdbcType=VARCHAR}
+    AND appid = #{appid,jdbcType=INTEGER}
+  </select>
+
+  <select id="countAchievedByGame" parameterType="looko.looker.release.entity.PlayerAchiGameKey" resultType="java.lang.Integer">
+    SELECT count(*)
+    FROM player_achi
+    WHERE steamid = #{steamid,jdbcType=VARCHAR}
+    AND appid = #{appid,jdbcType=INTEGER}
+    AND achieved = 1
+  </select>
+
+  <select id="countGameHasAchi" parameterType="java.lang.String" resultType="java.lang.Integer">
+    SELECT count(DISTINCT appid)
+    FROM player_achi
+    WHERE steamid = #{steamid,jdbcType=VARCHAR}
+  </select>
+
+  <select id="countAllAchi" parameterType="java.lang.String" resultType="java.lang.Integer">
+    SELECT count(*)
+    FROM player_achi
+    WHERE steamid = #{steamid,jdbcType=VARCHAR}
+  </select>
+
+  <select id="countAchieved" parameterType="java.lang.String" resultType="java.lang.Integer">
+    SELECT count(*)
+    FROM player_achi
+    WHERE steamid = #{steamid,jdbcType=VARCHAR}
+    AND achieved = 1
+  </select>
+
+  <select id="countPerfectGame" parameterType="java.lang.String" resultType="java.lang.Integer">
+    SELECT
+    count(DISTINCT appid)
+    FROM
+        player_achi
+    WHERE
+    steamid = #{steamid,jdbcType=VARCHAR}
+    AND	appid NOT IN (
+            SELECT
+                appid
+            FROM
+                playerach
+            WHERE
+                achieved = 0
+	);
+  </select>
+
+  <select id="selectPerfectAppids" parameterType="java.lang.String" resultType="java.lang.Integer">
+    SELECT DISTINCT
+    appid
+    FROM
+    player_achi
+    WHERE
+    steamid = #{steamid,jdbcType=VARCHAR}
+    AND	appid NOT IN (
+            SELECT
+            appid
+            FROM
+            playerach
+            WHERE
+            achieved = 0
+    );
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="looko.looker.release.entity.PlayerAchiKey">
+    delete from player_achi
+    where steamid = #{steamid,jdbcType=VARCHAR}
+      and appid = #{appid,jdbcType=INTEGER}
+      and achname = #{achname,jdbcType=VARCHAR}
+  </delete>
+
+  <insert id="insert" parameterType="looko.looker.release.entity.PlayerAchi">
+    insert into player_achi (steamid, appid, achname, 
+      achieved, unlocktime)
+    values (#{steamid,jdbcType=VARCHAR}, #{appid,jdbcType=INTEGER}, #{achname,jdbcType=VARCHAR}, 
+      #{achieved,jdbcType=INTEGER}, #{unlocktime,jdbcType=INTEGER})
+  </insert>
+
+  <insert id="insertSelective" parameterType="looko.looker.release.entity.PlayerAchi">
+    insert into player_achi
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="steamid != null">
+        steamid,
+      </if>
+      <if test="appid != null">
+        appid,
+      </if>
+      <if test="achname != null">
+        achname,
+      </if>
+      <if test="achieved != null">
+        achieved,
+      </if>
+      <if test="unlocktime != null">
+        unlocktime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="steamid != null">
+        #{steamid,jdbcType=VARCHAR},
+      </if>
+      <if test="appid != null">
+        #{appid,jdbcType=INTEGER},
+      </if>
+      <if test="achname != null">
+        #{achname,jdbcType=VARCHAR},
+      </if>
+      <if test="achieved != null">
+        #{achieved,jdbcType=INTEGER},
+      </if>
+      <if test="unlocktime != null">
+        #{unlocktime,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="looko.looker.release.entity.PlayerAchi">
+    update player_achi
+    <set>
+      <if test="achieved != null">
+        achieved = #{achieved,jdbcType=INTEGER},
+      </if>
+      <if test="unlocktime != null">
+        unlocktime = #{unlocktime,jdbcType=INTEGER},
+      </if>
+    </set>
+    where steamid = #{steamid,jdbcType=VARCHAR}
+      and appid = #{appid,jdbcType=INTEGER}
+      and achname = #{achname,jdbcType=VARCHAR}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="looko.looker.release.entity.PlayerAchi">
+    update player_achi
+    set achieved = #{achieved,jdbcType=INTEGER},
+      unlocktime = #{unlocktime,jdbcType=INTEGER}
+    where steamid = #{steamid,jdbcType=VARCHAR}
+      and appid = #{appid,jdbcType=INTEGER}
+      and achname = #{achname,jdbcType=VARCHAR}
+  </update>
+
+</mapper>

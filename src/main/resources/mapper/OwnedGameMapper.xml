@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="looko.looker.release.dao.OwnedGameMapper">
+
+  <resultMap id="BaseResultMap" type="looko.looker.release.entity.OwnedGame">
+    <id column="steamid" jdbcType="VARCHAR" property="steamid" />
+    <id column="appid" jdbcType="INTEGER" property="appid" />
+    <result column="appname" jdbcType="VARCHAR" property="appname" />
+    <result column="playtime_2week" jdbcType="INTEGER" property="playtime2week" />
+    <result column="playtime_forever" jdbcType="INTEGER" property="playtimeForever" />
+    <result column="img_icon_url" jdbcType="VARCHAR" property="imgIconUrl" />
+    <result column="img_logo_url" jdbcType="VARCHAR" property="imgLogoUrl" />
+    <result column="has_community_visible_state" jdbcType="BIT" property="hasCommunityVisibleState" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    steamid, appid, appname, playtime_2week, playtime_forever, img_icon_url, img_logo_url, 
+    has_community_visible_state
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="looko.looker.release.entity.OwnedGameKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from owned_game
+    where steamid = #{steamid,jdbcType=VARCHAR}
+      and appid = #{appid,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectBySteamidAppname" parameterType="looko.looker.release.entity.OwnedGameKey2" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from owned_game
+    where steamid = #{steamid,jdbcType=VARCHAR}
+      and appname = #{appname,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByMyId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM owned_game
+    WHERE steamid = #{steamid,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByMyIdFavorite" parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM owned_game
+    WHERE steamid = #{steamid,jdbcType=VARCHAR}
+    ORDER BY playetime_forever DESC
+  </select>
+
+  <select id="selectPlayed" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from ownedgame
+    where steamid = #{steamid,jdbcType=VARCHAR}
+    AND playtime_forever > 0
+    ORDER BY playtime_forever DESC
+  </select>
+
+  <select id="selectNotPlayed" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from ownedgame
+    where steamid = #{steamid,jdbcType=VARCHAR}
+    AND playtime_forever == 0
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="looko.looker.release.entity.OwnedGameKey">
+    delete from owned_game
+    where steamid = #{steamid,jdbcType=VARCHAR}
+      and appid = #{appid,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="looko.looker.release.entity.OwnedGame">
+    insert into owned_game (steamid, appid, appname, 
+      playtime_2week, playtime_forever, img_icon_url, 
+      img_logo_url, has_community_visible_state)
+    values (#{steamid,jdbcType=VARCHAR}, #{appid,jdbcType=INTEGER}, #{appname,jdbcType=VARCHAR}, 
+      #{playtime2week,jdbcType=INTEGER}, #{playtimeForever,jdbcType=INTEGER}, #{imgIconUrl,jdbcType=VARCHAR}, 
+      #{imgLogoUrl,jdbcType=VARCHAR}, #{hasCommunityVisibleState,jdbcType=BIT})
+  </insert>
+
+  <insert id="insertSelective" parameterType="looko.looker.release.entity.OwnedGame">
+    insert into owned_game
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="steamid != null">
+        steamid,
+      </if>
+      <if test="appid != null">
+        appid,
+      </if>
+      <if test="appname != null">
+        appname,
+      </if>
+      <if test="playtime2week != null">
+        playtime_2week,
+      </if>
+      <if test="playtimeForever != null">
+        playtime_forever,
+      </if>
+      <if test="imgIconUrl != null">
+        img_icon_url,
+      </if>
+      <if test="imgLogoUrl != null">
+        img_logo_url,
+      </if>
+      <if test="hasCommunityVisibleState != null">
+        has_community_visible_state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="steamid != null">
+        #{steamid,jdbcType=VARCHAR},
+      </if>
+      <if test="appid != null">
+        #{appid,jdbcType=INTEGER},
+      </if>
+      <if test="appname != null">
+        #{appname,jdbcType=VARCHAR},
+      </if>
+      <if test="playtime2week != null">
+        #{playtime2week,jdbcType=INTEGER},
+      </if>
+      <if test="playtimeForever != null">
+        #{playtimeForever,jdbcType=INTEGER},
+      </if>
+      <if test="imgIconUrl != null">
+        #{imgIconUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="imgLogoUrl != null">
+        #{imgLogoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="hasCommunityVisibleState != null">
+        #{hasCommunityVisibleState,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="looko.looker.release.entity.OwnedGame">
+    update owned_game
+    <set>
+      <if test="appname != null">
+        appname = #{appname,jdbcType=VARCHAR},
+      </if>
+      <if test="playtime2week != null">
+        playtime_2week = #{playtime2week,jdbcType=INTEGER},
+      </if>
+      <if test="playtimeForever != null">
+        playtime_forever = #{playtimeForever,jdbcType=INTEGER},
+      </if>
+      <if test="imgIconUrl != null">
+        img_icon_url = #{imgIconUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="imgLogoUrl != null">
+        img_logo_url = #{imgLogoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="hasCommunityVisibleState != null">
+        has_community_visible_state = #{hasCommunityVisibleState,jdbcType=BIT},
+      </if>
+    </set>
+    where steamid = #{steamid,jdbcType=VARCHAR}
+      and appid = #{appid,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="looko.looker.release.entity.OwnedGame">
+    update owned_game
+    set appname = #{appname,jdbcType=VARCHAR},
+      playtime_2week = #{playtime2week,jdbcType=INTEGER},
+      playtime_forever = #{playtimeForever,jdbcType=INTEGER},
+      img_icon_url = #{imgIconUrl,jdbcType=VARCHAR},
+      img_logo_url = #{imgLogoUrl,jdbcType=VARCHAR},
+      has_community_visible_state = #{hasCommunityVisibleState,jdbcType=BIT}
+    where steamid = #{steamid,jdbcType=VARCHAR}
+      and appid = #{appid,jdbcType=INTEGER}
+  </update>
+
+</mapper>
