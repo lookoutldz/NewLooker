@@ -9,6 +9,8 @@ public interface DB_PlayerService {
 
     int updatePlayer(Player player);
 
+    int updateExtra(Player player);
+
     int checkVisiState(String steamid);
 
     Player findPlayerById(String steamid);

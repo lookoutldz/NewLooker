@@ -29,6 +29,15 @@ public class DB_PlayerServiceImpl implements DB_PlayerService {
     }
 
     @Override
+    public int updateExtra(Player player) {
+        int row = 0;
+        if (null != playerMapper.selectByPrimaryKey(player.getSteamid())){
+            row += playerMapper.updateByPrimaryKeySelective(player);
+        }
+        return row;
+    }
+
+    @Override
     public int checkVisiState(String steamid) {
 
         return playerMapper.checkVisibilityState(steamid);

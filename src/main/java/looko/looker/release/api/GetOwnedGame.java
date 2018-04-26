@@ -6,6 +6,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import looko.looker.release.entity.OwnedGame;
 import looko.looker.release.tool.APIs;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -24,7 +26,7 @@ public class GetOwnedGame {
 
         List<OwnedGame> ownedGames = new ArrayList<>();
 
-        InputStream is = sendRequest.sendGet(APIs.GetOwnedGames+"&steamid="+steamid);
+        InputStream is = sendRequest.sendGet(APIs.GetOwnedGames+"&include_appinfo=1&include_played_free_games=1&steamid="+steamid);
         if (is != null){
             InputStreamReader isr = new InputStreamReader(is);
             JsonParser parser = new JsonParser();
@@ -63,9 +65,6 @@ public class GetOwnedGame {
                     }
                 }
             }
-        }
-        else {
-            System.out.printf("Imputstream is null, GetOwnedGame failed!\n");
         }
         return ownedGames;
     }

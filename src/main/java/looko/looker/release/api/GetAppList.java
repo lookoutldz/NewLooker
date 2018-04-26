@@ -6,6 +6,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import looko.looker.release.entity.App;
 import looko.looker.release.tool.APIs;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -29,7 +31,8 @@ public class GetAppList {
             InputStreamReader isr = new InputStreamReader(is);
             JsonParser parser = new JsonParser();
             JsonObject root = parser.parse(isr).getAsJsonObject();
-            JsonArray appArray = root.get("applist").getAsJsonObject().get("apps").getAsJsonArray();
+            JsonObject applist = root.get("applist").getAsJsonObject();
+            JsonArray appArray = applist.get("apps").getAsJsonArray();
             App app;
             JsonObject object;
             for (JsonElement element : appArray){
@@ -39,9 +42,6 @@ public class GetAppList {
                 app.setAppname(object.get("name").getAsString());
                 apps.add(app);
             }
-        }
-        else {
-            System.out.printf("Imputstream is null, GetAppList failed!\n");
         }
         return apps;
     }

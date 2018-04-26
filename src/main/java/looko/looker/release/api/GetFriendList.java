@@ -6,6 +6,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import looko.looker.release.entity.Friend;
 import looko.looker.release.tool.APIs;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -24,7 +26,7 @@ public class GetFriendList {
 
         List<Friend> friends = new ArrayList<>();
 
-        InputStream is = sendRequest.sendGet(APIs.GetFriendList + "?key=" + APIs.KEY + "&steamid=" + steamid);
+        InputStream is = sendRequest.sendGet(APIs.GetFriendList + "&steamid=" + steamid);
         if (is != null){
             InputStreamReader isr = new InputStreamReader(is);
             JsonParser parser = new JsonParser();
@@ -43,9 +45,6 @@ public class GetFriendList {
                 friend.setFriendSince(object.get("friend_since").getAsInt());
                 friends.add(friend);
             }
-        }
-        else {
-            System.out.printf("Imputstream is null, GetFriendList failed!\n");
         }
         return friends;
     }

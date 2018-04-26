@@ -63,11 +63,11 @@ public class OwnedGame extends OwnedGameKey {
 
     @Override
     public int hashCode() {
-        return this.getAppid().hashCode();
+        return this.getAppid();
     }
 
     @Override
     public boolean equals(Object obj) {
-        return this.getAppid()==((OwnedGame)obj).getAppid()&&this.getSteamid().equals(((OwnedGame)obj).getSteamid());
+        return this.getAppid()-((OwnedGame)obj).getAppid()==0;
     }
 }

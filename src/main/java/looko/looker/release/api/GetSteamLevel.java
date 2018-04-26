@@ -23,7 +23,8 @@ public class GetSteamLevel {
             InputStreamReader isr = new InputStreamReader(is);
             JsonParser parser = new JsonParser();
             JsonObject root = parser.parse(isr).getAsJsonObject();
-            level = root.get("rsponse").getAsJsonObject().get("player_level").getAsInt();
+            JsonObject responseObj = root.get("response").getAsJsonObject();
+            level = responseObj.get("player_level").getAsInt();
         }
         return level;
     }

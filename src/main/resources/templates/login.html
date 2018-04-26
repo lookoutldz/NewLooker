@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <!-- Bootstrap Core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- MetisMenu CSS -->
-    <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="/dist/css/sb-admin-2.css" rel="stylesheet">
     <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <title>Login</title>
 </head>
 <body>
@@ -26,7 +26,7 @@
                     <form role="form" id="loginform" action="/goLogin" method="post">
                         <fieldset>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Steamid64 / 自定义URL名称" id="idorurl" type="text" autofocus>
+                                <input class="form-control" placeholder="Steamid64 / 自定义URL名称" id="input_text" name="input_text" type="text" autofocus>
                             </div>
                             <div class="form-group">
                                 <label>登录方式：</label>
@@ -44,24 +44,27 @@
                             </div>
                             <!-- Change this to a button or input when using this as a form -->
                             <!--<a href="index.html" class="btn btn-lg btn-success btn-block">Login</a>-->
-                            <input type="button" class="btn btn-lg btn-success btn-block" id="submit" value="进入">
+                            <input type="button" class="btn btn-lg btn-success btn-block" id="login_btn" value="进入">
                         </fieldset>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    <br>
+    <div class="col-md-4 col-md-offset-4" id="info_box">
+    </div>
 </div>
 
     <!-- jQuery -->
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/jquery/jquery.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="vendor/metisMenu/metisMenu.min.js"></script>
+    <script src="/vendor/metisMenu/metisMenu.min.js"></script>
     <!-- Custom Theme JavaScript -->
-    <script src="dist/js/sb-admin-2.js"></script>
+    <script src="/dist/js/sb-admin-2.js"></script>
 
-    <!--<script src="dist/js/mylogin.js"></script>-->
+    <script src="/javascript/login.js"></script>
 </body>
 </html>

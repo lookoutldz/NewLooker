@@ -5,6 +5,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import looko.looker.release.entity.Player;
 import looko.looker.release.tool.APIs;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -25,7 +27,10 @@ public class GetPlayerSummaries {
         if (is != null){
             InputStreamReader isr = new InputStreamReader(is);
             JsonParser parser = new JsonParser();
-            JsonArray players = parser.parse(isr).getAsJsonObject().get("response").getAsJsonObject().get("players").getAsJsonArray();
+//            JsonArray players = parser.parse(isr).getAsJsonObject().get("response").getAsJsonObject().get("players").getAsJsonArray();
+            JsonObject root = parser.parse(isr).getAsJsonObject();
+            JsonObject responseObj = root.get("response").getAsJsonObject();
+            JsonArray players = responseObj.get("players").getAsJsonArray();
             if (players.size() > 0){
                 JsonObject result = players.get(0).getAsJsonObject();
 

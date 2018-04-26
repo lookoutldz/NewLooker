@@ -6,6 +6,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import looko.looker.release.entity.OwnedGame;
 import looko.looker.release.tool.APIs;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -46,7 +48,6 @@ public class GetRecentlyGames {
                 }
             }
         }
-
         return recentlyGames;
     }
 }

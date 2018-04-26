@@ -17,7 +17,7 @@ public class ResolveVanityURL {
 
     public String resolve(String steamname){
 
-        String steamid = "";
+        String steamid = "network error";
         InputStream is = sendRequest.sendGet(APIs.ResolveVanityURL+"&vanityurl="+steamname);
         if (is != null){
             InputStreamReader isr = new InputStreamReader(is);
@@ -28,10 +28,10 @@ public class ResolveVanityURL {
                 steamid = root.get("response").getAsJsonObject().get("steamid").getAsString();
             }
             else if (42 == succ){
-                steamid = "_";
+                steamid = "not exist";
             }
             else {
-                steamid = "__";
+                steamid = "unknow error";
             }
         }
         return steamid;
