@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -41,11 +40,11 @@ public class ReleaseApplicationTests {
 		List<List<OwnedGame>> re = FindListsDiff.checkOwnedGames(oldGameList, newGameList);
 		List<OwnedGame> toAdd = re.get(0);
 		List<OwnedGame> toDel = re.get(1);
-		System.out.printf("我没有的：\n");
+		logger.info("待添加列表：");
 		for (OwnedGame ownedGame : toAdd){
 			logger.warn(ownedGame.getAppid() + " : " + ownedGame.getAppname());
 		}
-		System.out.printf("他没有的：\n");
+		logger.info("待删除列表：");
 		for (OwnedGame ownedGame : toDel){
 			logger.info(ownedGame.getAppid() + " : " + ownedGame.getAppname());
 		}

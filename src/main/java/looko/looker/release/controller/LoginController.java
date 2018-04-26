@@ -5,6 +5,7 @@ import looko.looker.release.entity.Friend;
 import looko.looker.release.entity.OwnedGame;
 import looko.looker.release.entity.Player;
 import looko.looker.release.entity.PlayerAchi;
+import looko.looker.release.pool.TaskForAchi;
 import looko.looker.release.service.DB_FriendService;
 import looko.looker.release.service.DB_OwnedGameService;
 import looko.looker.release.service.DB_PlayerAchiService;
@@ -24,6 +25,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 @Controller
 public class LoginController {
@@ -103,26 +107,31 @@ public class LoginController {
             4.更新achievements
          */
         long time1 = System.currentTimeMillis();
+
         Player player = new Player();
         player.setSteamlevel(getSteamLevel.get(steamid));
         playerService.updateExtra(player);
+
         long time2 = System.currentTimeMillis();
+
         List<OwnedGame> ownedGames = getOwnedGame.get(steamid);
         oGameService.updateOwnedGame(ownedGames);
+
         long time3 = System.currentTimeMillis();
+
         List<Friend> friends = getFriendList.getAsFriends(steamid);
         friendService.updateFriendList(friends);
+
         long time4 = System.currentTimeMillis();
-        List<PlayerAchi> playerAchiList = new ArrayList<>();
+
         if (ownedGames.size() > 0){
             for (OwnedGame ownedGame : ownedGames){
-                List<PlayerAchi> playerAchis = getPlayerAchi.get(steamid,ownedGame.getAppid());
-                if (playerAchis.size() > 0)
-                    playerAchiList.addAll(playerAchis);
+                new TaskForAchi(steamid,ownedGame).start();
             }
         }
-        achiService.updatePlayerAchi(playerAchiList);
+
         long time5 = System.currentTimeMillis();
+
         logger.warn("update player : " + (time2-time1) + "ms");
         logger.warn("update ownedgames : " + (time3-time2) + "ms");
         logger.warn("update friends : " + (time4-time3) + "ms");

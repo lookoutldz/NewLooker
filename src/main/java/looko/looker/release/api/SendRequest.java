@@ -20,12 +20,11 @@ public class SendRequest {
         {
             URL url = new URL(url_str);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
-            con.setConnectTimeout(5000);
-            con.setReadTimeout(5000);
+            con.setConnectTimeout(30000);
+            con.setReadTimeout(30000);
             int responseCode = con.getResponseCode();
             if (con.getResponseCode() != 200){
-                logger.warn("WebSite = "+url_str);
-                logger.warn("responseCode = "+responseCode + "\treturn InputStream is null");
+                logger.info("WebSite = "+url_str + "\nresponseCode = "+responseCode + "\treturn InputStream is null");
                 return null;
             }
             InputStream is = con.getInputStream();
