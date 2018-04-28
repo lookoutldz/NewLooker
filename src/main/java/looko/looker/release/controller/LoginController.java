@@ -124,6 +124,7 @@ public class LoginController {
 
         long time4 = System.currentTimeMillis();
 
+        logger.warn("game.size="+ownedGames.size());
         if (ownedGames.size() > 0){
             for (OwnedGame ownedGame : ownedGames){
                 new TaskForAchi(steamid,ownedGame).start();

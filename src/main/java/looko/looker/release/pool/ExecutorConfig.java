@@ -14,6 +14,6 @@ import java.util.concurrent.TimeUnit;
 public class ExecutorConfig {
     @Bean
     public Executor executor(){
-        return new ThreadPoolExecutor(100, 150, 1, TimeUnit.DAYS, new ArrayBlockingQueue<>(150));
+        return new ThreadPoolExecutor(128, 256, 1, TimeUnit.DAYS, new ArrayBlockingQueue<>(8192));
     }
 }

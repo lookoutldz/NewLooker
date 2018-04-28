@@ -10,6 +10,8 @@ public interface DB_AppService {
 
     int updateAppInfo(List<App> apps);
 
+    int updateAppInfo(App app);
+
     App findAppById(int appid);
 
     List<App> findAppsByName(String appname);

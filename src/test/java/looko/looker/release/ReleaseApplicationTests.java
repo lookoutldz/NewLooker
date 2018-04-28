@@ -2,6 +2,7 @@ package looko.looker.release;
 
 import looko.looker.release.api.GetOwnedGame;
 import looko.looker.release.entity.OwnedGame;
+import looko.looker.release.pool.TaskForAppInfo;
 import looko.looker.release.service.DB_OwnedGameService;
 import looko.looker.release.tool.FindListsDiff;
 import org.junit.Test;
@@ -47,6 +48,17 @@ public class ReleaseApplicationTests {
 		logger.info("待删除列表：");
 		for (OwnedGame ownedGame : toDel){
 			logger.info(ownedGame.getAppid() + " : " + ownedGame.getAppname());
+		}
+	}
+
+	@Test
+	public void getAppInfo_test(){
+		TaskForAppInfo task = new TaskForAppInfo(637650);
+		task.start();
+		try {
+			task.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
 	}
 

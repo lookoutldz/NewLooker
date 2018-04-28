@@ -41,6 +41,18 @@ public class DB_AppServiceImpl implements DB_AppService {
     }
 
     @Override
+    public int updateAppInfo(App app) {
+        int row = 0;
+        if (null == appMapper.selectByPrimaryKey(app.getAppid())){
+            row += appMapper.insertSelective(app);
+        }
+        else {
+            row = appMapper.updateByPrimaryKeySelective(app);
+        }
+        return row;
+    }
+
+    @Override
     public App findAppById(int appid) {
 
         return appMapper.selectByPrimaryKey(appid);

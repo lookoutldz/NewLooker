@@ -7,4 +7,5 @@ Q2:主类中@Bean(destroyMethod = "close")中close为什么报错
 3.api将由spring管理\
 4.数据库表部分改动\
 5.使用druid数据源\
-6.日志使用springboot原生logging
+6.日志使用springboot原生logging\
+7.新增线程池，管理用于数据更新的多线程

@@ -5,6 +5,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -23,6 +25,8 @@ import java.util.regex.Pattern;
  */
 @Component
 public class CrawlerForPicAndPrice {
+    
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     /**
      * 逻辑上请求仍有4类
@@ -37,22 +41,23 @@ public class CrawlerForPicAndPrice {
 
         List<Object> list = new ArrayList<>();
         String headerPic = null, largePic = null;
+        long time1=0,time2=0,time3=0,time4=0,time5=0,time6;
         int price = 0;
         try
         {
+            time1 = System.currentTimeMillis();
+            
             String url_str = "http://store.steampowered.com/app/" + appid;
             //获取连接的response
             Connection con = Jsoup.connect(url_str).header("Accept-Language","zh-CN,zh;q=0.9").method(Connection.Method.GET);
             Connection.Response response = con.execute();
             String url_current = response.url().toString();
 
+            Document doc;
             //判断类型
             if (url_current != null && url_current.equals(url_str)){
                 //the way1，直接获取
-                Document doc = response.parse();
-                headerPic = findHeaderPic(doc);
-                largePic = findLargePic(doc);
-                price = findPrice(doc);
+                doc = response.parse();
             }
             else if (url_current != null && url_current.equals("http://store.steampowered.com/agecheck/app/"+appid+"/")){
                 //the way2，获取所需的参数，加到新请求的cookie或参数中post发送
@@ -65,10 +70,7 @@ public class CrawlerForPicAndPrice {
                 con = Jsoup.connect(url_current).header("Accept-Language","zh-CN,zh;q=0.9");
                 con.cookie("browserid",browserid).cookie("sessionid",sessionid).cookie("birthtime",birthtime).cookie("lastagecheckage",lastagecheckage);
                 con.data("snr","1_agecheck_agecheck__age-gate").data("sessionid",sessionid).data("ageDay","1").data("ageMonth","1").data("ageYear","1993");
-                Document doc = con.post();
-                headerPic = findHeaderPic(doc);
-                largePic = findLargePic(doc);
-                price = findPrice(doc);
+                doc = con.post();
             }
             else if (url_current != null && url_current.equals(url_str+"/agecheck")){
                 //the way3，获取所需参数，加到新请求的cookie中get发送
@@ -79,22 +81,44 @@ public class CrawlerForPicAndPrice {
 
                 con = Jsoup.connect(url_current).header("Accept-Language","zh-CN,zh;q=0.9");
                 con.cookie("browserid",browserid).cookie("sessionid",sessionid).cookie("mature_content",mature_content);
-                Document doc = con.get();
-                headerPic = findHeaderPic(doc);
-                largePic = findLargePic(doc);
-                price = findPrice(doc);
+                doc = con.get();
             }
             else {
                 //solve the problem
                 System.out.print("what? the way4?\n");
+                doc = new Document("<html></html>");
             }
+            
+            time2 = System.currentTimeMillis();
+            
+            headerPic = findHeaderPic(doc);
+
+            time3 = System.currentTimeMillis();
+            
+            largePic = findLargePic(doc);
+
+            time4 = System.currentTimeMillis();
+            
+            price = findPrice(doc);
+
+            time5 = System.currentTimeMillis();
         }
         catch (IOException e) {
             e.printStackTrace();
         }
+        
         list.add(headerPic);
         list.add(largePic);
         list.add(price);
+        
+        time6 = System.currentTimeMillis();
+        
+        logger.warn("获取网页数据耗时："+(time2-time1)+"ms");
+        logger.warn("提取游戏LOGO耗时："+(time3-time2)+"ms");
+        logger.warn("提取滚动图片耗时："+(time4-time3)+"ms");
+        logger.warn("提取游戏价格耗时："+(time5-time4)+"ms");
+        logger.warn("存入List耗时："+(time6-time5)+"ms");
+        
         return list;
     }
 
