@@ -28,6 +28,8 @@ public interface OwnedGameMapper {
 
     List<OwnedGame> selectNotPlayed(String steamid);
 
+    List<OwnedGame> selectPerfectGame(String steamid);
+
     int updateByPrimaryKeySelective(OwnedGame record);
 
     int updateByPrimaryKey(OwnedGame record);

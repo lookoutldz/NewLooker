@@ -1,10 +1,14 @@
 package looko.looker.release;
 
 import looko.looker.release.api.GetOwnedGame;
+import looko.looker.release.entity.App;
 import looko.looker.release.entity.OwnedGame;
 import looko.looker.release.pool.TaskForAppInfo;
+import looko.looker.release.service.DB_AppService;
 import looko.looker.release.service.DB_OwnedGameService;
+import looko.looker.release.service.DB_PlayerAchiService;
 import looko.looker.release.tool.FindListsDiff;
+import looko.looker.release.tool.ResolveScreenshot;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -13,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -20,10 +25,14 @@ import java.util.List;
 public class ReleaseApplicationTests {
 
 	@Autowired
+	DB_AppService appService;
+	@Autowired
 	GetOwnedGame getOwnedGame;
 
 	@Autowired
 	DB_OwnedGameService ownedGameService;
+	@Autowired
+	DB_PlayerAchiService achiService;
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -60,6 +69,28 @@ public class ReleaseApplicationTests {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Test
+	public void resolveInfo(){
+		long time0 = System.currentTimeMillis();
+		App app = appService.findAppById(637650);
+		long time1 = System.currentTimeMillis();
+		ResolveScreenshot.resolve(app);
+		long time2 = System.currentTimeMillis();
+
+		logger.info("查询数据"+(time1-time0)+"ms");
+		logger.info("解析数据"+(time2-time1)+"ms");
+	}
+
+	@Test
+	public void perfect(){
+
+		List<OwnedGame> perfect_game = ownedGameService.findPerfectGame("76561198367830998");
+		for (OwnedGame game : perfect_game){
+			System.out.printf("appid="+game.getAppid()+"\tname : "+game.getAppname()+"\n");
+		}
+
 	}
 
 }

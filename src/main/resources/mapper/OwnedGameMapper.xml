@@ -18,6 +18,11 @@
     has_community_visible_state
   </sql>
 
+  <sql id="Extra_Column_List">
+    owned_game.steamid, owned_game.appid, appname, playtime_2week, playtime_forever, img_icon_url, img_logo_url,
+    has_community_visible_state
+  </sql>
+
   <select id="selectByPrimaryKey" parameterType="looko.looker.release.entity.OwnedGameKey" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -46,13 +51,13 @@
     <include refid="Base_Column_List" />
     FROM owned_game
     WHERE steamid = #{steamid,jdbcType=VARCHAR}
-    ORDER BY playetime_forever DESC
+    ORDER BY playtime_forever DESC
   </select>
 
   <select id="selectPlayed" parameterType="java.lang.String" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from ownedgame
+    from owned_game
     where steamid = #{steamid,jdbcType=VARCHAR}
     AND playtime_forever > 0
     ORDER BY playtime_forever DESC
@@ -61,9 +66,26 @@
   <select id="selectNotPlayed" parameterType="java.lang.String" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from ownedgame
+    from owned_game
     where steamid = #{steamid,jdbcType=VARCHAR}
     AND playtime_forever == 0
+  </select>
+
+  <select id="selectPerfectGame" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select DISTINCT
+    <include refid="Extra_Column_List" />
+    from owned_game LEFT JOIN player_achi
+    ON owned_game.steamid = player_achi.steamid
+    AND owned_game.appid = player_achi.appid
+    where player_achi.steamid = #{steamid,jdbcType=VARCHAR}
+    AND player_achi.appid NOT IN (
+              SELECT
+              appid
+              FROM
+              player_achi
+              WHERE
+              achieved = 0
+    );
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="looko.looker.release.entity.OwnedGameKey">

@@ -117,7 +117,7 @@
             SELECT
                 appid
             FROM
-                playerach
+                player_achi
             WHERE
                 achieved = 0
 	);
@@ -134,7 +134,7 @@
             SELECT
             appid
             FROM
-            playerach
+            player_achi
             WHERE
             achieved = 0
     );

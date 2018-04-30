@@ -93,6 +93,12 @@ public class DB_OwnedGameServiceImpl implements DB_OwnedGameService {
     }
 
     @Override
+    public List<OwnedGame> findPerfectGame(String steamid) {
+
+        return ownedGameMapper.selectPerfectGame(steamid);
+    }
+
+    @Override
     public int emptyOwnedGame() {
         return 0;
     }

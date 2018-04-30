@@ -20,5 +20,7 @@ public interface DB_OwnedGameService {
 
     List<OwnedGame> findNotPlayedById(String steamid);
 
+    List<OwnedGame> findPerfectGame(String steamid);
+
     int emptyOwnedGame();
 }

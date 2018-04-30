@@ -3,8 +3,6 @@ package looko.looker.release.tool;
 
 import looko.looker.release.entity.Friend;
 import looko.looker.release.entity.OwnedGame;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.HashMap;

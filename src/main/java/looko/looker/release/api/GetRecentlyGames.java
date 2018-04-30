@@ -31,6 +31,7 @@ public class GetRecentlyGames {
             JsonArray games = root.get("response").getAsJsonObject().get("games").getAsJsonArray();
             if (games.size() > 0){
                 OwnedGame recentlyGame;
+                String picheader = "http://media.steampowered.com/steamcommunity/public/images/apps/";
                 JsonObject object;
                 for (JsonElement element : games){
                     object = element.getAsJsonObject();
@@ -40,8 +41,8 @@ public class GetRecentlyGames {
                     recentlyGame.setAppname(object.get("name").getAsString());
                     recentlyGame.setPlaytime2week(object.get("playtime_2weeks").getAsInt());
                     recentlyGame.setPlaytimeForever(object.get("playtime_forever").getAsInt());
-                    recentlyGame.setImgIconUrl(object.get("img_icon_url").getAsString());
-                    recentlyGame.setImgLogoUrl(object.get("img_logo_url").getAsString());
+                    recentlyGame.setImgIconUrl(picheader+object.get("appid")+"/"+object.get("img_icon_url").getAsString()+".jpg");
+                    recentlyGame.setImgLogoUrl(picheader+object.get("appid")+"/"+object.get("img_logo_url").getAsString()+".jpg");
                     recentlyGames.add(recentlyGame);
                 }
             }

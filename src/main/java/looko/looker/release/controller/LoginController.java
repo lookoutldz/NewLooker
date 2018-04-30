@@ -108,28 +108,28 @@ public class LoginController {
          */
         long time1 = System.currentTimeMillis();
 
-        Player player = new Player();
-        player.setSteamlevel(getSteamLevel.get(steamid));
-        playerService.updateExtra(player);
+//        Player player = new Player();
+//        player.setSteamlevel(getSteamLevel.get(steamid));
+//        playerService.updateExtra(player);
 
         long time2 = System.currentTimeMillis();
 
-        List<OwnedGame> ownedGames = getOwnedGame.get(steamid);
-        oGameService.updateOwnedGame(ownedGames);
+//        List<OwnedGame> ownedGames = getOwnedGame.get(steamid);
+//        oGameService.updateOwnedGame(ownedGames);
 
         long time3 = System.currentTimeMillis();
 
-        List<Friend> friends = getFriendList.getAsFriends(steamid);
-        friendService.updateFriendList(friends);
+//        List<Friend> friends = getFriendList.getAsFriends(steamid);
+//        friendService.updateFriendList(friends);
 
         long time4 = System.currentTimeMillis();
 
-        logger.warn("game.size="+ownedGames.size());
-        if (ownedGames.size() > 0){
-            for (OwnedGame ownedGame : ownedGames){
-                new TaskForAchi(steamid,ownedGame).start();
-            }
-        }
+//        logger.warn("game.size="+ownedGames.size());
+//        if (ownedGames.size() > 0){
+//            for (OwnedGame ownedGame : ownedGames){
+//                new TaskForAchi(steamid,ownedGame).start();
+//            }
+//        }
 
         long time5 = System.currentTimeMillis();
 
