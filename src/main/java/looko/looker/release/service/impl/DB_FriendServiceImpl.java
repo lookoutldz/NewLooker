@@ -72,6 +72,12 @@ public class DB_FriendServiceImpl implements looko.looker.release.service.DB_Fri
     }
 
     @Override
+    public int countFriends(String steamid) {
+
+        return friendMapper.countFriends(steamid);
+    }
+
+    @Override
     public int delFriendsByMyId(String steamid) {
 
         return friendMapper.deleteByMyId(steamid);

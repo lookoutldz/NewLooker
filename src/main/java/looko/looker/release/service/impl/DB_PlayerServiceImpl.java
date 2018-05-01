@@ -19,7 +19,7 @@ public class DB_PlayerServiceImpl implements DB_PlayerService {
         int row = 0;
         if (player != null){
             if (null != playerMapper.selectByPrimaryKey(player.getSteamid())){
-                row += playerMapper.updateByPrimaryKey(player);
+                row += playerMapper.updateByPrimaryKeySelective(player);
             }
             else{
                 row += playerMapper.insert(player);
@@ -53,6 +53,12 @@ public class DB_PlayerServiceImpl implements DB_PlayerService {
     public List<Player> findPlayersByName(String name) {
 
         return playerMapper.selectByName("%"+name+"%");
+    }
+
+    @Override
+    public List<Player> findFriendAsPlayer(String steamid) {
+
+        return playerMapper.selectFriendAsPlayer(steamid);
     }
 
     @Override

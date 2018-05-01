@@ -23,6 +23,8 @@ public interface FriendMapper {
 
     List<Friend> selectOldFriendByMyId(String steamid);
 
+    int countFriends(String steamid);
+
     int updateByPrimaryKeySelective(Friend record);
 
     int updateByPrimaryKey(Friend record);

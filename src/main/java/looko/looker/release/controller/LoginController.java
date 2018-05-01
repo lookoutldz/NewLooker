@@ -4,8 +4,9 @@ import looko.looker.release.api.*;
 import looko.looker.release.entity.Friend;
 import looko.looker.release.entity.OwnedGame;
 import looko.looker.release.entity.Player;
-import looko.looker.release.entity.PlayerAchi;
 import looko.looker.release.pool.TaskForAchi;
+import looko.looker.release.pool.TaskForAppInfo;
+import looko.looker.release.pool.TaskForFriendAsPlayer;
 import looko.looker.release.service.DB_FriendService;
 import looko.looker.release.service.DB_OwnedGameService;
 import looko.looker.release.service.DB_PlayerAchiService;
@@ -21,13 +22,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 
 @Controller
 public class LoginController {
@@ -44,6 +41,13 @@ public class LoginController {
     GetFriendList getFriendList;
     @Autowired
     GetPlayerAchi getPlayerAchi;
+
+    @Autowired
+    TaskForAppInfo taskForAppInfo;
+    @Autowired
+    TaskForFriendAsPlayer taskForFriendAsPlayer;
+    @Autowired
+    TaskForAchi taskForAchi;
 
     @Autowired
     DB_PlayerService playerService;
@@ -108,28 +112,35 @@ public class LoginController {
          */
         long time1 = System.currentTimeMillis();
 
-//        Player player = new Player();
-//        player.setSteamlevel(getSteamLevel.get(steamid));
-//        playerService.updateExtra(player);
+        Player player = new Player();
+        player.setSteamid(steamid);
+        player.setSteamlevel(getSteamLevel.get(steamid));
+        playerService.updateExtra(player);
+
 
         long time2 = System.currentTimeMillis();
 
-//        List<OwnedGame> ownedGames = getOwnedGame.get(steamid);
-//        oGameService.updateOwnedGame(ownedGames);
+        List<OwnedGame> ownedGames = getOwnedGame.get(steamid);
+        oGameService.updateOwnedGame(ownedGames);
 
         long time3 = System.currentTimeMillis();
 
-//        List<Friend> friends = getFriendList.getAsFriends(steamid);
-//        friendService.updateFriendList(friends);
+        List<Friend> friends = getFriendList.getAsFriends(steamid);
+        friendService.updateFriendList(friends);
+        if (friends.size() > 0){
+            for (Friend friend : friends){
+                taskForFriendAsPlayer.go(friend.getFriendsteamid());
+            }
+        }
 
         long time4 = System.currentTimeMillis();
 
-//        logger.warn("game.size="+ownedGames.size());
-//        if (ownedGames.size() > 0){
-//            for (OwnedGame ownedGame : ownedGames){
-//                new TaskForAchi(steamid,ownedGame).start();
-//            }
-//        }
+        logger.warn("game.size="+ownedGames.size());
+        if (ownedGames.size() > 0){
+            for (OwnedGame ownedGame : ownedGames){
+                taskForAchi.go(steamid,ownedGame);
+            }
+        }
 
         long time5 = System.currentTimeMillis();
 
@@ -138,7 +149,7 @@ public class LoginController {
         logger.warn("update friends : " + (time4-time3) + "ms");
         logger.warn("update achievements : " + (time5-time4) + "ms");
         logger.warn("update total : " + (time5-time1) + "ms");
-        attr.addFlashAttribute("steamid",steamid);
+        attr.addAttribute("steamid",steamid);
         return "redirect:/profile";
     }
 

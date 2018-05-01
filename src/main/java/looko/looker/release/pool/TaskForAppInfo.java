@@ -3,29 +3,24 @@ package looko.looker.release.pool;
 import looko.looker.release.crawler.CrawlerForPicAndPrice;
 import looko.looker.release.entity.App;
 import looko.looker.release.service.DB_AppService;
-import looko.looker.release.tool.ApplicationContextHelper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-public class TaskForAppInfo extends Thread {
+@Component
+public class TaskForAppInfo{
 
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+//    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    private CrawlerForPicAndPrice crawler = ApplicationContextHelper.getBean(CrawlerForPicAndPrice.class);
-    private DB_AppService appService = ApplicationContextHelper.getBean(DB_AppService.class);
+    @Autowired
+    CrawlerForPicAndPrice crawler;
+    @Autowired
+    DB_AppService appService;
 
-    private int appid;
-
-    public TaskForAppInfo(int appid){
-        this.appid = appid;
-    }
-
-    @Override
-    @Async("executor")
-    public void run() {
+    @Async("taskExecutor")
+    public void go(int appid) {
 
         List<Object> info = crawler.get(appid);
         App app = new App();
@@ -33,6 +28,6 @@ public class TaskForAppInfo extends Thread {
         app.setPicLogobar((String) info.get(0));
         app.setPicScreenshot((String) info.get(1));
         app.setPrice((Integer) info.get(2));
-        logger.info("insert appinfo : "+appService.updateAppInfo(app));
+        appService.updateAppInfo(app);
     }
 }

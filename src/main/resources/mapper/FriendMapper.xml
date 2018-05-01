@@ -36,6 +36,13 @@
     ORDER BY friend_since DESC
   </select>
 
+  <select id="countFriends" parameterType="java.lang.String" resultType="java.lang.Integer">
+    SELECT
+    count(steamid)
+    FROM friend
+    WHERE steamid = #{steamid,jdbcType=VARCHAR}
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="looko.looker.release.entity.FriendKey">
     delete from friend
     where steamid = #{steamid,jdbcType=VARCHAR}

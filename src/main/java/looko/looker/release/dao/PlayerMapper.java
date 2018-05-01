@@ -20,6 +20,8 @@ public interface PlayerMapper {
 
     List<Player> selectByName(String name);
 
+    List<Player> selectFriendAsPlayer(String steamid);
+
     int updateByPrimaryKeySelective(Player record);
 
     int updateByPrimaryKey(Player record);

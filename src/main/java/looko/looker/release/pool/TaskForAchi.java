@@ -4,27 +4,22 @@ import looko.looker.release.api.GetPlayerAchi;
 import looko.looker.release.entity.OwnedGame;
 import looko.looker.release.entity.PlayerAchi;
 import looko.looker.release.service.DB_PlayerAchiService;
-import looko.looker.release.tool.ApplicationContextHelper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-public class TaskForAchi extends Thread{
+@Component
+public class TaskForAchi{
 
-    private GetPlayerAchi getPlayerAchi = ApplicationContextHelper.getBean(GetPlayerAchi.class);
-    private DB_PlayerAchiService achiService = ApplicationContextHelper.getBean(DB_PlayerAchiService.class);
+    @Autowired
+    GetPlayerAchi getPlayerAchi;
+    @Autowired
+    DB_PlayerAchiService achiService;
 
-    private String steamid;
-    private OwnedGame ownedGame;
-
-    public TaskForAchi(String steamid, OwnedGame ownedGame){
-        this.steamid = steamid;
-        this.ownedGame = ownedGame;
-    }
-
-    @Override
-    @Async("executor")
-    public void run() {
+    @Async("taskExecutor")
+    public void go(String steamid, OwnedGame ownedGame) {
         List<PlayerAchi> playerAchis = getPlayerAchi.get(steamid,ownedGame.getAppid());
         if (playerAchis.size() > 0){
             achiService.updatePlayerAchi(playerAchis);

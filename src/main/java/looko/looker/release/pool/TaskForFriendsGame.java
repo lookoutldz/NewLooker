@@ -3,25 +3,22 @@ package looko.looker.release.pool;
 import looko.looker.release.api.GetOwnedGame;
 import looko.looker.release.entity.OwnedGame;
 import looko.looker.release.service.DB_OwnedGameService;
-import looko.looker.release.tool.ApplicationContextHelper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-public class TaskForFriendsGame extends Thread {
+@Component
+public class TaskForFriendsGame {
 
-    private GetOwnedGame getOwnedGame = ApplicationContextHelper.getBean(GetOwnedGame.class);
-    private DB_OwnedGameService oGameService = ApplicationContextHelper.getBean(DB_OwnedGameService.class);
+    @Autowired
+    GetOwnedGame getOwnedGame;
+    @Autowired
+    DB_OwnedGameService oGameService;
 
-    private String steamid;
-
-    public TaskForFriendsGame(String steamid){
-        this.steamid = steamid;
-    }
-
-    @Override
-    @Async("executor")
-    public void run() {
+    @Async("taskExecutor")
+    public void go(String steamid) {
         List<OwnedGame> ownedGames = getOwnedGame.get(steamid);
         if (ownedGames.size() > 0){
             oGameService.updateOwnedGame(ownedGames);

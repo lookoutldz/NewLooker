@@ -17,5 +17,7 @@ public interface DB_PlayerService {
 
     List<Player> findPlayersByName(String name);
 
+    List<Player> findFriendAsPlayer(String steamid);
+
     int emptyPlayer();
 }

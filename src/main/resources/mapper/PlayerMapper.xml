@@ -34,6 +34,12 @@
     timecreated, personastateflags, gameextrainfo, gameserverip, gameid, loccountrycode, 
     locstatecode, loccityid, steamlevel, gameprice
   </sql>
+  <sql id="Extra_Column_List">
+    player.steamid, communityvisibilitystate, profilestate, personaname, lastlogoff, commentpermission,
+    profileurl, avatar, avatarmedium, avatarfull, personastate, realname, primaryclanid,
+    timecreated, personastateflags, gameextrainfo, gameserverip, gameid, loccountrycode,
+    locstatecode, loccityid, steamlevel, gameprice
+  </sql>
 
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
@@ -55,6 +61,15 @@
     FROM player
     WHERE personaname LIKE #{personaname,jdbcType=VARCHAR}
     OR realname LIKE #{personaname,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectFriendAsPlayer" parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT
+      <include refid="Extra_Column_List" />
+    FROM player
+    LEFT JOIN friend
+    ON player.steamid = friend.friendsteamid
+    WHERE friend.steamid = #{steamid,jdbcType=VARCHAR}
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">

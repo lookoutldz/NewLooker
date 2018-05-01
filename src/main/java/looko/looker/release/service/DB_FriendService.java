@@ -14,6 +14,8 @@ public interface DB_FriendService {
 
     List<Friend> findOldFriendsByMyId(String steamid);
 
+    int countFriends(String steamid);
+
     int delFriendsByMyId(String steamid);
 
     int emptyFriendList();

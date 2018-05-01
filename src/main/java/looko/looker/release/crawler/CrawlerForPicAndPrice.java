@@ -22,6 +22,8 @@ import java.util.regex.Pattern;
  * 测试网络下：
  * 平均网络占用降低50%以上
  * 平均获取速率快约20%以上
+ *
+ * !!!多线程易被ban
  */
 @Component
 public class CrawlerForPicAndPrice {
@@ -49,8 +51,28 @@ public class CrawlerForPicAndPrice {
             
             String url_str = "http://store.steampowered.com/app/" + appid;
             //获取连接的response
-            Connection con = Jsoup.connect(url_str).header("Accept-Language","zh-CN,zh;q=0.9").method(Connection.Method.GET);
-            Connection.Response response = con.execute();
+            Connection con = null;
+            Connection.Response response = null;
+
+            try {
+                con = Jsoup.connect(url_str).header("Accept-Language","zh-CN,zh;q=0.9").header("Connection","close").timeout(5000).method(Connection.Method.GET);
+                response = con.execute();
+            } catch (Exception e1) {
+                try {
+                    logger.warn("第一次重试...");
+                    con = Jsoup.connect(url_str).header("Accept-Language","zh-CN,zh;q=0.9").header("Connection","close").timeout(5000).method(Connection.Method.GET);
+                    response = con.execute();
+                } catch (Exception e2) {
+                    try {
+                        logger.warn("第二次重试...");
+                        con = Jsoup.connect(url_str).header("Accept-Language","zh-CN,zh;q=0.9").header("Connection","close").timeout(5000).method(Connection.Method.GET);
+                        response = con.execute();
+                    } catch (Exception e3) {
+                        logger.warn("第二次重试失败！"+url_str);
+                    }
+                }
+            }
+
             String url_current = response.url().toString();
 
             Document doc;

@@ -42,8 +42,8 @@ public class GetPlayerSummaries {
                 player.setAvatarmedium(result.get("avatarmedium").getAsString());
                 player.setAvatarfull(result.get("avatarfull").getAsString());
                 player.setPersonastate(result.get("personastate").getAsInt());
-                player.setCommentpermission(result.get("commentpermission").getAsInt());
-
+                if (result.has("commentpermission"))
+                    player.setCommentpermission(result.get("commentpermission").getAsInt());
                 if (result.has("personastateflags"))
                     player.setPersonastateflags(result.get("personastateflags").getAsInt());
                 if (result.has("timecreated"))

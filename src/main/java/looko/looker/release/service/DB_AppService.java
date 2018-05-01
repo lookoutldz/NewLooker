@@ -16,5 +16,7 @@ public interface DB_AppService {
 
     List<App> findAppsByName(String appname);
 
+//    List<String> findScreenShots(int appid);
+
     int emptyAppList();
 }

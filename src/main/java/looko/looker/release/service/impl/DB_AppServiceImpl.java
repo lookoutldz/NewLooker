@@ -64,6 +64,12 @@ public class DB_AppServiceImpl implements DB_AppService {
         return appMapper.selectByAppname("%"+appname+"%");
     }
 
+//    @Override
+//    public List<String> findScreenShots(int appid) {
+//
+//        return appMapper.selectScreenShot(appid);
+//    }
+
     @Override
     public int emptyAppList() {
         return 0;

@@ -18,6 +18,8 @@ public interface AppMapper {
 
     List<App> selectByAppname(String appname);
 
+    List<String> selectScreenShot(Integer appid);
+
     int updateByPrimaryKeySelective(App record);
 
     int updateByPrimaryKey(App record);

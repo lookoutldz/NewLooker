@@ -3,10 +3,12 @@ package looko.looker.release;
 import looko.looker.release.api.GetOwnedGame;
 import looko.looker.release.entity.App;
 import looko.looker.release.entity.OwnedGame;
+import looko.looker.release.entity.Player;
 import looko.looker.release.pool.TaskForAppInfo;
 import looko.looker.release.service.DB_AppService;
 import looko.looker.release.service.DB_OwnedGameService;
 import looko.looker.release.service.DB_PlayerAchiService;
+import looko.looker.release.service.DB_PlayerService;
 import looko.looker.release.tool.FindListsDiff;
 import looko.looker.release.tool.ResolveScreenshot;
 import org.junit.Test;
@@ -15,6 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
@@ -30,9 +33,14 @@ public class ReleaseApplicationTests {
 	GetOwnedGame getOwnedGame;
 
 	@Autowired
+	DB_PlayerService playerService;
+	@Autowired
 	DB_OwnedGameService ownedGameService;
 	@Autowired
 	DB_PlayerAchiService achiService;
+
+	@Autowired
+	TaskForAppInfo task;
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -62,10 +70,17 @@ public class ReleaseApplicationTests {
 
 	@Test
 	public void getAppInfo_test(){
-		TaskForAppInfo task = new TaskForAppInfo(637650);
-		task.start();
+
+		List<OwnedGame> ownedGames = ownedGameService.findFavoriteById("76561198367830998");
+		logger.info("ownedgames.size = " + ownedGames.size());
+		if (ownedGames.size() > 0){
+			int i = 0;
+			for (OwnedGame ownedGame : ownedGames){
+				task.go(ownedGame.getAppid());
+			}
+		}
 		try {
-			task.join();
+			Thread.sleep(30000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -88,9 +103,20 @@ public class ReleaseApplicationTests {
 
 		List<OwnedGame> perfect_game = ownedGameService.findPerfectGame("76561198367830998");
 		for (OwnedGame game : perfect_game){
-			System.out.printf("appid="+game.getAppid()+"\tname : "+game.getAppname()+"\n");
+			logger.info("appid="+game.getAppid()+"\tname : "+game.getAppname());
 		}
 
+	}
+
+	@Test
+	public void frinedAsPlayer(){
+
+		List<Player> friendList = playerService.findFriendAsPlayer("76561198367830998");
+		if (friendList.size() > 0){
+			for (Player player : friendList){
+				logger.info("steamid = " + player.getSteamid() + "\tname : " + player.getPersonaname());
+			}
+		}
 	}
 
 }
