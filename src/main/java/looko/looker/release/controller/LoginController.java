@@ -122,6 +122,16 @@ public class LoginController {
 
         List<OwnedGame> ownedGames = getOwnedGame.get(steamid);
         oGameService.updateOwnedGame(ownedGames);
+        List<OwnedGame> favorite = oGameService.findFavoriteById(steamid);
+        if (favorite.size() > 0){
+            int i = 1;
+            for (OwnedGame game : favorite){
+                taskForAppInfo.go(game.getAppid());
+                if (i >= 5)
+                    break;
+                i++;
+            }
+        }
 
         long time3 = System.currentTimeMillis();
 

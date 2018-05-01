@@ -24,7 +24,7 @@ public class SendRequest {
             con.setReadTimeout(30000);
             int responseCode = con.getResponseCode();
             if (con.getResponseCode() != 200){
-                logger.info("WebSite = "+url_str + "\nresponseCode = "+responseCode + "\treturn InputStream is null");
+//                logger.info("WebSite = "+url_str + "\nresponseCode = "+responseCode + "\treturn InputStream is null");
                 return null;
             }
             InputStream is = con.getInputStream();

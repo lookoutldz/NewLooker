@@ -22,7 +22,7 @@ public class FindListsDiff {
                 map.put(friend,2);
                 continue;
             }
-            map.put(friend,1);
+            map.put(friend,-1);
         }
         List<Friend> toAdd = new ArrayList<>();
         List<Friend> toDel = new ArrayList<>();

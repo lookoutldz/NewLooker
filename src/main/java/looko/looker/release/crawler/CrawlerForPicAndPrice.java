@@ -135,11 +135,11 @@ public class CrawlerForPicAndPrice {
         
         time6 = System.currentTimeMillis();
         
-        logger.warn("获取网页数据耗时："+(time2-time1)+"ms");
-        logger.warn("提取游戏LOGO耗时："+(time3-time2)+"ms");
-        logger.warn("提取滚动图片耗时："+(time4-time3)+"ms");
-        logger.warn("提取游戏价格耗时："+(time5-time4)+"ms");
-        logger.warn("存入List耗时："+(time6-time5)+"ms");
+        logger.info("获取网页数据耗时："+(time2-time1)+"ms");
+        logger.info("提取游戏LOGO耗时："+(time3-time2)+"ms");
+        logger.info("提取滚动图片耗时："+(time4-time3)+"ms");
+        logger.info("提取游戏价格耗时："+(time5-time4)+"ms");
+        logger.info("存入List耗时："+(time6-time5)+"ms");
         
         return list;
     }

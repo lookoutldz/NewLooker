@@ -1,12 +1,10 @@
 package looko.looker.release.controller;
 
 import looko.looker.release.api.GetRecentlyGames;
+import looko.looker.release.entity.App;
 import looko.looker.release.entity.OwnedGame;
 import looko.looker.release.entity.Player;
-import looko.looker.release.service.DB_FriendService;
-import looko.looker.release.service.DB_OwnedGameService;
-import looko.looker.release.service.DB_PlayerAchiService;
-import looko.looker.release.service.DB_PlayerService;
+import looko.looker.release.service.*;
 import looko.looker.release.tool.ResolveScreenshot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -29,6 +28,8 @@ public class ProfileController {
     DB_FriendService friendService;
     @Autowired
     DB_PlayerAchiService achiService;
+    @Autowired
+    DB_AppService appService;
 
     @RequestMapping("/profile")
     public ModelAndView profilePage(@ModelAttribute("steamid") String steamid){
@@ -45,12 +46,15 @@ public class ProfileController {
         List<OwnedGame> favoriteGames;
         if (games.size() > 10){
             favoriteGames = games.subList(0,9);
-            for (int i = 0; i < 10; i++){
-                System.out.printf("i="+i+"\tappname : "+games.get(i).getAppname()+"\n");
-            }
         }
         else {
             favoriteGames = games;
+        }
+        App app;
+        List<List<String>> lists = new ArrayList<>();
+        for (OwnedGame game : favoriteGames){
+            app = appService.findAppById(game.getAppid());
+            lists.add(ResolveScreenshot.resolve(app));
         }
 
         List<Player> players = playerService.findFriendAsPlayer(steamid);
@@ -70,6 +74,7 @@ public class ProfileController {
         modelAndView.addObject("player",player);
         modelAndView.addObject("favoriteGames",favoriteGames);
         modelAndView.addObject("friendAsPlayer",friendAsPlayer);
+        modelAndView.addObject("pic_lists",lists);
         modelAndView.addObject("ownedgame_count",games.size());
         modelAndView.addObject("friend_count",friend_count);
         modelAndView.addObject("achi_count",achi_count);

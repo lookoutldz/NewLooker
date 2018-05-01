@@ -14,7 +14,7 @@
     <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-
+<span th:text="${pic_lists.size()-1}"></span>
 <div id="wrapper">
 
     <!-- Navigation -->
@@ -243,7 +243,7 @@
                     </div>
                 </div>
                 <div class="row clearfix">
-                    <div class="col-lg-6 col-md-12 column">
+                    <div class="col-lg-6 col-md-6 column">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 好友
@@ -256,20 +256,49 @@
                                         <tr>
                                             <th></th>
                                             <th>昵称</th>
-                                            <th>姓名</th>
-                                            <th>社区主页</th>
+                                            <th>社区</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr th:each="player : ${friendAsPlayer}">
                                             <td><img th:src="${player.getAvatar()}" alt="" style="border-radius: 3px;"></td>
                                             <td><span th:text="${player.getPersonaname()}"></span></td>
-                                            <td><span th:text="${player.getRealname()}"></span></td>
                                             <td>
                                                 <span th:if="${player.getCommunityvisibilitystate() eq 1}" th:text="私密"></span>
-                                                <span th:if="${player.getCommunityvisibilitystate() eq 2}" th:text="仅好友可见"></span>
-                                                <span th:if="${player.getCommunityvisibilitystate() ge 3}" th:text="公开可见"></span>
+                                                <span th:if="${player.getCommunityvisibilitystate() eq 2}" th:text="仅好友"></span>
+                                                <span th:if="${player.getCommunityvisibilitystate() ge 3}" th:text="公开"></span>
                                             </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <a href="#" class="btn btn-default btn-block">查看全部</a>
+                                </div>
+                                <!-- /.table-responsive -->
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 column">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                游戏
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>名称</th>
+                                            <th>时长</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="game : ${favoriteGames}">
+                                            <td><img th:src="${game.getImgIconUrl()}" alt="" style="border-radius: 3px;"></td>
+                                            <td><span th:text="${game.getAppname()}"></span></td>
+                                            <td class="text-right"><span th:text="${game.getPlaytimeForever()/60}"></span> h</td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -286,7 +315,7 @@
             <div class="col-lg-5 col-md-4 column">
                 <div class="col-lg-12" style="margin-top: 40px; margin-bottom: 20px;">
 
-                    <div th:if="${favoriteGames.size() eq 0}" class="carousel slide" id="carousel-size0">
+                    <div th:if="${favoriteGames.size() == 0}" class="carousel slide" id="carousel-size0">
                         <div class="carousel-inner">
                             <div class="item active">
                                 <img alt="" src="images/p1.jpg"/>
@@ -297,73 +326,47 @@
                             </div>
                         </div>
                     </div>
-
-                    <div th:if="${favoriteGames.size() eq 1}" class="carousel slide" id="carousel-size1">
+                    <div th:if="${favoriteGames.size() == 1}" class="carousel slide" id="carousel-size1">
                         <ol class="carousel-indicators">
                             <li class="active" data-slide-to="0" data-target="#carousel-size1">
                             </li>
                         </ol>
                         <div class="carousel-inner">
                             <div class="item active">
-                                <img alt="" th:src="${favoriteGames.get(0)}"/>
+                                <img alt="" th:src="${pic_lists.get(0).get(0)}"/>
                                 <div class="carousel-caption">
-                                    <h4>
-                                        First Thumbnail label
-                                    </h4>
-                                    <p>
-                                    </p>
+                                    <h4 th:text="${favoriteGames.get(0).getAppname()}"></h4>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
-                    <div class="carousel slide" id="carousel-862714">
+                    <div th:if="${favoriteGames.size() >= 2}" class="carousel slide" id="carousel-favorite">
                         <ol class="carousel-indicators">
-                            <li class="active" data-slide-to="0" data-target="#carousel-862714">
+                            <li th:each="i : ${#numbers.sequence(0, pic_lists.size()-1)}" th:if="${i == 0}" class="active" data-slide-to="0" data-target="#carousel-favorite">
                             </li>
-                            <li data-slide-to="1" data-target="#carousel-862714">
-                            </li>
-                            <li data-slide-to="2" data-target="#carousel-862714">
+                            <li th:each="i : ${#numbers.sequence(0, pic_lists.size()-1)}" th:if="${i >= 1}" data-slide-to="1" data-target="#carousel-favorite">
                             </li>
                         </ol>
                         <div class="carousel-inner">
-                            <div class="item active">
-                                <img alt="" src="images/p1.jpg"/>
+                            <div th:each="i : ${#numbers.sequence(0, pic_lists.size()-1)}" th:if="${i == 0}" class="item active">
+                                <img alt="" th:src="${pic_lists.get(0).get(0)}"/>
                                 <div class="carousel-caption">
-                                    <h4>
-                                        First Thumbnail label
-                                    </h4>
-                                    <p>
-                                    </p>
+                                    <h4 th:text="${favoriteGames.get(0).getAppname()}"></h4>
                                 </div>
                             </div>
-                            <div class="item">
-                                <img alt="" src="images/p1.jpg"/>
+                            <div th:each="i : ${#numbers.sequence(0, pic_lists.size()-1)}" th:if="${i >= 1}" class="item">
+                                <img alt="" th:src="${pic_lists.get(i).get(0)}"/>
                                 <div class="carousel-caption">
-                                    <h4>
-                                        Second Thumbnail label
-                                    </h4>
-                                    <p>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <img alt="" src="images/p1.jpg"/>
-                                <div class="carousel-caption">
-                                    <h4>
-                                        Third Thumbnail label
-                                    </h4>
-                                    <p>
-                                    </p>
+                                    <h4 th:text="${favoriteGames.get(i).getAppname()}"></h4>
                                 </div>
                             </div>
                         </div>
-                        <a class="left carousel-control" href="#carousel-862714" data-slide="prev"><span
-                                class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control"
-                                                                                        href="#carousel-862714"
-                                                                                        data-slide="next"><span
-                            class="glyphicon glyphicon-chevron-right"></span></a>
+                        <a class="left carousel-control" href="#carousel-favorite" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a> 
+                        <a class="right carousel-control" href="#carousel-favorite" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
                     </div>
 
                 </div>
