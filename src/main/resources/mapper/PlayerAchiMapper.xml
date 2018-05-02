@@ -7,11 +7,33 @@
     <id column="appid" jdbcType="INTEGER" property="appid" />
     <id column="achname" jdbcType="VARCHAR" property="achname" />
     <result column="achieved" jdbcType="INTEGER" property="achieved" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="unlocktime" jdbcType="INTEGER" property="unlocktime" />
   </resultMap>
 
+  <resultMap id="MyResultMap" type="looko.looker.release.entity.AchiModel">
+    <id column="player_achi.steamid" jdbcType="VARCHAR" property="steamid" />
+    <id column="player_achi.appid" jdbcType="INTEGER" property="appid" />
+    <id column="player_achi.achname" jdbcType="VARCHAR" property="achname" />
+    <result column="player_achi.description" jdbcType="VARCHAR" property="description" />
+    <result column="achieved" jdbcType="INTEGER" property="achieved" />
+    <result column="unlocktime" jdbcType="INTEGER" property="unlocktime" />
+    <result column="appname" jdbcType="VARCHAR" property="appname" />
+    <result column="img_icon_url" jdbcType="VARCHAR" property="imgIconUrl" />
+    <result column="img_logo_url" jdbcType="VARCHAR" property="imgLogoUrl" />
+    <result column="displayName" jdbcType="VARCHAR" property="displayName" />
+    <result column="hidden" jdbcType="INTEGER" property="hidden" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
+    <result column="icongray" jdbcType="VARCHAR" property="icongray" />
+  </resultMap>
+
   <sql id="Base_Column_List">
-    steamid, appid, achname, achieved, unlocktime
+    steamid, appid, achname, achieved, description, unlocktime
+  </sql>
+
+  <sql id="My_Column_List">
+    player_achi.steamid, player_achi.appid, player_achi.achname, player_achi.description, achieved, unlocktime,
+    appname, img_icon_url, img_logo_url, displayName, hidden, icon, icongray
   </sql>
 
   <select id="selectByPrimaryKey" parameterType="looko.looker.release.entity.PlayerAchiKey" resultMap="BaseResultMap">
@@ -70,6 +92,27 @@
     WHERE steamid = #{steamid,jdbcType=VARCHAR}
     AND appid = #{appid,jdbcType=INTEGER}
     AND achieved = 0
+  </select>
+
+  <select id="selectRecentlyAchi" parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM player_achi
+    WHERE steamid = #{steamid,jdbcType=VARCHAR}
+    AND achieved = 1
+    ORDER BY unlocktime DESC
+  </select>
+
+  <select id="selectMyAchiModel" parameterType="java.lang.String" resultMap="MyResultMap">
+    SELECT
+    <include refid="My_Column_List" />
+    FROM player_achi, owned_game, game_schema
+    WHERE player_achi.steamid = #{steamid,jdbcType=VARCHAR}
+    AND player_achi.appid = owned_game.appid
+    AND player_achi.appid = game_schema.appid
+    AND player_achi.achname = game_schema.achname
+    AND achieved = 1
+    ORDER BY unlocktime DESC
   </select>
 
   <select id="countAllAchiByGame" parameterType="looko.looker.release.entity.PlayerAchiGameKey" resultType="java.lang.Integer">
@@ -149,9 +192,9 @@
 
   <insert id="insert" parameterType="looko.looker.release.entity.PlayerAchi">
     insert into player_achi (steamid, appid, achname, 
-      achieved, unlocktime)
+      achieved, description, unlocktime)
     values (#{steamid,jdbcType=VARCHAR}, #{appid,jdbcType=INTEGER}, #{achname,jdbcType=VARCHAR}, 
-      #{achieved,jdbcType=INTEGER}, #{unlocktime,jdbcType=INTEGER})
+      #{achieved,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, #{unlocktime,jdbcType=INTEGER})
   </insert>
 
   <insert id="insertSelective" parameterType="looko.looker.release.entity.PlayerAchi">
@@ -168,6 +211,9 @@
       </if>
       <if test="achieved != null">
         achieved,
+      </if>
+      <if test="description != null">
+        description,
       </if>
       <if test="unlocktime != null">
         unlocktime,
@@ -186,6 +232,9 @@
       <if test="achieved != null">
         #{achieved,jdbcType=INTEGER},
       </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
       <if test="unlocktime != null">
         #{unlocktime,jdbcType=INTEGER},
       </if>
@@ -197,6 +246,9 @@
     <set>
       <if test="achieved != null">
         achieved = #{achieved,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
       </if>
       <if test="unlocktime != null">
         unlocktime = #{unlocktime,jdbcType=INTEGER},
@@ -210,6 +262,7 @@
   <update id="updateByPrimaryKey" parameterType="looko.looker.release.entity.PlayerAchi">
     update player_achi
     set achieved = #{achieved,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
       unlocktime = #{unlocktime,jdbcType=INTEGER}
     where steamid = #{steamid,jdbcType=VARCHAR}
       and appid = #{appid,jdbcType=INTEGER}

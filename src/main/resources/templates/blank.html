@@ -314,7 +314,6 @@
 
             <div class="col-lg-5 col-md-4 column">
                 <div class="col-lg-12" style="margin-top: 40px; margin-bottom: 20px;">
-
                     <div th:if="${favoriteGames.size() == 0}" class="carousel slide" id="carousel-size0">
                         <div class="carousel-inner">
                             <div class="item active">
@@ -369,6 +368,37 @@
                         </a>
                     </div>
 
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                成就
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>名称</th>
+                                            <th>时长</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="achi : ${achi_recently}">
+                                            <!--<td><img th:src="${achi.get}" alt="" style="border-radius: 3px;"></td>-->
+                                            <!--<td><span th:text="${game.getAppname()}"></span></td>-->
+                                            <!--<td class="text-right"><span th:text="${game.getPlaytimeForever()/60}"></span> h</td>-->
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <a href="#" class="btn btn-default btn-block">查看全部</a>
+                                </div>
+                                <!-- /.table-responsive -->
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

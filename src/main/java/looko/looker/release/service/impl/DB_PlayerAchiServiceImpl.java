@@ -1,6 +1,7 @@
 package looko.looker.release.service.impl;
 
 import looko.looker.release.dao.PlayerAchiMapper;
+import looko.looker.release.entity.AchiModel;
 import looko.looker.release.entity.PlayerAchi;
 import looko.looker.release.entity.PlayerAchiGameKey;
 import looko.looker.release.entity.PlayerAchiKey;
@@ -80,6 +81,18 @@ public class DB_PlayerAchiServiceImpl implements DB_PlayerAchiService {
         key.setSteamid(steamid);
         key.setAppid(appid);
         return playerAchiMapper.selectNotAchieveByGame(key);
+    }
+
+    @Override
+    public List<PlayerAchi> findRecentlyAchi(String steamid) {
+
+        return playerAchiMapper.selectRecentlyAchi(steamid);
+    }
+
+    @Override
+    public List<AchiModel> findMyAchiDetail(String steamid) {
+
+        return playerAchiMapper.selectMyAchiModel(steamid);
     }
 
     @Override

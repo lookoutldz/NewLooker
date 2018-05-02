@@ -41,6 +41,8 @@ public class GetPlayerAchi {
                         playerAchi.setAppid(appid);
                         playerAchi.setAchname(object.get("apiname").getAsString());
                         playerAchi.setAchieved(object.get("achieved").getAsInt());
+                        if (object.has("description"))
+                            playerAchi.setDescription(object.get("description").getAsString());
                         playerAchi.setUnlocktime(object.get("unlocktime").getAsInt());
                         playerAchis.add(playerAchi);
                     }

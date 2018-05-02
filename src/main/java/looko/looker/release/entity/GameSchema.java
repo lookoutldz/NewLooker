@@ -5,6 +5,8 @@ public class GameSchema extends GameSchemaKey {
 
     private String displayname;
 
+    private String description;
+
     private Integer hidden;
 
     private String icon;
@@ -25,6 +27,14 @@ public class GameSchema extends GameSchemaKey {
 
     public void setDisplayname(String displayname) {
         this.displayname = displayname == null ? null : displayname.trim();
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Integer getHidden() {

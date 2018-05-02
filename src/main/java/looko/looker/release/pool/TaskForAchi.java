@@ -18,10 +18,14 @@ public class TaskForAchi{
     @Autowired
     DB_PlayerAchiService achiService;
 
+    @Autowired
+    TaskForGameSchema taskForGameSchema;
+
     @Async("taskExecutor")
     public void go(String steamid, OwnedGame ownedGame) {
         List<PlayerAchi> playerAchis = getPlayerAchi.get(steamid,ownedGame.getAppid());
         if (playerAchis.size() > 0){
+            taskForGameSchema.go(ownedGame.getAppid());
             achiService.updatePlayerAchi(playerAchis);
         }
     }

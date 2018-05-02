@@ -1,6 +1,7 @@
 package looko.looker.release.service;
 
 
+import looko.looker.release.entity.AchiModel;
 import looko.looker.release.entity.PlayerAchi;
 
 import java.util.List;
@@ -20,6 +21,10 @@ public interface DB_PlayerAchiService {
     List<PlayerAchi> findAchievedByGame(String steamid, int appid);
 
     List<PlayerAchi> findNotAchieveByGame(String steamid, int appid);
+
+    List<PlayerAchi> findRecentlyAchi(String steamid);
+
+    List<AchiModel> findMyAchiDetail(String steamid);
 
     int countAllAchis(String steamid);
 

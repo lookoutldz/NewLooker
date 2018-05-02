@@ -8,12 +8,13 @@
     <result column="defaultvalue" jdbcType="INTEGER" property="defaultvalue" />
     <result column="displayName" jdbcType="VARCHAR" property="displayname" />
     <result column="hidden" jdbcType="INTEGER" property="hidden" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="icon" jdbcType="VARCHAR" property="icon" />
     <result column="icongray" jdbcType="VARCHAR" property="icongray" />
   </resultMap>
 
   <sql id="Base_Column_List">
-    appid, achname, defaultvalue, displayName, hidden, icon, icongray
+    appid, achname, defaultvalue, displayName, hidden, description, icon, icongray
   </sql>
 
   <select id="selectByPrimaryKey" parameterType="looko.looker.release.entity.GameSchemaKey" resultMap="BaseResultMap">
@@ -39,10 +40,10 @@
 
   <insert id="insert" parameterType="looko.looker.release.entity.GameSchema">
     insert into game_schema (appid, achname, defaultvalue, 
-      displayName, hidden, icon, 
+      displayName, hidden, description, icon,
       icongray)
     values (#{appid,jdbcType=INTEGER}, #{achname,jdbcType=VARCHAR}, #{defaultvalue,jdbcType=INTEGER}, 
-      #{displayname,jdbcType=VARCHAR}, #{hidden,jdbcType=INTEGER}, #{icon,jdbcType=VARCHAR}, 
+      #{displayname,jdbcType=VARCHAR}, #{hidden,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR},
       #{icongray,jdbcType=VARCHAR})
   </insert>
 
@@ -63,6 +64,9 @@
       </if>
       <if test="hidden != null">
         hidden,
+      </if>
+      <if test="description != null">
+        description,
       </if>
       <if test="icon != null">
         icon,
@@ -87,6 +91,9 @@
       <if test="hidden != null">
         #{hidden,jdbcType=INTEGER},
       </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
       <if test="icon != null">
         #{icon,jdbcType=VARCHAR},
       </if>
@@ -108,6 +115,9 @@
       <if test="hidden != null">
         hidden = #{hidden,jdbcType=INTEGER},
       </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
       <if test="icon != null">
         icon = #{icon,jdbcType=VARCHAR},
       </if>
@@ -124,6 +134,7 @@
     set defaultvalue = #{defaultvalue,jdbcType=INTEGER},
       displayName = #{displayname,jdbcType=VARCHAR},
       hidden = #{hidden,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
       icon = #{icon,jdbcType=VARCHAR},
       icongray = #{icongray,jdbcType=VARCHAR}
     where appid = #{appid,jdbcType=INTEGER}

@@ -1,10 +1,13 @@
 package looko.looker.release;
 
+import looko.looker.release.api.GetGameSchema;
 import looko.looker.release.api.GetOwnedGame;
+import looko.looker.release.entity.AchiModel;
 import looko.looker.release.entity.App;
 import looko.looker.release.entity.OwnedGame;
 import looko.looker.release.entity.Player;
 import looko.looker.release.pool.TaskForAppInfo;
+import looko.looker.release.pool.TaskForGameSchema;
 import looko.looker.release.service.DB_AppService;
 import looko.looker.release.service.DB_OwnedGameService;
 import looko.looker.release.service.DB_PlayerAchiService;
@@ -31,6 +34,8 @@ public class ReleaseApplicationTests {
 	DB_AppService appService;
 	@Autowired
 	GetOwnedGame getOwnedGame;
+	@Autowired
+	GetGameSchema getGameSchema;
 
 	@Autowired
 	DB_PlayerService playerService;
@@ -41,6 +46,8 @@ public class ReleaseApplicationTests {
 
 	@Autowired
 	TaskForAppInfo task;
+	@Autowired
+	TaskForGameSchema taskForGameSchema;
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -117,6 +124,25 @@ public class ReleaseApplicationTests {
 				logger.info("steamid = " + player.getSteamid() + "\tname : " + player.getPersonaname());
 			}
 		}
+	}
+
+	@Test
+	public void findAchiDetail(){
+		List<AchiModel> achiModels = achiService.findMyAchiDetail("76561198367830998");
+		logger.info("achisize = "+achiModels.size());
+		if (achiModels.size() > 0){
+			for (AchiModel model : achiModels){
+				if (model == null)
+					logger.warn("null");
+				else
+					logger.info("appname : "+model.getAppname()+"\tachiName : "+model.getDisplayName()+"\ticon : "+model.getIcon());
+			}
+		}
+	}
+
+	@Test
+	public void getSchema(){
+		getGameSchema.get(374320);
 	}
 
 }

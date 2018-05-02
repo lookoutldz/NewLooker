@@ -1,5 +1,6 @@
 package looko.looker.release.dao;
 
+import looko.looker.release.entity.AchiModel;
 import looko.looker.release.entity.PlayerAchi;
 import looko.looker.release.entity.PlayerAchiGameKey;
 import looko.looker.release.entity.PlayerAchiKey;
@@ -29,6 +30,10 @@ public interface PlayerAchiMapper {
     List<PlayerAchi> selectAchievedByGame(PlayerAchiGameKey key);
 
     List<PlayerAchi> selectNotAchieveByGame(PlayerAchiGameKey key);
+
+    List<PlayerAchi> selectRecentlyAchi(String steamid);
+
+    List<AchiModel> selectMyAchiModel(String steamid);
 
     int countAllAchiByGame(PlayerAchiGameKey key);
 

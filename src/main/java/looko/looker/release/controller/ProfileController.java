@@ -4,6 +4,7 @@ import looko.looker.release.api.GetRecentlyGames;
 import looko.looker.release.entity.App;
 import looko.looker.release.entity.OwnedGame;
 import looko.looker.release.entity.Player;
+import looko.looker.release.entity.PlayerAchi;
 import looko.looker.release.service.*;
 import looko.looker.release.tool.ResolveScreenshot;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,6 +66,14 @@ public class ProfileController {
         else {
             friendAsPlayer = players;
         }
+        List<PlayerAchi> achis = achiService.findRecentlyAchi(steamid);
+        List<PlayerAchi> achi_recently;
+        if (achis.size() > 10){
+            achi_recently = achis.subList(0,9);
+        }
+        else {
+            achi_recently = achis;
+        }
 
         int friend_count = friendService.countFriends(steamid);
         int achi_count = achiService.countAchieved(steamid);
@@ -75,6 +84,7 @@ public class ProfileController {
         modelAndView.addObject("favoriteGames",favoriteGames);
         modelAndView.addObject("friendAsPlayer",friendAsPlayer);
         modelAndView.addObject("pic_lists",lists);
+        modelAndView.addObject("achi_recently",achi_recently);
         modelAndView.addObject("ownedgame_count",games.size());
         modelAndView.addObject("friend_count",friend_count);
         modelAndView.addObject("achi_count",achi_count);
