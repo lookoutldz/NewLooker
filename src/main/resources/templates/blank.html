@@ -14,7 +14,7 @@
     <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<span th:text="${pic_lists.size()-1}"></span>
+<!--<span th:text="${pic_lists.size()-1}"></span>-->
 <div id="wrapper">
 
     <!-- Navigation -->
@@ -36,7 +36,7 @@
                     <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
-                    <li><a href="#"><i class="fa fa-user fa-fw"></i> 概览</a>
+                    <li><a th:href="@{/profile(steamid=${steamid})}"><i class="fa fa-user fa-fw"></i> 概览</a>
                     </li>
                     <li><a href="#"><i class="fa fa-gear fa-fw"></i> 设置</a>
                     </li>
@@ -52,9 +52,11 @@
 
         <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse">
-                <div class="nav" id="person" align="center" style="margin-top: 20px; margin-bottom: 20px;">
+                <div class="nav" id="person" align="center" style="margin-top: 20px; margin-bottom: 40px;">
                     <div th:if="${player.getPersonastate() eq 0}">
-                        <img th:src="${player.getAvatarmedium()}" alt="" style="border: #9d9d9d 4px solid; border-radius: 5px;">
+                        <a th:href="${player.getProfileurl()}" target="_blank">
+                            <img th:src="${player.getAvatarmedium()}" alt="" style="border: #9d9d9d 4px solid; border-radius: 5px;">
+                        </a>
                         <div style="margin-top: 20px;">
                             <i class="fa fa-steam-square fa-fw" style="color: #9d9d9d"></i>
                             <span th:text="${player.getPersonaname()}" style="color: #9d9d9d"></span>
@@ -69,75 +71,66 @@
                     </div>
                     <div th:text="|Lv ${player.getSteamlevel()}|"></div>
                 </div>
-                <ul class="nav" id="side-menu">
+                <ul class="nav" id="side-menu" align="center">
                     <li>
-                        <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        <a th:href="@{/profile(steamid=${steamid})}"><i class="fa fa-th-list fa-fw"></i> 主页</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
+                        <a th:href="@{/profile(steamid=${steamid})}"><i class="fa fa-gamepad fa-fw"></i> 游戏</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/profile(steamid=${steamid})}"><i class="fa fa-users fa-fw"></i> 好友</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/profile(steamid=${steamid})}"><i class="fa fa-trophy fa-fw"></i> 成就</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-magnet fa-fw"></i> 实用链接<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="flot.html">Flot Charts</a>
+                                <a th:href="@{https://store.steampowered.com/}" target="_blank"> STEAM商店</a>
                             </li>
                             <li>
-                                <a href="morris.html">Morris.js Charts</a>
+                                <a th:href="@{https://steamcn.com/}" target="_blank">SteamCN蒸气动力</a>
+                            </li>
+                            <li>
+                                <a th:href="@{https://steamrepcn.com/}" target="_blank">Steamrep信誉平台</a>
+                            </li>
+                            <li>
+                                <a th:href="@{https://www.steamcardexchange.net/index.php}" target="_blank">Steam卡片/徽章/背景查询</a>
+                            </li>
+                            <li>
+                                <a th:href="@{http://cn1.yxdzqb.com/}" target="_blank">游戏折扣查询</a>
+                            </li>
+                            <li>
+                                <a th:href="@{https://steamdb.info/}" target="_blank">SteamDB</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
                     <li>
-                        <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
-                    </li>
-                    <li>
-                        <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-cubes fa-fw"></i> 第三方游戏市场<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="panels-wells.html">Panels and Wells</a>
+                                <a th:href="@{https://www.sonkwo.com/}" target="_blank">杉果游戏</a>
                             </li>
                             <li>
-                                <a href="buttons.html">Buttons</a>
+                                <a th:href="@{http://bundle.ccyycn.com/}" target="_blank">驰游慈善包</a>
                             </li>
                             <li>
-                                <a href="notifications.html">Notifications</a>
-                            </li>
-                            <li>
-                                <a href="typography.html">Typography</a>
-                            </li>
-                            <li>
-                                <a href="icons.html"> Icons</a>
-                            </li>
-                            <li>
-                                <a href="grid.html">Grid</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="#">Second Level Item</a>
-                            </li>
-                            <li>
-                                <a href="#">Second Level Item</a>
-                            </li>
-                            <li>
-                                <a href="#">Third Level <span class="fa arrow"></span></a>
+                                <a href="#"> 自备梯子<span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
                                     <li>
-                                        <a href="#">Third Level Item</a>
+                                        <a th:href="@{https://www.humblebundle.com/}">Humble Bundle</a>
                                     </li>
                                     <li>
-                                        <a href="#">Third Level Item</a>
+                                        <a th:href="@{https://www.indiegala.com/}">Indiegala</a>
                                     </li>
                                     <li>
-                                        <a href="#">Third Level Item</a>
+                                        <a th:href="@{https://www.fanatical.com/}">Fanatical</a>
                                     </li>
                                     <li>
-                                        <a href="#">Third Level Item</a>
+                                        <a th:href="@{https://www.greenmangaming.com/}">GMG</a>
                                     </li>
                                 </ul>
                                 <!-- /.nav-third-level -->
@@ -145,17 +138,8 @@
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
-                    <li class="active">
-                        <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a class="active" href="blank.html">Blank Page</a>
-                            </li>
-                            <li>
-                                <a href="login.html">Login Page</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
+                    <li>
+                        <a href="#"><i class="fa fa-sign-out"></i> 登出</a>
                     </li>
                 </ul>
             </div>
@@ -368,36 +352,34 @@
                         </a>
                     </div>
 
-                    <div class="col-lg-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                成就
-                            </div>
-                            <!-- /.panel-heading -->
-                            <div class="panel-body">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                        <tr>
-                                            <th></th>
-                                            <th>名称</th>
-                                            <th>时长</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr th:each="achi : ${achi_recently}">
-                                            <!--<td><img th:src="${achi.get}" alt="" style="border-radius: 3px;"></td>-->
-                                            <!--<td><span th:text="${game.getAppname()}"></span></td>-->
-                                            <!--<td class="text-right"><span th:text="${game.getPlaytimeForever()/60}"></span> h</td>-->
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                    <a href="#" class="btn btn-default btn-block">查看全部</a>
-                                </div>
-                                <!-- /.table-responsive -->
-                            </div>
-                            <!-- /.panel-body -->
+                    <div class="panel panel-default" style="margin-top: 20px;">
+                        <div class="panel-heading">
+                            最近成就
                         </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>成就</th>
+                                        <th>名称</th>
+                                        <th>游戏</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="achi : ${achi_recently}">
+                                        <td><img th:src="${achi.getIcon()}" alt="" style="border-radius: 3px;"></td>
+                                        <td><p th:text="${achi.getAppname()}"></p><span th:text="${achi.getDisplayName()}"></span></td>
+                                        <td class="text-right"><img th:src="${achi.getImgLogoUrl()}" alt=""></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <a href="#" class="btn btn-default btn-block">查看更多</a>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
                     </div>
                 </div>
             </div>

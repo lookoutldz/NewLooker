@@ -46,7 +46,7 @@ public class GetGameSchema {
                     gameSchema.setDisplayname(object.get("displayName").getAsString());
                     gameSchema.setHidden(object.get("hidden").getAsInt());
                     if (object.has("description")){
-                        logger.info("ok\t"+object.get("description").getAsString());
+//                        logger.info("ok\t"+object.get("description").getAsString());
                         gameSchema.setDescription(object.get("description").getAsString());
                     }
                     gameSchema.setIcon(object.get("icon").getAsString());

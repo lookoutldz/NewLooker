@@ -140,9 +140,4 @@ public class ReleaseApplicationTests {
 		}
 	}
 
-	@Test
-	public void getSchema(){
-		getGameSchema.get(374320);
-	}
-
 }

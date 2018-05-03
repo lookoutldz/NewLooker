@@ -1,10 +1,7 @@
 package looko.looker.release.controller;
 
 import looko.looker.release.api.GetRecentlyGames;
-import looko.looker.release.entity.App;
-import looko.looker.release.entity.OwnedGame;
-import looko.looker.release.entity.Player;
-import looko.looker.release.entity.PlayerAchi;
+import looko.looker.release.entity.*;
 import looko.looker.release.service.*;
 import looko.looker.release.tool.ResolveScreenshot;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +43,7 @@ public class ProfileController {
         List<OwnedGame> games = ownedGameService.findFavoriteById(steamid);
         List<OwnedGame> favoriteGames;
         if (games.size() > 10){
-            favoriteGames = games.subList(0,9);
+            favoriteGames = games.subList(0,10);
         }
         else {
             favoriteGames = games;
@@ -61,15 +58,15 @@ public class ProfileController {
         List<Player> players = playerService.findFriendAsPlayer(steamid);
         List<Player> friendAsPlayer;
         if (players.size() > 10){
-            friendAsPlayer = players.subList(0,9);
+            friendAsPlayer = players.subList(0,10);
         }
         else {
             friendAsPlayer = players;
         }
-        List<PlayerAchi> achis = achiService.findRecentlyAchi(steamid);
-        List<PlayerAchi> achi_recently;
-        if (achis.size() > 10){
-            achi_recently = achis.subList(0,9);
+        List<AchiModel> achis = achiService.findMyAchiDetail(steamid);
+        List<AchiModel> achi_recently;
+        if (achis.size() > 5){
+            achi_recently = achis.subList(0,5);
         }
         else {
             achi_recently = achis;

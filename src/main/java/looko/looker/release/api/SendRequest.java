@@ -18,7 +18,7 @@ public class SendRequest {
     protected InputStream sendGet(String url_str){
         try
         {
-            logger.info(url_str);
+//            logger.info(url_str);
 
             URL url = new URL(url_str);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -26,7 +26,7 @@ public class SendRequest {
             con.setReadTimeout(30000);
             int responseCode = con.getResponseCode();
             if (con.getResponseCode() != 200){
-                logger.info("WebSite = "+url_str + "\nresponseCode = "+responseCode + "\treturn InputStream is null");
+//                logger.info("WebSite = "+url_str + "\nresponseCode = "+responseCode + "\treturn InputStream is null");
                 return null;
             }
             InputStream is = con.getInputStream();
