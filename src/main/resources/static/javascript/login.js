@@ -18,6 +18,28 @@ $.extend({
 
 // ------------------------------login.html-----------------------------------------
 
+//有cookie信息直接登录
+$(function () {
+
+    var input_text = $.cookie("input_text");
+    var login_type = $.cookie("login_type");
+    alert("input_text=" + input_text + "\nlogin_type=" + login_type);
+    if (input_text != null && login_type != null){
+        $.ajax({
+            type : "POST",
+            url : "/loginCheck",
+            data : {input_text : input_text, login_type : login_type},
+            success : function (data) {
+                checkout(data);
+            },
+            error : function () {
+                msg_bar("服务器瑟瑟发抖...Σ(°Д°;", "danger");
+            }
+        })
+    }
+})
+
+//无cookie则输入信息登录
 $(document).ready(function () {
 
     $('#login_btn').click(function () {
@@ -26,54 +48,53 @@ $(document).ready(function () {
             msg_bar("账户不能为空~", "danger");
         }
         else {
-            var type = $('input[name="logintype"]:checked').val();
-            if (type == "steamid"){
-                var regex = /\d{17}/;
-                if (regex.test(input_text)){
-                    $.ajax({
-                        type : "POST",
-                        url : "/loginBySID",
-                        data : {steamid : input_text, type : type},
-                        success : function (data) {
-                            checkout(data);
-                        },
-                        error : function () {
-                            msg_bar("服务器君瑟瑟发抖...Σ(°Д°;", "danger");
-                        }
-                    })
-                }
-                else{
-                    msg_bar("Steamid64输入有误~", "danger");
-                }
+            var login_type = $('input[name="logintype"]:checked').val();
+            var regex = /\d{17}/;
+            if (login_type=="steamid" && !regex.test(input_text)) {
+                msg_bar("Steamid64输入有误~", "danger");
             }
             else {
-                //type == vanityurl
+                $.ajax({
+                    type : "POST",
+                    url : "/loginCheck",
+                    data : {input_text : input_text, login_type : login_type},
+                    success : function (data) {
+                        checkout(data);
+                    },
+                    error : function () {
+                        msg_bar("服务器瑟瑟发抖...Σ(°Д°;", "danger");
+                    }
+                })
             }
         }
     })
-
-
-    function checkout(data) {
-        var code = data.resultCode;
-        if (code == null){
-            msg_bar("网络君消失了？Σ(°Д°;", "danger");
-        }
-        else if (code == -1){
-            msg_bar("神秘的错误出现了...Σヽ(ﾟД ﾟ; )ﾉ", "danger");
-        }
-        else if (code == 1){
-            msg_bar("用户steam资料私密~⁄(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄", "danger");
-        }
-        else if (code == 2){
-            msg_bar("用户steam资料仅好友可见~⁄(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄", "danger");
-        }
-        else {
-            msg_bar("验证成功,拉取信息中~(≖ᴗ≖๑)", "success");
-            $('#loginform').submit();
-        }
-    }
-
 })
+
+function checkout(data) {
+    var code = data.resultCode;
+    if (code == null){
+        msg_bar("网络君消失了？Σ(°Д°;", "danger");
+    }
+    else if (code == -1){
+        msg_bar("输入错了？这个用户并没有户籍...Σヽ(ﾟД ﾟ; )ﾉ", "danger");
+    }
+    else if (code == 1){
+        msg_bar("用户steam资料私密~⁄(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄", "danger");
+    }
+    else if (code == 2){
+        msg_bar("用户steam资料仅好友可见~⁄(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄", "danger");
+    }
+    else {
+        //验证通过，处理cookie，提交表单。cookie登录默认用steamid（ajax验证成功后的返回结果）
+        msg_bar("验证成功,拉取信息中~(≖ᴗ≖๑)", "success");
+        if ($('#remember').prop('checked')){
+            $.cookie("input_text",data.player_data);
+            $.cookie("login_type","steamid");
+        }
+        $('#hidden_steamid').attr("value",data.player_data);
+        $('#loginform').submit();
+    }
+}
 
 function msg_bar(msg, alarmlevel) {
     //alarmlevel = danger / warning / info / success

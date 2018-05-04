@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>blank page</title>
+    <title>BLANK</title>
     <!-- Bootstrap Core CSS -->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- MetisMenu CSS -->
@@ -14,393 +14,164 @@
     <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<!--<span th:text="${pic_lists.size()-1}"></span>-->
-<div id="wrapper">
+    <div id="wrapper">
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index.html">Steam_Looker v2.0</a>
-        </div>
-        <!-- /.navbar-header -->
-
-        <ul class="nav navbar-top-links navbar-right">
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-user">
-                    <li><a th:href="@{/profile(steamid=${steamid})}"><i class="fa fa-user fa-fw"></i> 概览</a>
-                    </li>
-                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> 设置</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> 登出</a>
-                    </li>
-                </ul>
-                <!-- /.dropdown-user -->
-            </li>
-            <!-- /.dropdown -->
-        </ul>
-        <!-- /.navbar-top-links -->
-
-        <div class="navbar-default sidebar" role="navigation">
-            <div class="sidebar-nav navbar-collapse">
-                <div class="nav" id="person" align="center" style="margin-top: 20px; margin-bottom: 40px;">
-                    <div th:if="${player.getPersonastate() eq 0}">
-                        <a th:href="${player.getProfileurl()}" target="_blank">
-                            <img th:src="${player.getAvatarmedium()}" alt="" style="border: #9d9d9d 4px solid; border-radius: 5px;">
-                        </a>
-                        <div style="margin-top: 20px;">
-                            <i class="fa fa-steam-square fa-fw" style="color: #9d9d9d"></i>
-                            <span th:text="${player.getPersonaname()}" style="color: #9d9d9d"></span>
-                        </div>
-                    </div>
-                    <div th:unless="${player.getPersonastate() eq 0}">
-                        <img th:src="${player.getAvatarmedium()}" alt="" style="border: #1ab7ea 4px solid; border-radius: 5px;">
-                        <div style="margin-top: 20px;">
-                            <i class="fa fa-steam-square fa-fw" style="color: #1ab7ea"></i>
-                            <span th:text="${player.getPersonaname()}" style="color: #1ab7ea"></span>
-                        </div>
-                    </div>
-                    <div th:text="|Lv ${player.getSteamlevel()}|"></div>
-                </div>
-                <ul class="nav" id="side-menu" align="center">
-                    <li>
-                        <a th:href="@{/profile(steamid=${steamid})}"><i class="fa fa-th-list fa-fw"></i> 主页</a>
-                    </li>
-                    <li>
-                        <a th:href="@{/profile(steamid=${steamid})}"><i class="fa fa-gamepad fa-fw"></i> 游戏</a>
-                    </li>
-                    <li>
-                        <a th:href="@{/profile(steamid=${steamid})}"><i class="fa fa-users fa-fw"></i> 好友</a>
-                    </li>
-                    <li>
-                        <a th:href="@{/profile(steamid=${steamid})}"><i class="fa fa-trophy fa-fw"></i> 成就</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-magnet fa-fw"></i> 实用链接<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a th:href="@{https://store.steampowered.com/}" target="_blank"> STEAM商店</a>
-                            </li>
-                            <li>
-                                <a th:href="@{https://steamcn.com/}" target="_blank">SteamCN蒸气动力</a>
-                            </li>
-                            <li>
-                                <a th:href="@{https://steamrepcn.com/}" target="_blank">Steamrep信誉平台</a>
-                            </li>
-                            <li>
-                                <a th:href="@{https://www.steamcardexchange.net/index.php}" target="_blank">Steam卡片/徽章/背景查询</a>
-                            </li>
-                            <li>
-                                <a th:href="@{http://cn1.yxdzqb.com/}" target="_blank">游戏折扣查询</a>
-                            </li>
-                            <li>
-                                <a th:href="@{https://steamdb.info/}" target="_blank">SteamDB</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-cubes fa-fw"></i> 第三方游戏市场<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a th:href="@{https://www.sonkwo.com/}" target="_blank">杉果游戏</a>
-                            </li>
-                            <li>
-                                <a th:href="@{http://bundle.ccyycn.com/}" target="_blank">驰游慈善包</a>
-                            </li>
-                            <li>
-                                <a href="#"> 自备梯子<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li>
-                                        <a th:href="@{https://www.humblebundle.com/}">Humble Bundle</a>
-                                    </li>
-                                    <li>
-                                        <a th:href="@{https://www.indiegala.com/}">Indiegala</a>
-                                    </li>
-                                    <li>
-                                        <a th:href="@{https://www.fanatical.com/}">Fanatical</a>
-                                    </li>
-                                    <li>
-                                        <a th:href="@{https://www.greenmangaming.com/}">GMG</a>
-                                    </li>
-                                </ul>
-                                <!-- /.nav-third-level -->
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-sign-out"></i> 登出</a>
-                    </li>
-                </ul>
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Steam_Looker v2.0</a>
             </div>
-            <!-- /.sidebar-collapse -->
-        </div>
-        <!-- /.navbar-static-side -->
-    </nav>
+            <!-- /.navbar-header -->
 
-    <!-- Page Content -->
-    <div id="page-wrapper">
-        <div class="container-fluid">
-            <div class="row">
-            </div>
-            <!-- /.row -->
-            <div class="col-lg-7 col-md-8 column">
-                <div class="col-lg-12">
-                    <h2 class="page-header">数据概览</h2>
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a th:href="@{/profile(steamid=${steamid})}"><i class="fa fa-user fa-fw"></i> 概览</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> 设置</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a th:href="@{/login}"><i class="fa fa-sign-out fa-fw"></i> 登出</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <div class="nav" id="person" align="center" style="margin-top: 20px; margin-bottom: 40px;">
+                        <div th:if="${player.getPersonastate() eq 0}">
+                            <a th:href="${player.getProfileurl()}" target="_blank">
+                                <img th:src="${player.getAvatarmedium()}" alt="" style="border: #9d9d9d 4px solid; border-radius: 5px;">
+                            </a>
+                            <div style="margin-top: 20px;">
+                                <i class="fa fa-steam-square fa-fw" style="color: #9d9d9d"></i>
+                                <span th:text="${player.getPersonaname()}" style="color: #9d9d9d"></span>
+                            </div>
+                        </div>
+                        <div th:unless="${player.getPersonastate() eq 0}">
+                            <img th:src="${player.getAvatarmedium()}" alt="" style="border: #1ab7ea 4px solid; border-radius: 5px;">
+                            <div style="margin-top: 20px;">
+                                <i class="fa fa-steam-square fa-fw" style="color: #1ab7ea"></i>
+                                <span th:text="${player.getPersonaname()}" style="color: #1ab7ea"></span>
+                            </div>
+                        </div>
+                        <div th:text="|Lv ${player.getSteamlevel()}|"></div>
+                    </div>
+                    <ul class="nav" id="side-menu" align="center">
+                        <li>
+                            <a th:href="@{/profile(steamid=${steamid})}"><i class="fa fa-th-list fa-fw"></i> 主页</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/profile(steamid=${steamid})}"><i class="fa fa-gamepad fa-fw"></i> 游戏</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/profile(steamid=${steamid})}"><i class="fa fa-users fa-fw"></i> 好友</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/profile(steamid=${steamid})}"><i class="fa fa-trophy fa-fw"></i> 成就</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-magnet fa-fw"></i> 实用链接<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a th:href="@{https://store.steampowered.com/}" target="_blank"> STEAM商店</a>
+                                </li>
+                                <li>
+                                    <a th:href="@{https://steamcn.com/}" target="_blank">SteamCN蒸气动力</a>
+                                </li>
+                                <li>
+                                    <a th:href="@{https://steamrepcn.com/}" target="_blank">Steamrep信誉平台</a>
+                                </li>
+                                <li>
+                                    <a th:href="@{https://www.steamcardexchange.net/index.php}" target="_blank">Steam卡片/徽章/背景查询</a>
+                                </li>
+                                <li>
+                                    <a th:href="@{http://cn1.yxdzqb.com/}" target="_blank">游戏折扣查询</a>
+                                </li>
+                                <li>
+                                    <a th:href="@{https://steamdb.info/}" target="_blank">SteamDB</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-cubes fa-fw"></i> 第三方游戏市场<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a th:href="@{https://www.sonkwo.com/}" target="_blank">杉果游戏</a>
+                                </li>
+                                <li>
+                                    <a th:href="@{http://bundle.ccyycn.com/}" target="_blank">驰游慈善包</a>
+                                </li>
+                                <li>
+                                    <a href="#"> 自备梯子<span class="fa arrow"></span></a>
+                                    <ul class="nav nav-third-level">
+                                        <li>
+                                            <a th:href="@{https://www.humblebundle.com/}">Humble Bundle</a>
+                                        </li>
+                                        <li>
+                                            <a th:href="@{https://www.indiegala.com/}">Indiegala</a>
+                                        </li>
+                                        <li>
+                                            <a th:href="@{https://www.fanatical.com/}">Fanatical</a>
+                                        </li>
+                                        <li>
+                                            <a th:href="@{https://www.greenmangaming.com/}">GMG</a>
+                                        </li>
+                                    </ul>
+                                    <!-- /.nav-third-level -->
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a th:href="@{/login}"><i class="fa fa-sign-out"></i> 登出</a>
+                        </li>
+                    </ul>
                 </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-gamepad fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge" th:text="${ownedgame_count}"></div>
-                                        <div>我的游戏</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <div class="panel-footer">
-                                    <span class="pull-left">查看详情</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
+                    <div class="col-lg-12">
+                        <h2 class="page-header">我的游戏</h2>
                     </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="panel panel-green">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-users fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge" th:text="${friend_count}"></div>
-                                        <div>我的好友</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <div class="panel-footer">
-                                    <span class="pull-left">查看详情</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="panel panel-yellow">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-trophy fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge" th:text="${achi_count}"></div>
-                                        <div>游戏成就</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <div class="panel-footer">
-                                    <span class="pull-left">查看详情</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                    <!-- /.col-lg-12 -->
                 </div>
-                <div class="row clearfix">
-                    <div class="col-lg-6 col-md-6 column">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                好友
-                            </div>
-                            <!-- /.panel-heading -->
-                            <div class="panel-body">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                        <tr>
-                                            <th></th>
-                                            <th>昵称</th>
-                                            <th>社区</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr th:each="player : ${friendAsPlayer}">
-                                            <td><img th:src="${player.getAvatar()}" alt="" style="border-radius: 3px;"></td>
-                                            <td><span th:text="${player.getPersonaname()}"></span></td>
-                                            <td>
-                                                <span th:if="${player.getCommunityvisibilitystate() eq 1}" th:text="私密"></span>
-                                                <span th:if="${player.getCommunityvisibilitystate() eq 2}" th:text="仅好友"></span>
-                                                <span th:if="${player.getCommunityvisibilitystate() ge 3}" th:text="公开"></span>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                    <a href="#" class="btn btn-default btn-block">查看全部</a>
-                                </div>
-                                <!-- /.table-responsive -->
-                            </div>
-                            <!-- /.panel-body -->
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 column">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                游戏
-                            </div>
-                            <!-- /.panel-heading -->
-                            <div class="panel-body">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                        <tr>
-                                            <th></th>
-                                            <th>名称</th>
-                                            <th>时长</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr th:each="game : ${favoriteGames}">
-                                            <td><img th:src="${game.getImgIconUrl()}" alt="" style="border-radius: 3px;"></td>
-                                            <td><span th:text="${game.getAppname()}"></span></td>
-                                            <td class="text-right"><span th:text="${game.getPlaytimeForever()/60}"></span> h</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                    <a href="#" class="btn btn-default btn-block">查看全部</a>
-                                </div>
-                                <!-- /.table-responsive -->
-                            </div>
-                            <!-- /.panel-body -->
-                        </div>
-                    </div>
-                </div>
+                <!-- /.row -->
             </div>
-
-            <div class="col-lg-5 col-md-4 column">
-                <div class="col-lg-12" style="margin-top: 40px; margin-bottom: 20px;">
-                    <div th:if="${favoriteGames.size() == 0}" class="carousel slide" id="carousel-size0">
-                        <div class="carousel-inner">
-                            <div class="item active">
-                                <img alt="" src="images/p1.jpg"/>
-                                <div class="carousel-caption">
-                                    <h4>游戏数为0？</h4>
-                                    <p>私密数据可能导致游戏数目无法获取</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div th:if="${favoriteGames.size() == 1}" class="carousel slide" id="carousel-size1">
-                        <ol class="carousel-indicators">
-                            <li class="active" data-slide-to="0" data-target="#carousel-size1">
-                            </li>
-                        </ol>
-                        <div class="carousel-inner">
-                            <div class="item active">
-                                <img alt="" th:src="${pic_lists.get(0).get(0)}"/>
-                                <div class="carousel-caption">
-                                    <h4 th:text="${favoriteGames.get(0).getAppname()}"></h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div th:if="${favoriteGames.size() >= 2}" class="carousel slide" id="carousel-favorite">
-                        <ol class="carousel-indicators">
-                            <li th:each="i : ${#numbers.sequence(0, pic_lists.size()-1)}" th:if="${i == 0}" class="active" data-slide-to="0" data-target="#carousel-favorite">
-                            </li>
-                            <li th:each="i : ${#numbers.sequence(0, pic_lists.size()-1)}" th:if="${i >= 1}" data-slide-to="1" data-target="#carousel-favorite">
-                            </li>
-                        </ol>
-                        <div class="carousel-inner">
-                            <div th:each="i : ${#numbers.sequence(0, pic_lists.size()-1)}" th:if="${i == 0}" class="item active">
-                                <img alt="" th:src="${pic_lists.get(0).get(0)}"/>
-                                <div class="carousel-caption">
-                                    <h4 th:text="${favoriteGames.get(0).getAppname()}"></h4>
-                                </div>
-                            </div>
-                            <div th:each="i : ${#numbers.sequence(0, pic_lists.size()-1)}" th:if="${i >= 1}" class="item">
-                                <img alt="" th:src="${pic_lists.get(i).get(0)}"/>
-                                <div class="carousel-caption">
-                                    <h4 th:text="${favoriteGames.get(i).getAppname()}"></h4>
-                                </div>
-                            </div>
-                        </div>
-                        <a class="left carousel-control" href="#carousel-favorite" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left"></span>
-                        </a> 
-                        <a class="right carousel-control" href="#carousel-favorite" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                        </a>
-                    </div>
-
-                    <div class="panel panel-default" style="margin-top: 20px;">
-                        <div class="panel-heading">
-                            最近成就
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                    <tr>
-                                        <th>成就</th>
-                                        <th>名称</th>
-                                        <th>游戏</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr th:each="achi : ${achi_recently}">
-                                        <td><img th:src="${achi.getIcon()}" alt="" style="border-radius: 3px;"></td>
-                                        <td><p th:text="${achi.getAppname()}"></p><span th:text="${achi.getDisplayName()}"></span></td>
-                                        <td class="text-right"><img th:src="${achi.getImgLogoUrl()}" alt=""></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                                <a href="#" class="btn btn-default btn-block">查看更多</a>
-                            </div>
-                            <!-- /.table-responsive -->
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                </div>
-            </div>
+            <!-- /.container-fluid -->
         </div>
-        <!-- /.container-fluid -->
+        <!-- /#page-wrapper -->
     </div>
-    <!-- /#page-wrapper -->
-</div>
-<!-- /#wrapper -->
+    <!-- /#wrapper -->
 
-<!-- jQuery -->
-<script src="/vendor/jquery/jquery.min.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
-
-<!-- Metis Menu Plugin JavaScript -->
-<script src="/vendor/metisMenu/metisMenu.min.js"></script>
-
-<!-- Custom Theme JavaScript -->
-<script src="/dist/js/sb-admin-2.js"></script>
+    <!-- jQuery -->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="/vendor/metisMenu/metisMenu.min.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="/dist/js/sb-admin-2.js"></script>
 
 </body>
 

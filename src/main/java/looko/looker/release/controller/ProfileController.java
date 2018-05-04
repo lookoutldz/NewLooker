@@ -35,7 +35,7 @@ public class ProfileController {
         ModelAndView modelAndView = new ModelAndView();
 
         if (steamid == null) {
-            modelAndView.setViewName("index");
+            modelAndView.setViewName("login");
             return modelAndView;
         }
 
@@ -75,7 +75,7 @@ public class ProfileController {
         int friend_count = friendService.countFriends(steamid);
         int achi_count = achiService.countAchieved(steamid);
 
-        modelAndView.setViewName("blank");
+        modelAndView.setViewName("profile");
         modelAndView.addObject("steamid",steamid);
         modelAndView.addObject("player",player);
         modelAndView.addObject("favoriteGames",favoriteGames);

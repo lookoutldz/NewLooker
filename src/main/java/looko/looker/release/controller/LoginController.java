@@ -67,41 +67,48 @@ public class LoginController {
 
     /**
      * login ajax
+     * 获取到steamid，校验存在性，存在则更新数据库player表并返回相应的resultCode和steamid，否则返回相应的resultCode
      */
-    @RequestMapping(value = "/loginBySID", method = RequestMethod.POST)
-    @ResponseBody
-    public Map<String, Object> loginBySID(HttpServletRequest request, HttpServletResponse response){
-        Map<String, Object> map = new HashMap<>();
-        String steamid = request.getParameter("steamid");
-        Player player = getPlayer.get(steamid);
-        int visistate = player.getCommunityvisibilitystate();
-        playerService.updatePlayer(player);
-        map.put("resultCode", visistate);
-        return map;
-    }
-
-    @RequestMapping(value = "/loginByVURL", method = RequestMethod.POST)
+    @RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> loginByVURL(HttpServletRequest request, HttpServletResponse response){
+
         Map<String, Object> map = new HashMap<>();
-        String vanityurl = request.getParameter("vanityurl");
-        String steamid = resolveURL.resolve(vanityurl);
+
+        String login_type = request.getParameter("login_type");
+        String steamid;
+        if (login_type.equals("vanityurl")){
+            String vanityurl = request.getParameter("input_text");
+            steamid = resolveURL.resolve(vanityurl);
+        }
+        else {
+            steamid = request.getParameter("input_text");
+        }
+
         Player player = getPlayer.get(steamid);
-        int visistate = player.getCommunityvisibilitystate();
-        playerService.updatePlayer(player);
-        map.put("resultCode", visistate);
+        if (player.getSteamid() != null){
+            playerService.updatePlayer(player);
+            int visistate = player.getCommunityvisibilitystate();
+            logger.warn("code="+visistate);
+            map.put("resultCode", visistate);
+            map.put("player_data",steamid);
+        }
+        else {
+            map.put("resultCode",-1);
+        }
         return map;
     }
 
     /**
-     * login success
+     * check success, go login
      * @param request
      * @param attr
      * @return
      */
-    @RequestMapping("/goLogin")
+    @RequestMapping(value = "/goLogin", method = RequestMethod.POST)
     public String goLogin(HttpServletRequest request, RedirectAttributes attr){
-        String steamid = request.getParameter("input_text");
+
+        String steamid = request.getParameter("hidden_steamid");
         if (steamid == null)
             return "error";
         /*
@@ -160,6 +167,7 @@ public class LoginController {
         logger.warn("update achievements : " + (time5-time4) + "ms");
         logger.warn("update total : " + (time5-time1) + "ms");
         attr.addAttribute("steamid",steamid);
+
         return "redirect:/profile";
     }
 

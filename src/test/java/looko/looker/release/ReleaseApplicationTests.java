@@ -12,6 +12,7 @@ import looko.looker.release.service.DB_AppService;
 import looko.looker.release.service.DB_OwnedGameService;
 import looko.looker.release.service.DB_PlayerAchiService;
 import looko.looker.release.service.DB_PlayerService;
+import looko.looker.release.tool.CountHoursGames;
 import looko.looker.release.tool.FindListsDiff;
 import looko.looker.release.tool.ResolveScreenshot;
 import org.junit.Test;
@@ -20,10 +21,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -138,6 +137,13 @@ public class ReleaseApplicationTests {
 					logger.info("appname : "+model.getAppname()+"\tachiName : "+model.getDisplayName()+"\ticon : "+model.getIcon());
 			}
 		}
+	}
+
+	@Test
+	public void countPlaytimeGames(){
+		List<OwnedGame> ownedGames = ownedGameService.findOwnedGamesById("76561198367830998");
+		System.out.printf("ownedgame.size = " + ownedGames.size() + "\n");
+		CountHoursGames.findByList(ownedGames);
 	}
 
 }
