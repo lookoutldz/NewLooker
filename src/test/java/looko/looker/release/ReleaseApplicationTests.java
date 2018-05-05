@@ -1,5 +1,6 @@
 package looko.looker.release;
 
+import looko.looker.release.api.GetAppList;
 import looko.looker.release.api.GetGameSchema;
 import looko.looker.release.api.GetOwnedGame;
 import looko.looker.release.entity.AchiModel;
@@ -30,12 +31,14 @@ import java.util.List;
 public class ReleaseApplicationTests {
 
 	@Autowired
-	DB_AppService appService;
+	GetAppList getAppList;
 	@Autowired
 	GetOwnedGame getOwnedGame;
 	@Autowired
 	GetGameSchema getGameSchema;
 
+	@Autowired
+	DB_AppService appService;
 	@Autowired
 	DB_PlayerService playerService;
 	@Autowired
@@ -53,6 +56,15 @@ public class ReleaseApplicationTests {
 	@Test
 	public void contextLoads() {
 		logger.warn("success");
+	}
+
+	@Test
+	public void updateApplist(){
+		List<App> raw = getAppList.get();
+		if (raw.size() > 0){
+			List<App> toAdd = raw.subList(raw.size()-2000,raw.size());
+			System.out.printf("update applist : " + appService.updateAppList(toAdd));
+		}
 	}
 
 	@Test

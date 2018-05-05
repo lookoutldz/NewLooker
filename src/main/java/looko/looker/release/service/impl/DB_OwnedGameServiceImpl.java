@@ -24,7 +24,7 @@ public class DB_OwnedGameServiceImpl implements DB_OwnedGameService {
             List<OwnedGame> oldlist = ownedGameMapper.selectByMyId(ownedGames.get(0).getSteamid());
             if (oldlist.size() > 0){
                 List<List<OwnedGame>> re = FindListsDiff.checkOwnedGames(oldlist,ownedGames);
-                List<OwnedGame> toAdd = re.get(0), toDel = re.get(1);
+                List<OwnedGame> toAdd = re.get(0), toDel = re.get(1), toUpd = re.get(2);
                 if (toAdd.size() > 0){
                     for (OwnedGame ownedGame : toAdd){
                         row += ownedGameMapper.insert(ownedGame);
@@ -38,6 +38,16 @@ public class DB_OwnedGameServiceImpl implements DB_OwnedGameService {
                         prikey.setSteamid(steamid);
                         prikey.setAppid(ownedGame.getAppid());
                         row += ownedGameMapper.deleteByPrimaryKey(prikey);
+                    }
+                }
+                if (toUpd.size() > 0){
+                    OwnedGameKey prikey;
+                    String steamid = ownedGames.get(0).getSteamid();
+                    for (OwnedGame ownedGame : toUpd){
+                        prikey = new OwnedGameKey();
+                        prikey.setSteamid(steamid);
+                        prikey.setAppid(ownedGame.getAppid());
+                        row += ownedGameMapper.updateByPrimaryKeySelective(ownedGame);
                     }
                 }
             }
@@ -96,6 +106,18 @@ public class DB_OwnedGameServiceImpl implements DB_OwnedGameService {
     public List<OwnedGame> findPerfectGame(String steamid) {
 
         return ownedGameMapper.selectPerfectGame(steamid);
+    }
+
+    @Override
+    public int countGameTime(String steamid) {
+
+        return ownedGameMapper.countGameTime(steamid);
+    }
+
+    @Override
+    public int countGameTime2Weeks(String steamid) {
+
+        return ownedGameMapper.countGameTime2Weeks(steamid);
     }
 
     @Override

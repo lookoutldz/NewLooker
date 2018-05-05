@@ -30,6 +30,10 @@ public interface OwnedGameMapper {
 
     List<OwnedGame> selectPerfectGame(String steamid);
 
+    int countGameTime(String steamid);
+
+    int countGameTime2Weeks(String steamid);
+
     int updateByPrimaryKeySelective(OwnedGame record);
 
     int updateByPrimaryKey(OwnedGame record);

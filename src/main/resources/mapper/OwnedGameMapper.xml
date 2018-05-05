@@ -88,6 +88,20 @@
     );
   </select>
 
+  <select id="countGameTime" parameterType="java.lang.String" resultType="java.lang.Integer">
+    select
+    count(playtime_forever)
+    from owned_game
+    where steamid = #{steamid,jdbcType=VARCHAR}
+  </select>
+
+  <select id="countGameTime2Weeks" parameterType="java.lang.String" resultType="java.lang.Integer">
+    select
+    count(playtime_2week)
+    from owned_game
+    where steamid = #{steamid,jdbcType=VARCHAR}
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="looko.looker.release.entity.OwnedGameKey">
     delete from owned_game
     where steamid = #{steamid,jdbcType=VARCHAR}

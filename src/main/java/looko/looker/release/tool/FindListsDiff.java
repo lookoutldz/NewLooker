@@ -1,6 +1,7 @@
 package looko.looker.release.tool;
 
 
+import looko.looker.release.entity.App;
 import looko.looker.release.entity.Friend;
 import looko.looker.release.entity.OwnedGame;
 
@@ -55,6 +56,7 @@ public class FindListsDiff {
         }
         List<OwnedGame> toAdd = new ArrayList<>();
         List<OwnedGame> toDel = new ArrayList<>();
+        List<OwnedGame> toUpd = new ArrayList<>();
         for (Map.Entry<OwnedGame, Integer> entry : map.entrySet()){
             if (1 == entry.getValue()){
                 toAdd.add(entry.getKey());
@@ -62,10 +64,15 @@ public class FindListsDiff {
             else if (-1 == entry.getValue()){
                 toDel.add(entry.getKey());
             }
+            else {
+                toUpd.add(entry.getKey());
+            }
         }
         List<List<OwnedGame>> result = new ArrayList<>(2);
         result.add(toAdd);
         result.add(toDel);
+        result.add(toUpd);
         return result;
     }
+
 }

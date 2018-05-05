@@ -22,5 +22,9 @@ public interface DB_OwnedGameService {
 
     List<OwnedGame> findPerfectGame(String steamid);
 
+    int countGameTime(String steamid);
+
+    int countGameTime2Weeks(String steamid);
+
     int emptyOwnedGame();
 }

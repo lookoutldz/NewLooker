@@ -23,7 +23,6 @@ $(function () {
 
     var input_text = $.cookie("input_text");
     var login_type = $.cookie("login_type");
-    alert("input_text=" + input_text + "\nlogin_type=" + login_type);
     if (input_text != null && login_type != null){
         $.ajax({
             type : "POST",
