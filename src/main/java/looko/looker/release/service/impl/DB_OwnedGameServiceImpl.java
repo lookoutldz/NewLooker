@@ -1,6 +1,7 @@
 package looko.looker.release.service.impl;
 
 import looko.looker.release.dao.OwnedGameMapper;
+import looko.looker.release.entity.GameRankModel;
 import looko.looker.release.entity.OwnedGame;
 import looko.looker.release.entity.OwnedGameKey;
 import looko.looker.release.entity.OwnedGameKey2;
@@ -109,15 +110,24 @@ public class DB_OwnedGameServiceImpl implements DB_OwnedGameService {
     }
 
     @Override
-    public int countGameTime(String steamid) {
+    public List<GameRankModel> findRankGame(String steamid, int appid) {
 
-        return ownedGameMapper.countGameTime(steamid);
+        OwnedGameKey prikey = new OwnedGameKey();
+        prikey.setSteamid(steamid);
+        prikey.setAppid(appid);
+        return ownedGameMapper.selectRankGame(prikey);
     }
 
     @Override
-    public int countGameTime2Weeks(String steamid) {
+    public int sumPlayedTime(String steamid) {
 
-        return ownedGameMapper.countGameTime2Weeks(steamid);
+        return ownedGameMapper.sumPlayedTime(steamid);
+    }
+
+    @Override
+    public int sumPlayedTime2Week(String steamid) {
+
+        return ownedGameMapper.sumPlayedTime2Week(steamid);
     }
 
     @Override

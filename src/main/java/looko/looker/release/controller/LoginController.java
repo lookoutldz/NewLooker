@@ -161,11 +161,11 @@ public class LoginController {
 
         long time5 = System.currentTimeMillis();
 
-        logger.warn("update player : " + (time2-time1) + "ms");
-        logger.warn("update ownedgames : " + (time3-time2) + "ms");
-        logger.warn("update friends : " + (time4-time3) + "ms");
-        logger.warn("update achievements : " + (time5-time4) + "ms");
-        logger.warn("update total : " + (time5-time1) + "ms");
+        logger.info("update player : " + (time2-time1) + "ms");
+        logger.info("update ownedgames : " + (time3-time2) + "ms");
+        logger.info("update friends : " + (time4-time3) + "ms");
+        logger.info("update achievements : " + (time5-time4) + "ms");
+        logger.info("update total : " + (time5-time1) + "ms");
         attr.addAttribute("steamid",steamid);
 
         return "redirect:/profile";

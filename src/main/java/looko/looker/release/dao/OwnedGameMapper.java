@@ -1,5 +1,6 @@
 package looko.looker.release.dao;
 
+import looko.looker.release.entity.GameRankModel;
 import looko.looker.release.entity.OwnedGame;
 import looko.looker.release.entity.OwnedGameKey;
 import looko.looker.release.entity.OwnedGameKey2;
@@ -30,9 +31,11 @@ public interface OwnedGameMapper {
 
     List<OwnedGame> selectPerfectGame(String steamid);
 
-    int countGameTime(String steamid);
+    List<GameRankModel> selectRankGame(OwnedGameKey key);
 
-    int countGameTime2Weeks(String steamid);
+    int sumPlayedTime(String steamid);
+
+    int sumPlayedTime2Week(String steamid);
 
     int updateByPrimaryKeySelective(OwnedGame record);
 

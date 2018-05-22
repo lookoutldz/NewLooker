@@ -1,10 +1,370 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Game</title>
+    <meta charset="utf-8">
+
+    <title>游戏详情</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <!-- DataTables CSS -->
+    <link href="/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+    <!-- DataTables Responsive CSS -->
+    <link href="/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+    <!-- Morris Charts CSS -->
+    <link href="/vendor/morrisjs/morris.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/dist/css/sb-admin-2.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<input type="hidden" name="steamid" th:value="${steamid}" id="hidden_steamid">
+<input type="hidden" name="appid" th:value="${appid}" id="hidden_appid">
+<input type="hidden" name="test" th:value="${myGame.getPlaytime2week()}" id="hidden_test">
 
+<div id="wrapper">
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Steam_Looker v2.0</a>
+        </div>
+        <!-- /.navbar-header -->
+
+        <ul class="nav navbar-top-links navbar-right">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                    <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-tasks">
+                    <li>
+                        <a href="#">
+                            <div>
+                                <p  id="upd_friend_game">
+                                    <strong><i class="fa fa-refresh fa-fw"></i>更新好友游戏(建议)</strong>
+                                    <span class="pull-right text-muted"></span>
+                                </p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <p  id="upd_friend_achi">
+                                    <strong><i class="fa fa-refresh fa-fw"></i>更新好友成就(较长时间)</strong>
+                                    <span class="pull-right text-muted"></span>
+                                </p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-tasks -->
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a th:href="@{/profile(steamid=${steamid})}"><i class="fa fa-user fa-fw"></i> 概览</a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> 设置</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="my_logout"><a th:href="@{/login}"><i class="fa fa-sign-out fa-fw"></i> 登出</a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-user -->
+            </li>
+            <!-- /.dropdown -->
+        </ul>
+        <!-- /.navbar-top-links -->
+
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <div class="nav" id="person" align="center" style="margin-top: 20px; margin-bottom: 40px;">
+                    <div th:if="${player.getPersonastate() eq 0}">
+                        <a th:href="${player.getProfileurl()}" target="_blank">
+                            <img th:src="${player.getAvatarmedium()}" alt="" style="border: #9d9d9d 4px solid; border-radius: 5px;">
+                        </a>
+                        <div style="margin-top: 20px;">
+                            <i class="fa fa-steam-square fa-fw" style="color: #9d9d9d"></i>
+                            <span th:text="${player.getPersonaname()}" style="color: #9d9d9d"></span>
+                        </div>
+                    </div>
+                    <div th:unless="${player.getPersonastate() eq 0}">
+                        <img th:src="${player.getAvatarmedium()}" alt="" style="border: #1ab7ea 4px solid; border-radius: 5px;">
+                        <div style="margin-top: 20px;">
+                            <i class="fa fa-steam-square fa-fw" style="color: #1ab7ea"></i>
+                            <span th:text="${player.getPersonaname()}" style="color: #1ab7ea"></span>
+                        </div>
+                    </div>
+                    <div th:text="|Lv ${player.getSteamlevel()}|"></div>
+                </div>
+                <ul class="nav" id="side-menu" align="center">
+                    <li>
+                        <a th:href="@{/profile(steamid=${steamid})}"><i class="fa fa-th-list fa-fw"></i> 主页</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/games(steamid=${steamid})}"><i class="fa fa-gamepad fa-fw"></i> 游戏</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/friends(steamid=${steamid})}"><i class="fa fa-users fa-fw"></i> 好友</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/achievements(steamid=${steamid})}"><i class="fa fa-trophy fa-fw"></i> 成就</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-magnet fa-fw"></i> 实用链接<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a th:href="@{https://store.steampowered.com/}" target="_blank"> STEAM商店</a>
+                            </li>
+                            <li>
+                                <a th:href="@{https://steamcn.com/}" target="_blank">SteamCN蒸气动力</a>
+                            </li>
+                            <li>
+                                <a th:href="@{https://steamrepcn.com/}" target="_blank">Steamrep信誉平台</a>
+                            </li>
+                            <li>
+                                <a th:href="@{https://www.steamcardexchange.net/index.php}" target="_blank">Steam卡片/徽章/背景查询</a>
+                            </li>
+                            <li>
+                                <a th:href="@{http://cn1.yxdzqb.com/}" target="_blank">游戏折扣查询</a>
+                            </li>
+                            <li>
+                                <a th:href="@{https://steamdb.info/}" target="_blank">SteamDB</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-cubes fa-fw"></i> 第三方游戏市场<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a th:href="@{https://www.sonkwo.com/}" target="_blank">杉果游戏</a>
+                            </li>
+                            <li>
+                                <a th:href="@{http://bundle.ccyycn.com/}" target="_blank">驰游慈善包</a>
+                            </li>
+                            <li>
+                                <a href="#"> 自备梯子<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a th:href="@{https://www.humblebundle.com/}">Humble Bundle</a>
+                                    </li>
+                                    <li>
+                                        <a th:href="@{https://www.indiegala.com/}">Indiegala</a>
+                                    </li>
+                                    <li>
+                                        <a th:href="@{https://www.fanatical.com/}">Fanatical</a>
+                                    </li>
+                                    <li>
+                                        <a th:href="@{https://www.greenmangaming.com/}">GMG</a>
+                                    </li>
+                                </ul>
+                                <!-- /.nav-third-level -->
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+                    <li class="my_logout">
+                        <a th:href="@{/login}"><i class="fa fa-sign-out"></i> 登出</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.sidebar-collapse -->
+        </div>
+        <!-- /.navbar-static-side -->
+    </nav>
+
+    <!-- Page Content -->
+    <div id="page-wrapper">
+        <div class="container-fluid">
+
+            <div class="col-lg-6 column">
+                <h3 class="page-header">我的游戏：<span th:text="${myGame.getAppname()}"></span></h3>
+                <div class="panel panel-green">
+                    <div class="panel-heading">
+                        <i class="fa fa-database fw"></i> 统计
+                    </div>
+                    <div class="panel-body">
+                        <img th:if="${app.getPicLogobar() != null}" th:src="${app.getPicLogobar()}" alt="" class="col-lg-8" style="padding: 0; border-radius: 5px;">
+                        <img th:if="${app.getPicLogobar() == null}" th:src="@{/images/logobar_wrong.png}" alt="" class="col-lg-8" style="padding: 0; border-radius: 5px;">
+                        <p class="col-lg-4">当前游戏内人数：<span th:text="${currentPlayer}" style="color: red;font-size: 25px; font-weight: bold;"></span></p>
+                        <hr/>
+                        <p class="col-lg-4">我已玩 : <span th:text="${#numbers.formatDecimal(myGame.getPlaytimeForever()/60.0,1,1)}" style="color: red;font-size: 20px; font-weight: bold;"></span>小时</p>
+                        <p class="col-lg-4">两周内 : <span th:text="${#numbers.formatDecimal(myGame.getPlaytime2week()/60.0,1,1)}" style="color: red;font-size: 20px; font-weight: bold;"></span>小时</p>
+                        <p class="col-lg-4">游戏成就 : <span th:text="${count_achieved}" style="color: red;font-size: 20px; font-weight: bold;"></span> / <span th:text="${count_achi}" style="color: red; font-size: 20px; font-weight: bold;"></span></p>
+                        <p th:if="${count_achi} > 0" class="col-lg-4">成就达成率：<span th:text="${#numbers.formatPercent(count_achieved*1.0/count_achi,1,1)}" style="color: red; font-size: 20px; font-weight: bold;"></span></p>
+                    </div>
+                    <div class="panel-footer">
+                        价格：<i class="fa fa-rmb fa-fw"></i><span th:text="${app.getPrice()}"></span>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-th fa-fw"></i> 该游戏的好友游玩情况
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table width="100%"
+                                           class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline"
+                                           id="dataTables-example" role="grid" aria-describedby="dataTables-example_info">
+                                        <thead>
+                                        <tr role="row">
+                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1"
+                                                colspan="1" aria-label="CSS grade: activate to sort column ascending">头像
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1"
+                                                colspan="1" aria-label="CSS grade: activate to sort column ascending">昵称
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1"
+                                                colspan="1" aria-label="Platform(s): activate to sort column ascending">总时长
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1"
+                                                colspan="1" aria-label="Engine version: activate to sort column ascending">2周时长
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="friend : ${ranks}" class="gradeU" role="row">
+                                            <td><img th:src="${friend.getAvatar()}" alt=""></td>
+                                            <td th:text="${friend.getPersonaname()}"></td>
+                                            <td th:text="${#numbers.formatDecimal(friend.getplaytimeForever()/60.0,1,1)}"></td>
+                                            <td th:text="${#numbers.formatDecimal(friend.getPlaytime2week()/60.0,1,1)}"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.table-responsive -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+
+            </div>
+
+            <div class="col-lg-6 column" style="margin-top: 40px;">
+
+                <div th:if="${pic_list.size() == 0}" class="carousel slide" id="carousel-size0">
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img alt="" th:src="@{/images/p1.jpg}"/>
+                            <div class="carousel-caption">
+                                <h4>游戏无大图</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div th:if="${pic_list.size() == 1}" class="carousel slide" id="carousel-size1">
+                    <ol class="carousel-indicators">
+                        <li class="active" data-slide-to="0" data-target="#carousel-size1">
+                        </li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img alt="" th:src="${pic_list.get(0)}"/>
+                        </div>
+                    </div>
+                </div>
+                <div th:if="${pic_list.size() >= 2}" class="carousel slide" id="carousel-favorite">
+                    <ol class="carousel-indicators">
+                        <li th:each="i : ${#numbers.sequence(0, pic_list.size()-1)}" th:if="${i == 0}" class="active" data-slide-to="0" data-target="#carousel-favorite">
+                        </li>
+                        <li th:each="i : ${#numbers.sequence(0, pic_list.size()-1)}" th:if="${i >= 1}" data-slide-to="1" data-target="#carousel-favorite">
+                        </li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div th:each="i : ${#numbers.sequence(0, pic_list.size()-1)}" th:if="${i == 0}" class="item active">
+                            <img alt="" th:src="${pic_list.get(0)}"/>
+                        </div>
+                        <div th:each="i : ${#numbers.sequence(0, pic_list.size()-1)}" th:if="${i >= 1}" class="item">
+                            <img alt="" th:src="${pic_list.get(i)}"/>
+                        </div>
+                    </div>
+                    <a class="left carousel-control" href="#carousel-favorite" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-favorite" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                </div>
+
+                <div class="col-lg-6" style="margin-top: 20px; padding: 0;">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Donut Chart Example
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div id="morris-donut-chart">
+
+                            </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="/vendor/jquery/jquery.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!-- Metis Menu Plugin JavaScript -->
+<script src="/vendor/metisMenu/metisMenu.min.js"></script>
+<!-- DataTables JavaScript -->
+<script src="/vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script src="/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+<script src="/vendor/datatables-responsive/dataTables.responsive.js"></script>
+<!-- Morris Charts JavaScript -->
+<script src="/vendor/raphael/raphael.min.js"></script>
+<script src="/vendor/morrisjs/morris.min.js"></script>
+<!--<script src="/data/morris-data.js"></script>-->
+<!--<script src="/data/flot-data.js"></script>-->
+<!-- Custom Theme JavaScript -->
+<script src="/dist/js/sb-admin-2.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#dataTables-example').DataTable({
+            responsive: true,
+            "language": {
+                "url": "/vendor/datatables-plugins/Chinese.json"
+            }
+        });
+
+        var playedTime = '[[${playedTime}]]';
+        var playedTime2Week = '[[${playedTime2Week}]]';
+        var gameTime = '[[${myGame.getPlaytimeForever()}]]';
+        var gameTime2week = '[[${myGame.getPlaytime2week()}]]';
+        Morris.Donut({
+            element: 'morris-donut-chart',
+            data: [{
+                label: "该游戏总时长",
+                value: gameTime/60
+            }, {
+                label: "其它游戏总时长",
+                value: (playedTime-gameTime)/60
+            }],
+            resize: true
+        });
+    });
+</script>
 </body>
 </html>

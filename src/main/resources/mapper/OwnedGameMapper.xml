@@ -13,6 +13,19 @@
     <result column="has_community_visible_state" jdbcType="BIT" property="hasCommunityVisibleState" />
   </resultMap>
 
+  <resultMap id="RankResultMap" type="looko.looker.release.entity.GameRankModel">
+    <id column="steamid" jdbcType="VARCHAR" property="steamid" />
+    <id column="appid" jdbcType="INTEGER" property="appid" />
+    <result column="appname" jdbcType="VARCHAR" property="appname" />
+    <result column="personaname" jdbcType="VARCHAR" property="personaname" />
+    <result column="profileurl" jdbcType="VARCHAR" property="profileurl" />
+    <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+    <result column="avatarmedium" jdbcType="VARCHAR" property="avatarmedium" />
+    <result column="avatarfull" jdbcType="VARCHAR" property="avatarfull" />
+    <result column="playtime_2week" jdbcType="INTEGER" property="playtime2week" />
+    <result column="playtime_forever" jdbcType="INTEGER" property="playtimeForever" />
+  </resultMap>
+
   <sql id="Base_Column_List">
     steamid, appid, appname, playtime_2week, playtime_forever, img_icon_url, img_logo_url, 
     has_community_visible_state
@@ -21,6 +34,10 @@
   <sql id="Extra_Column_List">
     owned_game.steamid, owned_game.appid, appname, playtime_2week, playtime_forever, img_icon_url, img_logo_url,
     has_community_visible_state
+  </sql>
+
+  <sql id="Rank_Column_List">
+    owned_game.steamid, owned_game.appid, appname, personaname, profileurl, avatar, avatarmedium, avatarfull, playtime_2week, playtime_forever
   </sql>
 
   <select id="selectByPrimaryKey" parameterType="looko.looker.release.entity.OwnedGameKey" resultMap="BaseResultMap">
@@ -88,18 +105,29 @@
     );
   </select>
 
-  <select id="countGameTime" parameterType="java.lang.String" resultType="java.lang.Integer">
-    select
-    count(playtime_forever)
-    from owned_game
-    where steamid = #{steamid,jdbcType=VARCHAR}
+  <select id="selectRankGame" parameterType="looko.looker.release.entity.OwnedGameKey" resultMap="RankResultMap">
+    select DISTINCT
+    <include refid="Rank_Column_List" />
+    from owned_game, player, friend
+    WHERE
+    friend.steamid = #{steamid,jdbcType=VARCHAR}
+    AND player.steamid = friend.friendsteamid
+    AND friend.friendsteamid = owned_game.steamid
+    AND owned_game.appid = #{appid,jdbcType=INTEGER};
   </select>
 
-  <select id="countGameTime2Weeks" parameterType="java.lang.String" resultType="java.lang.Integer">
-    select
-    count(playtime_2week)
-    from owned_game
-    where steamid = #{steamid,jdbcType=VARCHAR}
+  <select id="sumPlayedTime" parameterType="java.lang.String" resultType="java.lang.Integer">
+    SELECT
+      sum(playtime_forever)
+    FROM owned_game
+    WHERE steamid = #{steamid,jdbcType=VARCHAR}
+  </select>
+
+  <select id="sumPlayedTime2Week" parameterType="java.lang.String" resultType="java.lang.Integer">
+    SELECT
+      sum(playtime_2week)
+    FROM owned_game
+    WHERE steamid = #{steamid,jdbcType=VARCHAR}
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="looko.looker.release.entity.OwnedGameKey">

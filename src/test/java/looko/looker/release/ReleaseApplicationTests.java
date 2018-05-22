@@ -3,10 +3,7 @@ package looko.looker.release;
 import looko.looker.release.api.GetAppList;
 import looko.looker.release.api.GetGameSchema;
 import looko.looker.release.api.GetOwnedGame;
-import looko.looker.release.entity.AchiModel;
-import looko.looker.release.entity.App;
-import looko.looker.release.entity.OwnedGame;
-import looko.looker.release.entity.Player;
+import looko.looker.release.entity.*;
 import looko.looker.release.pool.TaskForAppInfo;
 import looko.looker.release.pool.TaskForGameSchema;
 import looko.looker.release.service.DB_AppService;
@@ -156,6 +153,15 @@ public class ReleaseApplicationTests {
 		List<OwnedGame> ownedGames = ownedGameService.findOwnedGamesById("76561198367830998");
 		System.out.printf("ownedgame.size = " + ownedGames.size() + "\n");
 		CountHoursGames.findByList(ownedGames);
+	}
+
+	@Test
+	public void findRankGame(){
+
+		List<GameRankModel> models = ownedGameService.findRankGame("76561198367830998",524220);
+		for (GameRankModel model : models){
+			logger.info(model.getSteamid() + "\t" + model.getAppname() + "\t" + model.getPersonaname());
+		}
 	}
 
 }

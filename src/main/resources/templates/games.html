@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>BLANK</title>
+    <title>我的Steam游戏</title>
     <!-- Bootstrap Core CSS -->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- MetisMenu CSS -->
@@ -20,6 +20,7 @@
     <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<input type="hidden" name="steamid" th:value="${steamid}" id="hidden_steamid">
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -36,6 +37,34 @@
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-tasks">
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p id="upd_friend_game">
+                                        <strong><i class="fa fa-refresh fa-fw"></i>更新好友游戏(建议)</strong>
+                                        <span class="pull-right text-muted"></span>
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p  id="upd_friend_achi">
+                                        <strong><i class="fa fa-refresh fa-fw"></i>更新好友成就(较长时间)</strong>
+                                        <span class="pull-right text-muted"></span>
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-tasks -->
+                </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
@@ -81,13 +110,13 @@
                             <a th:href="@{/profile(steamid=${steamid})}"><i class="fa fa-th-list fa-fw"></i> 主页</a>
                         </li>
                         <li>
-                            <a th:href="@{/profile(steamid=${steamid})}"><i class="fa fa-gamepad fa-fw"></i> 游戏</a>
+                            <a th:href="@{/games.html(steamid=${steamid})}"><i class="fa fa-gamepad fa-fw"></i> 游戏</a>
                         </li>
                         <li>
-                            <a th:href="@{/profile(steamid=${steamid})}"><i class="fa fa-users fa-fw"></i> 好友</a>
+                            <a th:href="@{/friends(steamid=${steamid})}"><i class="fa fa-users fa-fw"></i> 好友</a>
                         </li>
                         <li>
-                            <a th:href="@{/profile(steamid=${steamid})}"><i class="fa fa-trophy fa-fw"></i> 成就</a>
+                            <a th:href="@{/achievements(steamid=${steamid})}"><i class="fa fa-trophy fa-fw"></i> 成就</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-magnet fa-fw"></i> 实用链接<span class="fa arrow"></span></a>
@@ -196,13 +225,15 @@
                                 </ol>
                                 <div class="carousel-inner">
                                     <div th:each="i : ${#numbers.sequence(0, pic_lists.size()-1)}" th:if="${i == 0}" class="item active">
-                                        <img alt="" th:src="${pic_lists.get(0).get(1)}"/>
+                                        <img th:if="${pic_lists.get(0).size() > 1}" th:src="${pic_lists.get(0).get(1)}"/>
+                                        <img th:if="${pic_lists.get(0).size() == 0}" th:src="@{/images/p1.jpg}"/>
                                         <div class="carousel-caption">
                                             <h4 th:text="${ownedgames.get(0).getAppname()}"></h4>
                                         </div>
                                     </div>
                                     <div th:each="i : ${#numbers.sequence(0, pic_lists.size()-1)}" th:if="${i >= 1}" class="item">
-                                        <img alt="" th:src="${pic_lists.get(i).get(1)}"/>
+                                        <img th:if="${pic_lists.get(i).size() > 1}" th:src="${pic_lists.get(i).get(1)}"/>
+                                        <img th:if="${pic_lists.get(i).size() == 0}" th:src="@{/images/p1.jpg}"/>
                                         <div class="carousel-caption">
                                             <h4 th:text="${ownedgames.get(i).getAppname()}"></h4>
                                         </div>
@@ -343,7 +374,7 @@
                                             <tr th:each="game : ${ownedgames}" class="gradeU" role="row">
                                                 <td th:text="${game.getAppid()}" class="sorting_1"></td>
                                                 <td class="center">
-                                                    <a th:href="@{/games/game(appid=${game.getAppid()})}" target="_blank">
+                                                    <a th:href="@{/games/game(steamid=${steamid},appid=${game.getAppid()})}" target="_blank">
                                                         <img th:if="${game.getImgLogoUrl() != null}" th:src="${game.getImgLogoUrl()}" style="height: 45px;">
                                                         <img th:if="${game.getImgLogoUrl() == null}" th:src="@{/images/logo_wrong.png}" style="height: 45px;">
                                                     </a>

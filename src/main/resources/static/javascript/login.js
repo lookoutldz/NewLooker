@@ -24,6 +24,7 @@ $(function () {
     var input_text = $.cookie("input_text");
     var login_type = $.cookie("login_type");
     if (input_text != null && login_type != null){
+        $('#login_btn').attr("disabled","true");
         $.ajax({
             type : "POST",
             url : "/loginCheck",
@@ -33,6 +34,7 @@ $(function () {
             },
             error : function () {
                 msg_bar("服务器瑟瑟发抖...Σ(°Д°;", "danger");
+                $(this).removeAttr("disabled");
             }
         })
     }
@@ -42,15 +44,18 @@ $(function () {
 $(document).ready(function () {
 
     $('#login_btn').click(function () {
+        $(this).attr("disabled","true");
         var input_text = $('#input_text').val();
         if (input_text.trim()==""){
             msg_bar("账户不能为空~", "danger");
+            $(this).removeAttr("disabled");
         }
         else {
             var login_type = $('input[name="logintype"]:checked').val();
             var regex = /\d{17}/;
             if (login_type=="steamid" && !regex.test(input_text)) {
                 msg_bar("Steamid64输入有误~", "danger");
+                $(this).removeAttr("disabled");
             }
             else {
                 $.ajax({
@@ -58,7 +63,7 @@ $(document).ready(function () {
                     url : "/loginCheck",
                     data : {input_text : input_text, login_type : login_type},
                     success : function (data) {
-                        checkout(data);
+                        checkout(data, this);
                     },
                     error : function () {
                         msg_bar("服务器瑟瑟发抖...Σ(°Д°;", "danger");
@@ -69,19 +74,23 @@ $(document).ready(function () {
     })
 })
 
-function checkout(data) {
+function checkout(data, obj) {
     var code = data.resultCode;
     if (code == null){
         msg_bar("网络君消失了？Σ(°Д°;", "danger");
+        $(obj).removeAttr("disabled");
     }
     else if (code == -1){
         msg_bar("输入错了？这个用户并没有户籍...Σヽ(ﾟД ﾟ; )ﾉ", "danger");
+        $(obj).removeAttr("disabled");
     }
     else if (code == 1){
         msg_bar("用户steam资料私密~⁄(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄", "danger");
+        $(obj).removeAttr("disabled");
     }
     else if (code == 2){
         msg_bar("用户steam资料仅好友可见~⁄(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄", "danger");
+        $(obj).removeAttr("disabled");
     }
     else {
         //验证通过，处理cookie，提交表单。cookie登录默认用steamid（ajax验证成功后的返回结果）

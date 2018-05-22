@@ -33,9 +33,12 @@ public class CrawlerForPicAndPrice {
     /**
      * 逻辑上请求仍有4类
      * 1.可直接获取图片的游戏，如412830
-     * 2.有第一类302重定向的游戏，如637650
-     * 3.有第二类302重定向的游戏，如292030
-     * 4.其它类（已经失效或者错误的游戏id，如000000，或者还未发现处理方法的）
+     * 2.有第一类302重定向的游戏(...agecheck/app/appid)，如637650
+     * 3.有第二类302重定向的游戏(...app/appid/agecheck)，如292030
+     * 4.重定向到https，后续如1.
+     * 5.重定向到https，后续如2.
+     * 6.重定向到https，后续如3.
+     * 7.其它类（已经失效或者错误的游戏id，如000000，或者还未发现处理方法的）
      * @param appid 游戏应用的id
      * @return list<Object> 其中第一个元素为logo图片链接，第二个为滚动图集链接，第三个为价格
      */
@@ -47,7 +50,7 @@ public class CrawlerForPicAndPrice {
         int price = 0;
         try
         {
-            time1 = System.currentTimeMillis();
+//            time1 = System.currentTimeMillis();
             
             String url_str = "http://store.steampowered.com/app/" + appid;
             //获取连接的response
@@ -105,25 +108,43 @@ public class CrawlerForPicAndPrice {
                 con.cookie("browserid",browserid).cookie("sessionid",sessionid).cookie("mature_content",mature_content);
                 doc = con.get();
             }
-            else {
-                //solve the problem
-                System.out.print("what? the way4?\n");
+            else if (url_current != null && url_current.equals("https://store.steampowered.com/app/"+appid)){
+                //https
+                logger.warn("way 4");
                 doc = new Document("<html></html>");
             }
-            
-            time2 = System.currentTimeMillis();
-            
-            headerPic = findHeaderPic(doc);
+            else if (url_current != null && url_current.equals("https://store.steampowered.com/agecheck/app/"+appid+"/")){
+                //https
+                logger.warn("way 5");
+                doc = new Document("<html></html>");
+            }
+            else if (url_current != null && url_current.equals("https://store.steampowered.com/app/"+appid+"/agecheck")){
+                //https
+                logger.warn("way 6");
+                doc = new Document("<html></html>");
+            }
+            else {
+                //solve the problem
+                logger.warn("what? the way7?\t"+url_str+"url_currnet="+url_current);
+                doc = new Document("<html></html>");
+            }
 
-            time3 = System.currentTimeMillis();
-            
-            largePic = findLargePic(doc);
+            if (doc.body() != null){
 
-            time4 = System.currentTimeMillis();
-            
-            price = findPrice(doc);
+//                time2 = System.currentTimeMillis();
 
-            time5 = System.currentTimeMillis();
+                headerPic = findHeaderPic(doc);
+
+//                time3 = System.currentTimeMillis();
+
+                largePic = findLargePic(doc);
+
+//                time4 = System.currentTimeMillis();
+
+                price = findPrice(doc);
+
+//                time5 = System.currentTimeMillis();
+            }
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -133,7 +154,7 @@ public class CrawlerForPicAndPrice {
         list.add(largePic);
         list.add(price);
         
-        time6 = System.currentTimeMillis();
+//        time6 = System.currentTimeMillis();
         
 //        logger.info("获取网页数据耗时："+(time2-time1)+"ms");
 //        logger.info("提取游戏LOGO耗时："+(time3-time2)+"ms");
@@ -179,6 +200,7 @@ public class CrawlerForPicAndPrice {
 
         String header;
         Elements elements = doc.getElementsByClass("game_header_image_full");
+        logger.warn("size="+elements.size());
         header = elements.get(0).attr("src");
         return header;
     }

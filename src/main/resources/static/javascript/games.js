@@ -28,5 +28,27 @@ $(function () {
         if ($.cookie("login_type") != null){
             $.removeCookie("login_type");
         }
+    });
+})
+
+$(document).ready(function () {
+
+    $('#upd_friend_game').click(function () {
+        $(this).attr("disabled","true");
+        var steamid = $('#hidden_steamid').val();
+        $('#upd_friend_game span').text("更新中...");
+        $.ajax({
+            type : "POST",
+            url : "/games/updFriendsGame",
+            data : {steamid : steamid},
+            success : function (data) {
+                console.log(data);
+                setTimeout($('#upd_friend_game span').text("更新完成"),10000);
+                setTimeout($(this).removeAttr("disabled"),60000)
+            },
+            error : function () {
+                setTimeout($(this).removeAttr("disabled"),60000)
+            }
+        })
     })
 })

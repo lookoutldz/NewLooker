@@ -1,5 +1,6 @@
 package looko.looker.release.service;
 
+import looko.looker.release.entity.GameRankModel;
 import looko.looker.release.entity.OwnedGame;
 
 import java.util.List;
@@ -22,9 +23,11 @@ public interface DB_OwnedGameService {
 
     List<OwnedGame> findPerfectGame(String steamid);
 
-    int countGameTime(String steamid);
+    List<GameRankModel> findRankGame(String steamid, int appid);
 
-    int countGameTime2Weeks(String steamid);
+    int sumPlayedTime(String steamid);
+
+    int sumPlayedTime2Week(String steamid);
 
     int emptyOwnedGame();
 }

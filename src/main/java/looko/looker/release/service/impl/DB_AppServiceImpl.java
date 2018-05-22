@@ -47,7 +47,9 @@ public class DB_AppServiceImpl implements DB_AppService {
             row += appMapper.insertSelective(app);
         }
         else {
-            row = appMapper.updateByPrimaryKeySelective(app);
+            if (app.getPicScreenshot() != null){
+                row = appMapper.updateByPrimaryKeySelective(app);
+            }
         }
         return row;
     }
