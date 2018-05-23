@@ -1,7 +1,6 @@
 package looko.looker.release.tool;
 
 
-import looko.looker.release.entity.App;
 import looko.looker.release.entity.Friend;
 import looko.looker.release.entity.OwnedGame;
 

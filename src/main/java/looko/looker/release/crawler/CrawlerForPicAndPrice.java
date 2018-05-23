@@ -7,8 +7,10 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.net.ssl.HttpsURLConnection;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,10 +37,7 @@ public class CrawlerForPicAndPrice {
      * 1.可直接获取图片的游戏，如412830
      * 2.有第一类302重定向的游戏(...agecheck/app/appid)，如637650
      * 3.有第二类302重定向的游戏(...app/appid/agecheck)，如292030
-     * 4.重定向到https，后续如1.
-     * 5.重定向到https，后续如2.
-     * 6.重定向到https，后续如3.
-     * 7.其它类（已经失效或者错误的游戏id，如000000，或者还未发现处理方法的）
+     * 4.其它类（已经失效或者错误的游戏id，如000000，或者还未发现处理方法的）
      * @param appid 游戏应用的id
      * @return list<Object> 其中第一个元素为logo图片链接，第二个为滚动图集链接，第三个为价格
      */
@@ -80,11 +79,11 @@ public class CrawlerForPicAndPrice {
 
             Document doc;
             //判断类型
-            if (url_current != null && url_current.equals(url_str)){
+            if (url_current != null && (url_current.equals(url_str) || url_current.equals("https://store.steampowered.com/app/"+appid))){
                 //the way1，直接获取
                 doc = response.parse();
             }
-            else if (url_current != null && url_current.equals("http://store.steampowered.com/agecheck/app/"+appid+"/")){
+            else if (url_current != null && (url_current.equals("http://store.steampowered.com/agecheck/app/"+appid+"/")||url_current.equals("https://store.steampowered.com/agecheck/app/"+appid+"/"))){
                 //the way2，获取所需的参数，加到新请求的cookie或参数中post发送
                 //String steamCountry = response.cookie("steamCountry");
                 String browserid = response.cookie("browserid");
@@ -97,7 +96,7 @@ public class CrawlerForPicAndPrice {
                 con.data("snr","1_agecheck_agecheck__age-gate").data("sessionid",sessionid).data("ageDay","1").data("ageMonth","1").data("ageYear","1993");
                 doc = con.post();
             }
-            else if (url_current != null && url_current.equals(url_str+"/agecheck")){
+            else if (url_current != null && (url_current.equals(url_str+"/agecheck")||url_current.equals("https://store.steampowered.com/app/"+appid+"/agecheck"))){
                 //the way3，获取所需参数，加到新请求的cookie中get发送
                 //String steamCountry = response.cookie("steamCountry");
                 String browserid = response.cookie("browserid");
@@ -108,42 +107,23 @@ public class CrawlerForPicAndPrice {
                 con.cookie("browserid",browserid).cookie("sessionid",sessionid).cookie("mature_content",mature_content);
                 doc = con.get();
             }
-            else if (url_current != null && url_current.equals("https://store.steampowered.com/app/"+appid)){
-                //https
-                logger.warn("way 4");
-                doc = new Document("<html></html>");
-            }
-            else if (url_current != null && url_current.equals("https://store.steampowered.com/agecheck/app/"+appid+"/")){
-                //https
-                logger.warn("way 5");
-                doc = new Document("<html></html>");
-            }
-            else if (url_current != null && url_current.equals("https://store.steampowered.com/app/"+appid+"/agecheck")){
-                //https
-                logger.warn("way 6");
-                doc = new Document("<html></html>");
-            }
             else {
                 //solve the problem
-                logger.warn("what? the way7?\t"+url_str+"url_currnet="+url_current);
+                logger.warn("what? the way4?\t"+url_str+"url_currnet="+url_current);
                 doc = new Document("<html></html>");
             }
 
             if (doc.body() != null){
 
 //                time2 = System.currentTimeMillis();
-
                 headerPic = findHeaderPic(doc);
-
 //                time3 = System.currentTimeMillis();
-
                 largePic = findLargePic(doc);
-
 //                time4 = System.currentTimeMillis();
-
                 price = findPrice(doc);
-
 //                time5 = System.currentTimeMillis();
+
+//                logger.warn("doc is ok!\theaderPic="+headerPic+"\tprice="+price);
             }
         }
         catch (IOException e) {
@@ -173,7 +153,7 @@ public class CrawlerForPicAndPrice {
     private String findLargePic(Document doc){
 
         StringBuilder builder = new StringBuilder();
-        String regex = "(?=https://steamcdn).*";
+        String regex = "(?<=url=).*";
         Pattern pattern = Pattern.compile(regex);
         Elements elements = doc.getElementsByClass("highlight_screenshot_link");
         if (elements.size() > 0){
