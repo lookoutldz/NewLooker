@@ -2,6 +2,7 @@ package looko.looker.release.dao;
 
 import looko.looker.release.entity.Friend;
 import looko.looker.release.entity.FriendKey;
+import looko.looker.release.entity.FriendModel;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -22,6 +23,8 @@ public interface FriendMapper {
     List<Friend> selectByMyId(String steamid);
 
     List<Friend> selectOldFriendByMyId(String steamid);
+
+    List<FriendModel> selectModelByMyId(String steamid);
 
     int countFriends(String steamid);
 

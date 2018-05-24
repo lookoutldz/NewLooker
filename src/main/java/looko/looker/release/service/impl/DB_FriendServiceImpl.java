@@ -3,6 +3,7 @@ package looko.looker.release.service.impl;
 import looko.looker.release.dao.FriendMapper;
 import looko.looker.release.entity.Friend;
 import looko.looker.release.entity.FriendKey;
+import looko.looker.release.entity.FriendModel;
 import looko.looker.release.tool.FindListsDiff;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -69,6 +70,12 @@ public class DB_FriendServiceImpl implements looko.looker.release.service.DB_Fri
     public List<Friend> findOldFriendsByMyId(String steamid) {
 
         return friendMapper.selectOldFriendByMyId(steamid);
+    }
+
+    @Override
+    public List<FriendModel> findFriendModelByMyId(String steamid) {
+
+        return friendMapper.selectModelByMyId(steamid);
     }
 
     @Override

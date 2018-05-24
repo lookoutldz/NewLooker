@@ -393,13 +393,20 @@
                                             <th>成就</th>
                                             <th>名称</th>
                                             <th>游戏</th>
+                                            <th>获取时间</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr th:each="achi : ${achi_recently}">
-                                            <td><img th:src="${achi.getIcon()}" alt="" style="border-radius: 3px;"></td>
-                                            <td><p th:text="${achi.getAppname()}"></p><span th:text="${achi.getDisplayName()}"></span></td>
-                                            <td class="text-right"><img th:src="${achi.getImgLogoUrl()}" alt=""></td>
+                                        <tr th:if="${achi_recently.size() > 0}" th:each="achi : ${achi_recently}">
+                                            <td><img th:src="${achi.getIcon()}" style="border-radius: 3px;height: 46px;" th:title="${achi.getDisplayName()}"></td>
+                                            <td><p th:text="${achi.getDisplayName()}" style="font-weight: bold; margin-bottom: 5px;"></p><span th:text="${achi.getDescription()}" style="font-size: 8px;"></span></td>
+                                            <td><img th:src="${achi.getImgIconUrl()}" style="height: 46px; border-radius: 23px;" th:title="${achi.getAppname()}"></td>
+                                            <td>
+                                                <p>
+                                                    <span th:text="${((servertime)-achi.getUnlocktime())/3600/24}"></span>天
+                                                    <span th:text="${((servertime)-achi.getUnlocktime())/3600%24}"></span>小时前
+                                                </p>
+                                            </td>
                                         </tr>
                                         </tbody>
                                     </table>

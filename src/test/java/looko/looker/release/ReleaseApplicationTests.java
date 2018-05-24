@@ -6,10 +6,7 @@ import looko.looker.release.api.GetOwnedGame;
 import looko.looker.release.entity.*;
 import looko.looker.release.pool.TaskForAppInfo;
 import looko.looker.release.pool.TaskForGameSchema;
-import looko.looker.release.service.DB_AppService;
-import looko.looker.release.service.DB_OwnedGameService;
-import looko.looker.release.service.DB_PlayerAchiService;
-import looko.looker.release.service.DB_PlayerService;
+import looko.looker.release.service.*;
 import looko.looker.release.tool.CountHoursGames;
 import looko.looker.release.tool.FindListsDiff;
 import looko.looker.release.tool.ResolveScreenshot;
@@ -42,6 +39,8 @@ public class ReleaseApplicationTests {
 	DB_OwnedGameService ownedGameService;
 	@Autowired
 	DB_PlayerAchiService achiService;
+	@Autowired
+	DB_FriendService friendService;
 
 	@Autowired
 	TaskForAppInfo task;
@@ -164,4 +163,10 @@ public class ReleaseApplicationTests {
 		}
 	}
 
+	@Test
+	public void findFriendModel(){
+
+		List<FriendModel> friendModels = friendService.findFriendModelByMyId("76561198367830998");
+
+	}
 }

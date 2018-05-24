@@ -12,10 +12,10 @@
   </resultMap>
 
   <resultMap id="MyResultMap" type="looko.looker.release.entity.AchiModel">
-    <id column="player_achi.steamid" jdbcType="VARCHAR" property="steamid" />
-    <id column="player_achi.appid" jdbcType="INTEGER" property="appid" />
-    <id column="player_achi.achname" jdbcType="VARCHAR" property="achname" />
-    <result column="player_achi.description" jdbcType="VARCHAR" property="description" />
+    <id column="steamid" jdbcType="VARCHAR" property="steamid" />
+    <id column="appid" jdbcType="INTEGER" property="appid" />
+    <id column="achname" jdbcType="VARCHAR" property="achname" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="achieved" jdbcType="INTEGER" property="achieved" />
     <result column="unlocktime" jdbcType="INTEGER" property="unlocktime" />
     <result column="appname" jdbcType="VARCHAR" property="appname" />
@@ -104,7 +104,7 @@
   </select>
 
   <select id="selectMyAchiModel" parameterType="java.lang.String" resultMap="MyResultMap">
-    SELECT
+    SELECT DISTINCT
     <include refid="My_Column_List" />
     FROM player_achi, owned_game, game_schema
     WHERE player_achi.steamid = #{steamid,jdbcType=VARCHAR}

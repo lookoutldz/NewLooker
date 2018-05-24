@@ -9,8 +9,44 @@
     <result column="friend_since" jdbcType="INTEGER" property="friendSince" />
   </resultMap>
 
+  <resultMap id="ExtraResultMap" type="looko.looker.release.entity.FriendModel">
+    <id column="steamid" jdbcType="VARCHAR" property="steamid" />
+    <id column="friendsteamid" jdbcType="VARCHAR" property="friendsteamid" />
+    <result column="relationship" jdbcType="VARCHAR" property="relationship" />
+    <result column="friend_since" jdbcType="INTEGER" property="friendSince" />
+    <result column="communityvisibilitystate" jdbcType="INTEGER" property="communityvisibilitystate" />
+    <result column="profilestate" jdbcType="INTEGER" property="profilestate" />
+    <result column="personaname" jdbcType="VARCHAR" property="personaname" />
+    <result column="lastlogoff" jdbcType="INTEGER" property="lastlogoff" />
+    <result column="commentpermission" jdbcType="INTEGER" property="commentpermission" />
+    <result column="profileurl" jdbcType="VARCHAR" property="profileurl" />
+    <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+    <result column="avatarmedium" jdbcType="VARCHAR" property="avatarmedium" />
+    <result column="avatarfull" jdbcType="VARCHAR" property="avatarfull" />
+    <result column="personastate" jdbcType="INTEGER" property="personastate" />
+    <result column="realname" jdbcType="VARCHAR" property="realname" />
+    <result column="primaryclanid" jdbcType="VARCHAR" property="primaryclanid" />
+    <result column="timecreated" jdbcType="INTEGER" property="timecreated" />
+    <result column="personastateflags" jdbcType="INTEGER" property="personastateflags" />
+    <result column="gameextrainfo" jdbcType="VARCHAR" property="gameextrainfo" />
+    <result column="gameserverip" jdbcType="VARCHAR" property="gameserverip" />
+    <result column="gameid" jdbcType="INTEGER" property="gameid" />
+    <result column="loccountrycode" jdbcType="VARCHAR" property="loccountrycode" />
+    <result column="locstatecode" jdbcType="VARCHAR" property="locstatecode" />
+    <result column="loccityid" jdbcType="VARCHAR" property="loccityid" />
+    <result column="steamlevel" jdbcType="INTEGER" property="steamlevel" />
+    <result column="gameprice" jdbcType="INTEGER" property="gameprice" />
+  </resultMap>
+
   <sql id="Base_Column_List">
     steamid, friendsteamid, relationship, friend_since
+  </sql>
+
+  <sql id="Extra_Column_List">
+    friend.steamid, friendsteamid, relationship, friend_since, communityvisibilitystate, profilestate, personaname, lastlogoff, commentpermission,
+    profileurl, avatar, avatarmedium, avatarfull, personastate, realname, primaryclanid,
+    timecreated, personastateflags, gameextrainfo, gameserverip, gameid, loccountrycode,
+    locstatecode, loccityid, steamlevel, gameprice
   </sql>
 
   <select id="selectByPrimaryKey" parameterType="looko.looker.release.entity.FriendKey" resultMap="BaseResultMap">
@@ -36,11 +72,19 @@
     ORDER BY friend_since DESC
   </select>
 
+  <select id="selectModelByMyId" parameterType="java.lang.String" resultMap="ExtraResultMap">
+    SELECT
+    <include refid="Extra_Column_List" />
+    FROM friend,player
+    WHERE friend.steamid = #{steamid,jdbcType=VARCHAR}
+    AND player.steamid = friendsteamid
+  </select>
+
   <select id="countFriends" parameterType="java.lang.String" resultType="java.lang.Integer">
     SELECT
     count(steamid)
     FROM friend
-    WHERE steamid = #{steamid,jdbcType=VARCHAR}
+    WHERE friend.steamid = #{steamid,jdbcType=VARCHAR}
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="looko.looker.release.entity.FriendKey">

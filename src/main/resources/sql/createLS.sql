@@ -47,7 +47,7 @@ CREATE TABLE gameschame (
 	appid INT NOT NULL,
 	achname VARCHAR (255) NOT NULL,
 	defaultvalue INT,
-	displayName VARCHAR (255),
+	displayName VARCHAR (1024),
 	hidden INT,
 	icon VARCHAR (255),
 	icongray VARCHAR (255),
@@ -82,4 +82,13 @@ CREATE TABLE friend (
 	relationship VARCHAR (255),
 	friend_since INT,
 	PRIMARY KEY (steamid, friendsteamid)
-)
+);
+
+CREATE INDEX unlocktime ON player_achi(unlocktime);
+CREATE INDEX achieved ON player_achi(achieved);
+CREATE INDEX achi_appid ON player_achi(appid);
+CREATE INDEX game_appid ON owned_game(appid);
+CREATE INDEX schema_appid ON game_schema(appid);
+
+CREATE INDEX game_steamid ON owned_game(steamid);
+CREATE INDEX achi_steamid ON player_achi(steamid);

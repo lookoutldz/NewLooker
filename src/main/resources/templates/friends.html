@@ -1,10 +1,210 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Friends</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <!-- DataTables CSS -->
+    <link href="/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+    <!-- DataTables Responsive CSS -->
+    <link href="/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/dist/css/sb-admin-2.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <title>好友</title>
 </head>
 <body>
+<input type="hidden" name="steamid" th:value="${steamid}" id="hidden_steamid">
+<div id="wrapper">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Steam_Looker v2.0</a>
+        </div>
+        <!-- /.navbar-header -->
+
+        <ul class="nav navbar-top-links navbar-right">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                    <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-tasks">
+                    <li>
+                        <a href="#">
+                            <div>
+                                <p  id="upd_friend_game">
+                                    <strong><i class="fa fa-refresh fa-fw"></i>更新好友游戏(建议)</strong>
+                                    <span class="pull-right text-muted"></span>
+                                </p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <p  id="upd_friend_achi">
+                                    <strong><i class="fa fa-refresh fa-fw"></i>更新好友成就(较长时间)</strong>
+                                    <span class="pull-right text-muted"></span>
+                                </p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-tasks -->
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a th:href="@{/profile(steamid=${steamid})}"><i class="fa fa-user fa-fw"></i> 概览</a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> 设置</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="my_logout"><a th:href="@{/login}"><i class="fa fa-sign-out fa-fw"></i> 登出</a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-user -->
+            </li>
+            <!-- /.dropdown -->
+        </ul>
+        <!-- /.navbar-top-links -->
+
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <div class="nav" id="person" align="center" style="margin-top: 20px; margin-bottom: 40px;">
+                    <div th:if="${player.getPersonastate() eq 0}">
+                        <a th:href="${player.getProfileurl()}" target="_blank">
+                            <img th:src="${player.getAvatarmedium()}" alt="" style="border: #9d9d9d 4px solid; border-radius: 5px;">
+                        </a>
+                        <div style="margin-top: 20px;">
+                            <i class="fa fa-steam-square fa-fw" style="color: #9d9d9d"></i>
+                            <span th:text="${player.getPersonaname()}" style="color: #9d9d9d"></span>
+                        </div>
+                    </div>
+                    <div th:unless="${player.getPersonastate() eq 0}">
+                        <img th:src="${player.getAvatarmedium()}" alt="" style="border: #1ab7ea 4px solid; border-radius: 5px;">
+                        <div style="margin-top: 20px;">
+                            <i class="fa fa-steam-square fa-fw" style="color: #1ab7ea"></i>
+                            <span th:text="${player.getPersonaname()}" style="color: #1ab7ea"></span>
+                        </div>
+                    </div>
+                    <div th:text="|Lv ${player.getSteamlevel()}|"></div>
+                </div>
+                <ul class="nav" id="side-menu" align="center">
+                    <li>
+                        <a th:href="@{/profile(steamid=${steamid})}"><i class="fa fa-th-list fa-fw"></i> 主页</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/games(steamid=${steamid})}"><i class="fa fa-gamepad fa-fw"></i> 游戏</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/friends(steamid=${steamid})}"><i class="fa fa-users fa-fw"></i> 好友</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/achievements(steamid=${steamid})}"><i class="fa fa-trophy fa-fw"></i> 成就</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-magnet fa-fw"></i> 实用链接<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a th:href="@{https://store.steampowered.com/}" target="_blank"> STEAM商店</a>
+                            </li>
+                            <li>
+                                <a th:href="@{https://steamcn.com/}" target="_blank">SteamCN蒸气动力</a>
+                            </li>
+                            <li>
+                                <a th:href="@{https://steamrepcn.com/}" target="_blank">Steamrep信誉平台</a>
+                            </li>
+                            <li>
+                                <a th:href="@{https://www.steamcardexchange.net/index.php}" target="_blank">Steam卡片/徽章/背景查询</a>
+                            </li>
+                            <li>
+                                <a th:href="@{http://cn1.yxdzqb.com/}" target="_blank">游戏折扣查询</a>
+                            </li>
+                            <li>
+                                <a th:href="@{https://steamdb.info/}" target="_blank">SteamDB</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-cubes fa-fw"></i> 第三方游戏市场<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a th:href="@{https://www.sonkwo.com/}" target="_blank">杉果游戏</a>
+                            </li>
+                            <li>
+                                <a th:href="@{http://bundle.ccyycn.com/}" target="_blank">驰游慈善包</a>
+                            </li>
+                            <li>
+                                <a href="#"> 自备梯子<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a th:href="@{https://www.humblebundle.com/}">Humble Bundle</a>
+                                    </li>
+                                    <li>
+                                        <a th:href="@{https://www.indiegala.com/}">Indiegala</a>
+                                    </li>
+                                    <li>
+                                        <a th:href="@{https://www.fanatical.com/}">Fanatical</a>
+                                    </li>
+                                    <li>
+                                        <a th:href="@{https://www.greenmangaming.com/}">GMG</a>
+                                    </li>
+                                </ul>
+                                <!-- /.nav-third-level -->
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+                    <li class="my_logout">
+                        <a th:href="@{/login}"><i class="fa fa-sign-out"></i> 登出</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.sidebar-collapse -->
+        </div>
+        <!-- /.navbar-static-side -->
+    </nav>
+    <!-- Page Content -->
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="col-lg-4 col-md-8 column">
+                <div class="col-lg-12">
+                    <h3 class="page-header">我的好友：<span th:text="${friendModels.size()}"></span></h3>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+
+</div>
+<!-- /#wrapper -->
+
+<!-- jQuery -->
+<script src="/vendor/jquery/jquery.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!-- Metis Menu Plugin JavaScript -->
+<script src="/vendor/metisMenu/metisMenu.min.js"></script>
+<!-- Custom Theme JavaScript -->
+<script src="/dist/js/sb-admin-2.js"></script>
+
+<script src="/javascript/profile.js"></script>
+
 
 </body>
 </html>

@@ -305,7 +305,7 @@
                 <div class="col-lg-6" style="margin-top: 20px; padding: 0;">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Donut Chart Example
+                            <span th:text="${myGame.getAppname()}"></span><span>的时长情况</span>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -356,11 +356,11 @@
         Morris.Donut({
             element: 'morris-donut-chart',
             data: [{
-                label: "该游戏总时长",
-                value: gameTime/60
+                label: "该游戏总时长（小时）",
+                value: (gameTime/60).toFixed(2)
             }, {
-                label: "其它游戏总时长",
-                value: (playedTime-gameTime)/60
+                label: "其它游戏总时长（小时）",
+                value: ((playedTime-gameTime)/60).toFixed(2)
             }],
             resize: true
         });

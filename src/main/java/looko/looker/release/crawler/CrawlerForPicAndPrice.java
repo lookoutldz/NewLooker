@@ -7,10 +7,8 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.net.ssl.HttpsURLConnection;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -180,7 +178,6 @@ public class CrawlerForPicAndPrice {
 
         String header;
         Elements elements = doc.getElementsByClass("game_header_image_full");
-        logger.warn("size="+elements.size());
         header = elements.get(0).attr("src");
         return header;
     }
