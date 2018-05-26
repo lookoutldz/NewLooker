@@ -101,7 +101,8 @@
               FROM
               player_achi
               WHERE
-              achieved = 0
+              steamid = #{steamid,jdbcType=VARCHAR}
+              AND achieved = 0
     );
   </select>
 

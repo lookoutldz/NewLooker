@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.Executor;
 
 @Component
 public class SendRequest {
@@ -21,6 +22,7 @@ public class SendRequest {
 //            logger.info(url_str);
 
             URL url = new URL(url_str);
+//            logger.info("WebSite = "+url_str);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setConnectTimeout(30000);
             con.setReadTimeout(30000);

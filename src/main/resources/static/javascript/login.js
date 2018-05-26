@@ -67,6 +67,7 @@ $(document).ready(function () {
                     },
                     error : function () {
                         msg_bar("服务器瑟瑟发抖...Σ(°Д°;", "danger");
+                        $(this).removeAttr("disabled");
                     }
                 })
             }

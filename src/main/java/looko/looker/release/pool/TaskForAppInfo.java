@@ -23,11 +23,13 @@ public class TaskForAppInfo{
     public void go(int appid) {
 
         List<Object> info = crawler.get(appid);
-        App app = new App();
-        app.setAppid(appid);
-        app.setPicLogobar((String) info.get(0));
-        app.setPicScreenshot((String) info.get(1));
-        app.setPrice((Integer) info.get(2));
-        appService.updateAppInfo(app);
+        if (info.size() > 0){
+            App app = new App();
+            app.setAppid(appid);
+            app.setPicLogobar((String) info.get(0));
+            app.setPicScreenshot((String) info.get(1));
+            app.setPrice((Integer) info.get(2));
+            appService.updateAppInfo(app);
+        }
     }
 }

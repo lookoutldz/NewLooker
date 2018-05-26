@@ -43,18 +43,19 @@ CREATE TABLE app (
 	pic_screenshot VARCHAR(5120)
 );
 
-CREATE TABLE gameschame (
+CREATE TABLE game_schema (
 	appid INT NOT NULL,
 	achname VARCHAR (255) NOT NULL,
 	defaultvalue INT,
 	displayName VARCHAR (1024),
 	hidden INT,
+	description VARCHAR(2048),
 	icon VARCHAR (255),
 	icongray VARCHAR (255),
 	PRIMARY KEY (appid, achname)
 );
 
-CREATE TABLE ownedgame (
+CREATE TABLE owned_game (
 	steamid VARCHAR (255) NOT NULL,
 	appid INT NOT NULL,
 	appname VARCHAR(255),
@@ -66,11 +67,11 @@ CREATE TABLE ownedgame (
 	PRIMARY KEY (steamid, appid)
 );
 
-CREATE TABLE playerach (
+CREATE TABLE player_achi (
 	steamid VARCHAR (255) NOT NULL,
 	appid INT NOT NULL,
 	achname VARCHAR (255) NOT NULL,
-	description VARCHAR(255),
+	description VARCHAR(2048),
 	achieved INT,
 	unlocktime INT,
 	PRIMARY KEY (steamid, appid, achname)

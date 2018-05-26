@@ -34,7 +34,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">Steam_Looker v2.0</a>
+            <a class="navbar-brand" href="index.html">Steam_Looker v0.2</a>
         </div>
         <!-- /.navbar-header -->
 
@@ -356,11 +356,11 @@
         Morris.Donut({
             element: 'morris-donut-chart',
             data: [{
-                label: "该游戏总时长（小时）",
-                value: (gameTime/60).toFixed(2)
-            }, {
                 label: "其它游戏总时长（小时）",
                 value: ((playedTime-gameTime)/60).toFixed(2)
+            }, {
+                label: "该游戏总时长（小时）",
+                value: (gameTime/60).toFixed(2)
             }],
             resize: true
         });

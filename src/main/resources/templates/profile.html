@@ -358,14 +358,14 @@
                             </ol>
                             <div class="carousel-inner">
                                 <div th:each="i : ${#numbers.sequence(0, pic_lists.size()-1)}" th:if="${i == 0}" class="item active">
-                                    <img th:if="${pic_lists.get(0).size() > 1}" alt="" th:src="${pic_lists.get(0).get(1)}"/>
+                                    <img th:if="${pic_lists.get(0).size() > 1}" alt="" th:src="${pic_lists.get(0).get(0)}"/>
                                     <img th:if="${pic_lists.get(0).size() == 0}" alt="" th:src="@{/images/p1.jpg}"/>
                                     <div class="carousel-caption">
                                         <h4 th:text="${favoriteGames.get(0).getAppname()}"></h4>
                                     </div>
                                 </div>
                                 <div th:each="i : ${#numbers.sequence(0, pic_lists.size()-1)}" th:if="${i >= 1}" class="item">
-                                    <img th:if="${pic_lists.get(i).size() > 1}" th:src="${pic_lists.get(i).get(1)}"/>
+                                    <img th:if="${pic_lists.get(i).size() > 1}" th:src="${pic_lists.get(i).get(0)}"/>
                                     <img th:if="${pic_lists.get(i).size() == 0}" th:src="@{/images/p1.jpg}"/>
                                     <div class="carousel-caption">
                                         <h4 th:text="${favoriteGames.get(i).getAppname()}"></h4>

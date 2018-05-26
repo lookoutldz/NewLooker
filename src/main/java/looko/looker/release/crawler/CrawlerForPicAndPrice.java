@@ -1,5 +1,7 @@
 package looko.looker.release.crawler;
 
+import looko.looker.release.entity.App;
+import looko.looker.release.service.DB_AppService;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -7,6 +9,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -27,6 +30,9 @@ import java.util.regex.Pattern;
  */
 @Component
 public class CrawlerForPicAndPrice {
+
+    @Autowired
+    DB_AppService appService;
     
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -42,6 +48,12 @@ public class CrawlerForPicAndPrice {
     public List<Object> get(int appid){
 
         List<Object> list = new ArrayList<>();
+
+        App app = appService.findAppById(appid);
+        if (app == null ||  (app.getPicLogobar() != null && app.getPicScreenshot() != null)){
+            return list;
+        }
+
         String headerPic = null, largePic = null;
         long time1=0,time2=0,time3=0,time4=0,time5=0,time6;
         int price = 0;
@@ -131,7 +143,7 @@ public class CrawlerForPicAndPrice {
         list.add(headerPic);
         list.add(largePic);
         list.add(price);
-        
+
 //        time6 = System.currentTimeMillis();
         
 //        logger.info("获取网页数据耗时："+(time2-time1)+"ms");
