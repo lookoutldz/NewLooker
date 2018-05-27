@@ -119,14 +119,14 @@
 
   <select id="sumPlayedTime" parameterType="java.lang.String" resultType="java.lang.Integer">
     SELECT
-      sum(playtime_forever)
+      ifnull(sum(playtime_forever),0)
     FROM owned_game
     WHERE steamid = #{steamid,jdbcType=VARCHAR}
   </select>
 
   <select id="sumPlayedTime2Week" parameterType="java.lang.String" resultType="java.lang.Integer">
     SELECT
-      sum(playtime_2week)
+      ifnull(sum(playtime_2week),0)
     FROM owned_game
     WHERE steamid = #{steamid,jdbcType=VARCHAR}
   </select>

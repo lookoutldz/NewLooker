@@ -63,7 +63,7 @@ $(document).ready(function () {
                     url : "/loginCheck",
                     data : {input_text : input_text, login_type : login_type},
                     success : function (data) {
-                        checkout(data, this);
+                        checkout(data, $('#login_btn'));
                     },
                     error : function () {
                         msg_bar("服务器瑟瑟发抖...Σ(°Д°;", "danger");
