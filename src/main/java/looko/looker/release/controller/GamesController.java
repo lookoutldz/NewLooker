@@ -25,8 +25,8 @@ import java.util.List;
 @RequestMapping("/games")
 public class GamesController {
 
-    @Autowired
-    GetRecentlyGames getRecentlyGames;
+//    @Autowired
+//    GetRecentlyGames getRecentlyGames;
     @Autowired
     GetNumOfCurrentPlayer getCurrentPlayer;
     @Autowired
@@ -44,6 +44,8 @@ public class GamesController {
     DB_PlayerAchiService achiService;
     @Autowired
     DB_FriendService friendService;
+//    @Autowired
+//    DB_GameSchemaService schemaService;
 
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -99,7 +101,7 @@ public class GamesController {
 
         time6 = System.currentTimeMillis();
 
-        List<OwnedGame> recentlygames = getRecentlyGames.get(steamid);
+        List<OwnedGame> recentlygames = ownedGameService.findRecentlyGame(steamid);
 
         time7 = System.currentTimeMillis();
 

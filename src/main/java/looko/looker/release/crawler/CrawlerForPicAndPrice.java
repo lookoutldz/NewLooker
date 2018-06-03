@@ -104,7 +104,7 @@ public class CrawlerForPicAndPrice {
                 con = Jsoup.connect(url_current).header("Accept-Language","zh-CN,zh;q=0.9");
                 con.cookie("browserid",browserid).cookie("sessionid",sessionid).cookie("birthtime",birthtime).cookie("lastagecheckage",lastagecheckage);
                 con.data("snr","1_agecheck_agecheck__age-gate").data("sessionid",sessionid).data("ageDay","1").data("ageMonth","1").data("ageYear","1993");
-                doc = con.post();
+                    doc = con.post();
             }
             else if (url_current != null && (url_current.equals(url_str+"/agecheck")||url_current.equals("https://store.steampowered.com/app/"+appid+"/agecheck"))){
                 //the way3，获取所需参数，加到新请求的cookie中get发送

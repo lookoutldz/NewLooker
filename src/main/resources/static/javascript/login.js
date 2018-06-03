@@ -23,6 +23,7 @@ $(function () {
 
     var input_text = $.cookie("input_text");
     var login_type = $.cookie("login_type");
+    alert(input_text+"     "+login_type);
     if (input_text != null && login_type != null){
         $('#login_btn').attr("disabled","true");
         $.ajax({
@@ -97,10 +98,12 @@ function checkout(data, obj) {
         //验证通过，处理cookie，提交表单。cookie登录默认用steamid（ajax验证成功后的返回结果）
         msg_bar("验证成功,拉取信息中~(≖ᴗ≖๑)", "success");
         if ($('#remember').prop('checked')){
+            alert("checked! player_data:"+data.player_data);
             $.cookie("input_text",data.player_data);
             $.cookie("login_type","steamid");
+            alert("after save:"+$.cookie("input_text")+"   "+$.cookie("login_type"));
         }
-        $('#hidden_steamid').attr("value",data.player_data);
+        $('#hidden_steamid').attr("value",data.player_data,{path:"/",expires:3600*24*7});
         $('#loginform').submit();
     }
 }

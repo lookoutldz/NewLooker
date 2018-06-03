@@ -2,6 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+
+    <title>好友</title>
     <!-- Bootstrap Core CSS -->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- MetisMenu CSS -->
@@ -10,11 +12,12 @@
     <link href="/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
     <!-- DataTables Responsive CSS -->
     <link href="/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+    <!-- Morris Charts CSS -->
+    <link href="/vendor/morrisjs/morris.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="/dist/css/sb-admin-2.css" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <title>好友</title>
 </head>
 <body>
 <input type="hidden" name="steamid" th:value="${steamid}" id="hidden_steamid">
@@ -187,7 +190,7 @@
                     <h3 class="page-header">我的好友：<span th:text="${friendModels.size()}"></span></h3>
                 </div>
                 <div class="col-lg-6">
-                    <h3 class="page-header"><span th:text="${onlineStatus.get('ingame')}"></span>位好友游戏中</h3>
+                    <h3 class="page-header text-right"><span th:text="${onlineStatus.get('ingame')}"></span>位好友游戏中</h3>
                 </div>
                 <div class="col-lg-12">
                     <div class="panel panel-green">
@@ -263,6 +266,74 @@
                 </div>
             </div>
 
+            <div class="col-lg-5 col-md-5 column">
+
+                <div class="flot-chart" style="margin-top: 40px;">
+                    <!--pie-chart-->
+                    <div class="flot-chart-content" id="flot-pie-chart" style="padding: 0px; position: relative;">
+                        <canvas class="flot-base" width="393" height="400"
+                                style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 393.5px; height: 400px;"></canvas>
+                        <canvas class="flot-overlay" width="393" height="400"
+                                style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 393.5px; height: 400px;"></canvas>
+                        <div class="legend">
+                            <div style="position: absolute; width: 59px; height: 68px; top: 5px; right: 5px; background-color: rgb(255, 255, 255); opacity: 0.85;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-group" id="accordion" style="margin-top: 20px;">
+
+                    <div th:if="${popGames.size() > 0 && popGames.size() <= 5}" th:each="i : ${#numbers.sequence(0,popGames.size()-1)}" class="panel panel-info">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" th:href="'#'+${popGames.get(i).getAppid()}">
+                                    <img th:src="${luckyDog.getAvatar()}" style="border-radius: 2px;">
+                                    <span th:text="${luckyDog.getPersonaname()}"></span>
+                                    <span th:text="'  最近热门游戏No.'+${i+1}"></span>
+                                </a>
+                            </h4>
+                        </div>
+                        <div th:if="${i == 0}" th:id="${popGames.get(0).getAppid()}" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <img th:src="${popGames.get(i).getImgLogoUrl()}" >
+                                <span th:text="${popGames.get(i).getAppname()}"></span>
+                            </div>
+                        </div>
+                        <div th:if="${i > 0}" th:id="${popGames.get(i).getAppid()}" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <img th:src="${popGames.get(i).getImgLogoUrl()}" >
+                                <span th:text="${popGames.get(i).getAppname()}"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div th:if="${popGames.size() > 5}" th:each="i : ${#numbers.sequence(0,4)}" class="panel panel-info">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" th:href="'#'+${popGames.get(i).getAppid()}">
+                                    <img th:src="${luckyDog.getAvatar()}" style="border-radius: 2px;">
+                                    <span th:text="${luckyDog.getPersonaname()}"></span>
+                                    <span th:text="'  最近热门游戏No.'+${i+1}"></span>
+                                </a>
+                            </h4>
+                        </div>
+                        <div th:if="${i == 0}" th:id="${popGames.get(0).getAppid()}" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <img th:src="${popGames.get(i).getImgLogoUrl()}" >
+                                <span th:text="${popGames.get(i).getAppname()}"></span>
+                            </div>
+                        </div>
+                        <div th:if="${i > 0}" th:id="${popGames.get(i).getAppid()}" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <img th:src="${popGames.get(i).getImgLogoUrl()}" >
+                                <span th:text="${popGames.get(i).getAppname()}"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
         <!-- /.container-fluid -->
     </div>
@@ -270,31 +341,97 @@
 </div>
 <!-- /#wrapper -->
 
-<!-- jQuery -->
-<script src="/vendor/jquery/jquery.min.js"></script>
-<!-- Bootstrap Core JavaScript -->
-<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
-<!-- Metis Menu Plugin JavaScript -->
-<script src="/vendor/metisMenu/metisMenu.min.js"></script>
-<!-- Custom Theme JavaScript -->
-<script src="/dist/js/sb-admin-2.js"></script>
-<!-- DataTables JavaScript -->
-<script src="/vendor/datatables/js/jquery.dataTables.min.js"></script>
-<script src="/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
-<script src="/vendor/datatables-responsive/dataTables.responsive.js"></script>
+    <!-- jQuery -->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="/vendor/metisMenu/metisMenu.min.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="/dist/js/sb-admin-2.js"></script>
+    <!-- DataTables JavaScript -->
+    <script src="/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="/vendor/datatables-responsive/dataTables.responsive.js"></script>
+    <!-- Flot Charts JavaScript -->
+    <script src="/vendor/flot/excanvas.min.js"></script>
+    <script src="/vendor/flot/jquery.flot.js"></script>
+    <script src="/vendor/flot/jquery.flot.pie.js"></script>
+    <script src="/vendor/flot/jquery.flot.resize.js"></script>
+    <script src="/vendor/flot/jquery.flot.time.js"></script>
+    <script src="/vendor/flot-tooltip/jquery.flot.tooltip.min.js"></script>
+    <!--<script src="/data/flot-data.js"></script>-->
 
-<script src="/javascript/profile.js"></script>
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script src="/javascript/profile.js"></script>
 
-<script>
-    $(document).ready(function () {
-        $('#dataTables-example').DataTable({
-            responsive: true,
-            "language": {
-                "url": "/vendor/datatables-plugins/Chinese.json"
-            }
+    <script>
+        $(document).ready(function () {
+            $('#dataTables-example').DataTable({
+                responsive: true,
+                "language": {
+                    "url": "/vendor/datatables-plugins/Chinese.json"
+                }
+            });
         });
-    });
-</script>
+
+        //Flot Pie Chart
+        $(function() {
+            var level_list = '[[${levels}]]';
+            var level_counts = JSON.parse(level_list);
+            console.log(level_counts);
+            var data = [{
+                label: "0级：" + level_counts[0],
+                data: level_counts[0]
+            }, {
+                label: "1~9级：" + level_counts[1],
+                data: level_counts[1]
+            }, {
+                label: "10~49级：" + level_counts[2],
+                data: level_counts[2]
+            }, {
+                label: "50~99级：" + level_counts[3],
+                data: level_counts[3]
+            }, {
+                label: "100~199级：" + level_counts[4],
+                data: level_counts[4]
+            }, {
+                label: "200~299级：" + level_counts[5],
+                data: level_counts[5]
+            }, {
+                label: "300~499级：" + level_counts[6],
+                data: level_counts[6]
+            }, {
+                label: "500~999级：" + level_counts[7],
+                data: level_counts[7]
+            }, {
+                label: "1000级以上：" + level_counts[8],
+                data: level_counts[8]
+            }];
+
+            var plotObj = $.plot($("#flot-pie-chart"), data, {
+                series: {
+                    pie: {
+                        show: true
+                    }
+                },
+                grid: {
+                    hoverable: true
+                },
+                tooltip: true,
+                tooltipOpts: {
+                    content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
+                    shifts: {
+                        x: 20,
+                        y: 0
+                    },
+                    defaultTheme: false
+                }
+            });
+
+        });
+
+    </script>
 
 </body>
 </html>

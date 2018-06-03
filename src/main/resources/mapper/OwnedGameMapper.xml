@@ -88,6 +88,14 @@
     AND playtime_forever == 0
   </select>
 
+  <select id="selectRecentlyGame" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from owned_game
+    where steamid = #{steamid,jdbcType=VARCHAR}
+    AND playtime_2week > 0
+  </select>
+
   <select id="selectPerfectGame" parameterType="java.lang.String" resultMap="BaseResultMap">
     select DISTINCT
     <include refid="Extra_Column_List" />

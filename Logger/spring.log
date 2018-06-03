@@ -1,449 +1,188 @@
-2018-05-27 10:38:02.286  INFO 2036 --- [main] looko.looker.release.ReleaseApplication  : Starting ReleaseApplication on DESKTOP-0VLRDKJ with PID 2036 (D:\Users\looko\IdeaProjects\NewLooker\target\classes started by looko in D:\Users\looko\IdeaProjects\NewLooker)
-2018-05-27 10:38:02.301  INFO 2036 --- [main] looko.looker.release.ReleaseApplication  : No active profile set, falling back to default profiles: default
-2018-05-27 10:38:02.379  INFO 2036 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@433d61fb: startup date [Sun May 27 10:38:02 CST 2018]; root of context hierarchy
-2018-05-27 10:38:03.989  INFO 2036 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$b3b59751] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2018-05-27 10:38:04.395  INFO 2036 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2018-05-27 10:38:04.426  INFO 2036 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2018-05-27 10:38:04.426  INFO 2036 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.29
-2018-05-27 10:38:04.426  INFO 2036 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_162\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Java\jdk1.8.0_162\bin;C:\Program Files\Java\jdk1.8.0_162\jre\bin;D:\Program Files\PuTTY\;C:\Program Files\Git\cmd;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;D:\Maven\maven3.5.3\bin;C:\Program Files\MySQL\MySQL Utilities 1.6\;C:\WINDOWS\System32\OpenSSH\;C:\Users\looko\AppData\Local\Microsoft\WindowsApps;D:\Program Files\Microsoft VS Code\bin;.]
-2018-05-27 10:38:04.582  INFO 2036 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2018-05-27 10:38:04.582  INFO 2036 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2203 ms
-2018-05-27 10:38:05.832  INFO 2036 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
-2018-05-27 10:38:05.832  INFO 2036 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet statViewServlet mapped to [/druid/*]
-2018-05-27 10:38:05.832  INFO 2036 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
-2018-05-27 10:38:05.832  INFO 2036 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
-2018-05-27 10:38:05.832  INFO 2036 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
-2018-05-27 10:38:05.832  INFO 2036 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
-2018-05-27 10:38:05.832  INFO 2036 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
-2018-05-27 10:38:05.832  INFO 2036 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webStatFilter' to urls: [/*]
-2018-05-27 10:38:05.832  INFO 2036 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
-2018-05-27 10:38:06.442  INFO 2036 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 
-2018-05-27 10:38:06.457  INFO 2036 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'taskExecutor'
-2018-05-27 10:38:06.551  INFO 2036 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
-2018-05-27 10:38:06.787  INFO 2036 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@433d61fb: startup date [Sun May 27 10:38:02 CST 2018]; root of context hierarchy
-2018-05-27 10:38:06.865  INFO 2036 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/achievements]}" onto public org.springframework.web.servlet.ModelAndView looko.looker.release.controller.AchiController.achievementsPage(java.lang.String)
-2018-05-27 10:38:06.865  INFO 2036 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/friends]}" onto public org.springframework.web.servlet.ModelAndView looko.looker.release.controller.FriendsController.friendsPage(java.lang.String)
-2018-05-27 10:38:06.865  INFO 2036 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/games/updFriendsGame],methods=[POST]}" onto public int looko.looker.release.controller.GamesController.update(java.lang.String)
-2018-05-27 10:38:06.865  INFO 2036 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/games]}" onto public org.springframework.web.servlet.ModelAndView looko.looker.release.controller.GamesController.gamesPage(java.lang.String)
-2018-05-27 10:38:06.865  INFO 2036 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/games/game]}" onto public org.springframework.web.servlet.ModelAndView looko.looker.release.controller.GamesController.gamePage(java.lang.String,int)
-2018-05-27 10:38:06.865  INFO 2036 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login]}" onto public java.lang.String looko.looker.release.controller.LoginController.loginPage(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
-2018-05-27 10:38:06.865  INFO 2036 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/goLogin],methods=[POST]}" onto public java.lang.String looko.looker.release.controller.LoginController.goLogin(javax.servlet.http.HttpServletRequest,org.springframework.web.servlet.mvc.support.RedirectAttributes)
-2018-05-27 10:38:06.865  INFO 2036 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/loginCheck],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.Object> looko.looker.release.controller.LoginController.loginByVURL(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
-2018-05-27 10:38:06.865  INFO 2036 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/profile]}" onto public org.springframework.web.servlet.ModelAndView looko.looker.release.controller.ProfileController.profilePage(java.lang.String)
-2018-05-27 10:38:06.881  INFO 2036 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
-2018-05-27 10:38:06.881  INFO 2036 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
-2018-05-27 10:38:06.927  INFO 2036 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
-2018-05-27 10:38:06.927  INFO 2036 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
-2018-05-27 10:38:07.084  INFO 2036 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
-2018-05-27 10:38:07.765  INFO 2036 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2018-05-27 10:38:07.780  INFO 2036 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
-2018-05-27 10:38:07.780  INFO 2036 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
-2018-05-27 10:38:07.780  INFO 2036 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
-2018-05-27 10:38:07.874  INFO 2036 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
-2018-05-27 10:38:07.874  INFO 2036 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
-2018-05-27 10:38:07.874  INFO 2036 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'statFilter' has been autodetected for JMX exposure
-2018-05-27 10:38:07.874  INFO 2036 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=dataSource,type=DruidDataSource]
-2018-05-27 10:38:07.874  INFO 2036 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]
-2018-05-27 10:38:07.921  INFO 2036 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2018-05-27 10:38:07.937  INFO 2036 --- [main] looko.looker.release.ReleaseApplication  : Started ReleaseApplication in 6.214 seconds (JVM running for 7.635)
-2018-05-27 10:38:08.858  INFO 2036 --- [RMI TCP Connection(5)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
-2018-05-27 10:38:08.858  INFO 2036 --- [RMI TCP Connection(5)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
-2018-05-27 10:38:08.890  INFO 2036 --- [RMI TCP Connection(5)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 32 ms
-2018-05-27 10:38:09.108  INFO 2036 --- [RMI TCP Connection(6)-127.0.0.1] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
-2018-05-27 10:44:38.558  INFO 2036 --- [http-nio-8080-exec-1] o.apache.tomcat.util.http.parser.Cookie  : A cookie header was received [0; _ga=GA1.1.871161801.1523287389] that contained an invalid cookie. That cookie will be ignored.Note: further occurrences of this error will be logged at DEBUG level.
-2018-05-27 10:44:47.560  WARN 2036 --- [http-nio-8080-exec-3] l.l.release.controller.LoginController   : code=3
-2018-05-27 10:44:48.770  WARN 2036 --- [http-nio-8080-exec-4] l.l.release.controller.LoginController   : game.size=0
-2018-05-27 10:44:48.773  INFO 2036 --- [http-nio-8080-exec-4] l.l.release.controller.LoginController   : update player : 364ms
-2018-05-27 10:44:48.775  INFO 2036 --- [http-nio-8080-exec-4] l.l.release.controller.LoginController   : update ownedgames : 372ms
-2018-05-27 10:44:48.778  INFO 2036 --- [http-nio-8080-exec-4] l.l.release.controller.LoginController   : update friends : 405ms
-2018-05-27 10:44:48.779  INFO 2036 --- [http-nio-8080-exec-4] l.l.release.controller.LoginController   : update achievements : 5ms
-2018-05-27 10:44:48.779  INFO 2036 --- [http-nio-8080-exec-4] l.l.release.controller.LoginController   : update total : 1146ms
-2018-05-27 10:44:49.387  WARN 2036 --- [http-nio-8080-exec-10] l.l.r.controller.ProfileController       : 建立ModelAndView：0ms
-2018-05-27 10:44:49.389  WARN 2036 --- [http-nio-8080-exec-10] l.l.r.controller.ProfileController       : 获取当前用户信息：2ms
-2018-05-27 10:44:49.389  WARN 2036 --- [http-nio-8080-exec-10] l.l.r.controller.ProfileController       : 获取游戏（喜好）：1ms
-2018-05-27 10:44:49.389  WARN 2036 --- [http-nio-8080-exec-10] l.l.r.controller.ProfileController       : 获取喜爱游戏大图0ms
-2018-05-27 10:44:49.389  WARN 2036 --- [http-nio-8080-exec-10] l.l.r.controller.ProfileController       : 获取好友的详细信息：5ms
-2018-05-27 10:44:49.390  WARN 2036 --- [http-nio-8080-exec-10] l.l.r.controller.ProfileController       : 获取成就详情：20ms
-2018-05-27 10:44:49.391  WARN 2036 --- [http-nio-8080-exec-10] l.l.r.controller.ProfileController       : 获取两个数量&当前时间：482ms
-2018-05-27 10:44:49.391  WARN 2036 --- [http-nio-8080-exec-10] l.l.r.controller.ProfileController       : 所有信息存入Model：0ms
-2018-05-27 10:45:41.787 ERROR 2036 --- [http-nio-8080-exec-3] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.apache.ibatis.binding.BindingException: Mapper method 'looko.looker.release.dao.OwnedGameMapper.sumPlayedTime attempted to return null from a method with a primitive return type (int).] with root cause
-
-org.apache.ibatis.binding.BindingException: Mapper method 'looko.looker.release.dao.OwnedGameMapper.sumPlayedTime attempted to return null from a method with a primitive return type (int).
-	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:94) ~[mybatis-3.4.6.jar:3.4.6]
-	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:59) ~[mybatis-3.4.6.jar:3.4.6]
-	at com.sun.proxy.$Proxy89.sumPlayedTime(Unknown Source) ~[na:na]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_162]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_162]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_162]
-	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_162]
-	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344) ~[spring-aop-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:197) ~[spring-aop-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139) ~[spring-tx-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185) ~[spring-aop-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212) ~[spring-aop-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at com.sun.proxy.$Proxy90.sumPlayedTime(Unknown Source) ~[na:na]
-	at looko.looker.release.service.impl.DB_OwnedGameServiceImpl.sumPlayedTime(DB_OwnedGameServiceImpl.java:124) ~[classes/:na]
-	at looko.looker.release.controller.GamesController.gamesPage(GamesController.java:106) ~[classes/:na]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_162]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_162]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_162]
-	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_162]
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:209) ~[spring-web-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:136) ~[spring-web-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102) ~[spring-webmvc-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:877) ~[spring-webmvc-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:783) ~[spring-webmvc-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:991) ~[spring-webmvc-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:925) ~[spring-webmvc-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:974) ~[spring-webmvc-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:866) ~[spring-webmvc-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:851) ~[spring-webmvc-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) ~[tomcat-embed-websocket-8.5.29.jar:8.5.29]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:158) ~[spring-boot-actuator-2.0.1.RELEASE.jar:2.0.1.RELEASE]
-	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:126) ~[spring-boot-actuator-2.0.1.RELEASE.jar:2.0.1.RELEASE]
-	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:111) ~[spring-boot-actuator-2.0.1.RELEASE.jar:2.0.1.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123) ~[druid-1.1.9.jar:1.1.9]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.springframework.boot.actuate.web.trace.servlet.HttpTraceFilter.doFilterInternal(HttpTraceFilter.java:84) ~[spring-boot-actuator-2.0.1.RELEASE.jar:2.0.1.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) ~[spring-web-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:109) ~[spring-web-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81) ~[spring-web-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200) ~[spring-web-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:496) [tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140) [tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81) [tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87) [tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342) [tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803) [tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790) [tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459) [tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-8.5.29.jar:8.5.29]
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_162]
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_162]
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.29.jar:8.5.29]
-	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_162]
-
-2018-05-27 10:51:03.162  INFO 12016 --- [main] looko.looker.release.ReleaseApplication  : Starting ReleaseApplication on DESKTOP-0VLRDKJ with PID 12016 (D:\Users\looko\IdeaProjects\NewLooker\target\classes started by looko in D:\Users\looko\IdeaProjects\NewLooker)
-2018-05-27 10:51:03.162  INFO 12016 --- [main] looko.looker.release.ReleaseApplication  : No active profile set, falling back to default profiles: default
-2018-05-27 10:51:03.240  INFO 12016 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@60d8c9b7: startup date [Sun May 27 10:51:03 CST 2018]; root of context hierarchy
-2018-05-27 10:51:04.784  INFO 12016 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$dd34cf8a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2018-05-27 10:51:05.132  INFO 12016 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2018-05-27 10:51:05.163  INFO 12016 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2018-05-27 10:51:05.163  INFO 12016 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.29
-2018-05-27 10:51:05.163  INFO 12016 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_162\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Java\jdk1.8.0_162\bin;C:\Program Files\Java\jdk1.8.0_162\jre\bin;D:\Program Files\PuTTY\;C:\Program Files\Git\cmd;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;D:\Maven\maven3.5.3\bin;C:\Program Files\MySQL\MySQL Utilities 1.6\;C:\WINDOWS\System32\OpenSSH\;C:\Users\looko\AppData\Local\Microsoft\WindowsApps;D:\Program Files\Microsoft VS Code\bin;.]
-2018-05-27 10:51:05.319  INFO 12016 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2018-05-27 10:51:05.319  INFO 12016 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2079 ms
-2018-05-27 10:51:06.523  INFO 12016 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
-2018-05-27 10:51:06.538  INFO 12016 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet statViewServlet mapped to [/druid/*]
-2018-05-27 10:51:06.538  INFO 12016 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
-2018-05-27 10:51:06.538  INFO 12016 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
-2018-05-27 10:51:06.538  INFO 12016 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
-2018-05-27 10:51:06.538  INFO 12016 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
-2018-05-27 10:51:06.538  INFO 12016 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
-2018-05-27 10:51:06.538  INFO 12016 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webStatFilter' to urls: [/*]
-2018-05-27 10:51:06.538  INFO 12016 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
-2018-05-27 10:51:07.101  INFO 12016 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 
-2018-05-27 10:51:07.117  INFO 12016 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'taskExecutor'
-2018-05-27 10:51:07.210  INFO 12016 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
-2018-05-27 10:51:07.492  INFO 12016 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@60d8c9b7: startup date [Sun May 27 10:51:03 CST 2018]; root of context hierarchy
-2018-05-27 10:51:07.554  INFO 12016 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/achievements]}" onto public org.springframework.web.servlet.ModelAndView looko.looker.release.controller.AchiController.achievementsPage(java.lang.String)
-2018-05-27 10:51:07.554  INFO 12016 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/friends]}" onto public org.springframework.web.servlet.ModelAndView looko.looker.release.controller.FriendsController.friendsPage(java.lang.String)
-2018-05-27 10:51:07.554  INFO 12016 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/games/updFriendsGame],methods=[POST]}" onto public int looko.looker.release.controller.GamesController.update(java.lang.String)
-2018-05-27 10:51:07.554  INFO 12016 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/games]}" onto public org.springframework.web.servlet.ModelAndView looko.looker.release.controller.GamesController.gamesPage(java.lang.String)
-2018-05-27 10:51:07.554  INFO 12016 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/games/game]}" onto public org.springframework.web.servlet.ModelAndView looko.looker.release.controller.GamesController.gamePage(java.lang.String,int)
-2018-05-27 10:51:07.554  INFO 12016 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/loginCheck],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.Object> looko.looker.release.controller.LoginController.loginByVURL(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
-2018-05-27 10:51:07.554  INFO 12016 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/goLogin],methods=[POST]}" onto public java.lang.String looko.looker.release.controller.LoginController.goLogin(javax.servlet.http.HttpServletRequest,org.springframework.web.servlet.mvc.support.RedirectAttributes)
-2018-05-27 10:51:07.554  INFO 12016 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login]}" onto public java.lang.String looko.looker.release.controller.LoginController.loginPage(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
-2018-05-27 10:51:07.554  INFO 12016 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/profile]}" onto public org.springframework.web.servlet.ModelAndView looko.looker.release.controller.ProfileController.profilePage(java.lang.String)
-2018-05-27 10:51:07.570  INFO 12016 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
-2018-05-27 10:51:07.570  INFO 12016 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
-2018-05-27 10:51:07.617  INFO 12016 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
-2018-05-27 10:51:07.617  INFO 12016 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
-2018-05-27 10:51:07.757  INFO 12016 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
-2018-05-27 10:51:08.316  INFO 12016 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2018-05-27 10:51:08.347  INFO 12016 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
-2018-05-27 10:51:08.347  INFO 12016 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
-2018-05-27 10:51:08.347  INFO 12016 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
-2018-05-27 10:51:08.441  INFO 12016 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
-2018-05-27 10:51:08.441  INFO 12016 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
-2018-05-27 10:51:08.456  INFO 12016 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'statFilter' has been autodetected for JMX exposure
-2018-05-27 10:51:08.456  INFO 12016 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=dataSource,type=DruidDataSource]
-2018-05-27 10:51:08.456  INFO 12016 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]
-2018-05-27 10:51:08.503  INFO 12016 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2018-05-27 10:51:08.503  INFO 12016 --- [main] looko.looker.release.ReleaseApplication  : Started ReleaseApplication in 5.81 seconds (JVM running for 7.086)
-2018-05-27 10:51:09.191  INFO 12016 --- [RMI TCP Connection(10)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
-2018-05-27 10:51:09.191  INFO 12016 --- [RMI TCP Connection(10)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
-2018-05-27 10:51:09.222  INFO 12016 --- [RMI TCP Connection(10)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 31 ms
-2018-05-27 10:51:09.441  INFO 12016 --- [RMI TCP Connection(4)-127.0.0.1] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
-2018-05-27 10:51:19.100  INFO 12016 --- [http-nio-8080-exec-1] o.apache.tomcat.util.http.parser.Cookie  : A cookie header was received [0; _ga=GA1.1.871161801.1523287389] that contained an invalid cookie. That cookie will be ignored.Note: further occurrences of this error will be logged at DEBUG level.
-2018-05-27 10:51:24.200  WARN 12016 --- [http-nio-8080-exec-2] l.l.release.controller.LoginController   : code=3
-2018-05-27 10:51:25.456  WARN 12016 --- [http-nio-8080-exec-3] l.l.release.controller.LoginController   : game.size=0
-2018-05-27 10:51:25.458  INFO 12016 --- [http-nio-8080-exec-3] l.l.release.controller.LoginController   : update player : 388ms
-2018-05-27 10:51:25.461  INFO 12016 --- [http-nio-8080-exec-3] l.l.release.controller.LoginController   : update ownedgames : 409ms
-2018-05-27 10:51:25.461  INFO 12016 --- [http-nio-8080-exec-3] l.l.release.controller.LoginController   : update friends : 410ms
-2018-05-27 10:51:25.463  INFO 12016 --- [http-nio-8080-exec-3] l.l.release.controller.LoginController   : update achievements : 4ms
-2018-05-27 10:51:25.463  INFO 12016 --- [http-nio-8080-exec-3] l.l.release.controller.LoginController   : update total : 1211ms
-2018-05-27 10:51:25.980  WARN 12016 --- [http-nio-8080-exec-4] l.l.r.controller.ProfileController       : 建立ModelAndView：0ms
-2018-05-27 10:51:25.981  WARN 12016 --- [http-nio-8080-exec-4] l.l.r.controller.ProfileController       : 获取当前用户信息：2ms
-2018-05-27 10:51:25.981  WARN 12016 --- [http-nio-8080-exec-4] l.l.r.controller.ProfileController       : 获取游戏（喜好）：1ms
-2018-05-27 10:51:25.981  WARN 12016 --- [http-nio-8080-exec-4] l.l.r.controller.ProfileController       : 获取喜爱游戏大图0ms
-2018-05-27 10:51:25.982  WARN 12016 --- [http-nio-8080-exec-4] l.l.r.controller.ProfileController       : 获取好友的详细信息：3ms
-2018-05-27 10:51:25.982  WARN 12016 --- [http-nio-8080-exec-4] l.l.r.controller.ProfileController       : 获取成就详情：11ms
-2018-05-27 10:51:25.982  WARN 12016 --- [http-nio-8080-exec-4] l.l.r.controller.ProfileController       : 获取两个数量&当前时间：451ms
-2018-05-27 10:51:25.982  WARN 12016 --- [http-nio-8080-exec-4] l.l.r.controller.ProfileController       : 所有信息存入Model：0ms
-2018-05-27 10:51:30.516 ERROR 12016 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.apache.ibatis.binding.BindingException: Mapper method 'looko.looker.release.dao.OwnedGameMapper.sumPlayedTime attempted to return null from a method with a primitive return type (int).] with root cause
-
-org.apache.ibatis.binding.BindingException: Mapper method 'looko.looker.release.dao.OwnedGameMapper.sumPlayedTime attempted to return null from a method with a primitive return type (int).
-	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:94) ~[mybatis-3.4.6.jar:3.4.6]
-	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:59) ~[mybatis-3.4.6.jar:3.4.6]
-	at com.sun.proxy.$Proxy89.sumPlayedTime(Unknown Source) ~[na:na]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_162]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_162]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_162]
-	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_162]
-	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344) ~[spring-aop-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:197) ~[spring-aop-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139) ~[spring-tx-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185) ~[spring-aop-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212) ~[spring-aop-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at com.sun.proxy.$Proxy90.sumPlayedTime(Unknown Source) ~[na:na]
-	at looko.looker.release.service.impl.DB_OwnedGameServiceImpl.sumPlayedTime(DB_OwnedGameServiceImpl.java:124) ~[classes/:na]
-	at looko.looker.release.controller.GamesController.gamesPage(GamesController.java:106) ~[classes/:na]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_162]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_162]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_162]
-	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_162]
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:209) ~[spring-web-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:136) ~[spring-web-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102) ~[spring-webmvc-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:877) ~[spring-webmvc-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:783) ~[spring-webmvc-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:991) ~[spring-webmvc-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:925) ~[spring-webmvc-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:974) ~[spring-webmvc-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:866) ~[spring-webmvc-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:851) ~[spring-webmvc-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) ~[tomcat-embed-websocket-8.5.29.jar:8.5.29]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:158) ~[spring-boot-actuator-2.0.1.RELEASE.jar:2.0.1.RELEASE]
-	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:126) ~[spring-boot-actuator-2.0.1.RELEASE.jar:2.0.1.RELEASE]
-	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:111) ~[spring-boot-actuator-2.0.1.RELEASE.jar:2.0.1.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123) ~[druid-1.1.9.jar:1.1.9]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.springframework.boot.actuate.web.trace.servlet.HttpTraceFilter.doFilterInternal(HttpTraceFilter.java:84) ~[spring-boot-actuator-2.0.1.RELEASE.jar:2.0.1.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) ~[spring-web-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:109) ~[spring-web-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81) ~[spring-web-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200) ~[spring-web-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.0.5.RELEASE.jar:5.0.5.RELEASE]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198) ~[tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:496) [tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140) [tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81) [tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87) [tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342) [tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803) [tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790) [tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459) [tomcat-embed-core-8.5.29.jar:8.5.29]
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-8.5.29.jar:8.5.29]
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_162]
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_162]
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.29.jar:8.5.29]
-	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_162]
-
-2018-05-27 10:53:11.584  INFO 4056 --- [main] looko.looker.release.ReleaseApplication  : Starting ReleaseApplication on DESKTOP-0VLRDKJ with PID 4056 (D:\Users\looko\IdeaProjects\NewLooker\target\classes started by looko in D:\Users\looko\IdeaProjects\NewLooker)
-2018-05-27 10:53:11.600  INFO 4056 --- [main] looko.looker.release.ReleaseApplication  : No active profile set, falling back to default profiles: default
-2018-05-27 10:53:11.663  INFO 4056 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@7f552bd3: startup date [Sun May 27 10:53:11 CST 2018]; root of context hierarchy
-2018-05-27 10:53:13.163  INFO 4056 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$990b3eb7] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2018-05-27 10:53:13.507  INFO 4056 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2018-05-27 10:53:13.538  INFO 4056 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2018-05-27 10:53:13.538  INFO 4056 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.29
-2018-05-27 10:53:13.538  INFO 4056 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_162\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Java\jdk1.8.0_162\bin;C:\Program Files\Java\jdk1.8.0_162\jre\bin;D:\Program Files\PuTTY\;C:\Program Files\Git\cmd;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;D:\Maven\maven3.5.3\bin;C:\Program Files\MySQL\MySQL Utilities 1.6\;C:\WINDOWS\System32\OpenSSH\;C:\Users\looko\AppData\Local\Microsoft\WindowsApps;D:\Program Files\Microsoft VS Code\bin;.]
-2018-05-27 10:53:13.695  INFO 4056 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2018-05-27 10:53:13.695  INFO 4056 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2032 ms
-2018-05-27 10:53:14.926  INFO 4056 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
-2018-05-27 10:53:14.926  INFO 4056 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet statViewServlet mapped to [/druid/*]
-2018-05-27 10:53:14.926  INFO 4056 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
-2018-05-27 10:53:14.926  INFO 4056 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
-2018-05-27 10:53:14.926  INFO 4056 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
-2018-05-27 10:53:14.926  INFO 4056 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
-2018-05-27 10:53:14.926  INFO 4056 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
-2018-05-27 10:53:14.926  INFO 4056 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webStatFilter' to urls: [/*]
-2018-05-27 10:53:14.926  INFO 4056 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
-2018-05-27 10:53:15.491  INFO 4056 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 
-2018-05-27 10:53:15.506  INFO 4056 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'taskExecutor'
-2018-05-27 10:53:32.416  INFO 6912 --- [main] looko.looker.release.ReleaseApplication  : Starting ReleaseApplication on DESKTOP-0VLRDKJ with PID 6912 (D:\Users\looko\IdeaProjects\NewLooker\target\classes started by looko in D:\Users\looko\IdeaProjects\NewLooker)
-2018-05-27 10:53:32.416  INFO 6912 --- [main] looko.looker.release.ReleaseApplication  : No active profile set, falling back to default profiles: default
-2018-05-27 10:53:32.494  INFO 6912 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@60d8c9b7: startup date [Sun May 27 10:53:32 CST 2018]; root of context hierarchy
-2018-05-27 10:53:34.004  INFO 6912 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$6af2c48e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2018-05-27 10:53:34.348  INFO 6912 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2018-05-27 10:53:34.364  INFO 6912 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2018-05-27 10:53:34.379  INFO 6912 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.29
-2018-05-27 10:53:34.379  INFO 6912 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_162\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Java\jdk1.8.0_162\bin;C:\Program Files\Java\jdk1.8.0_162\jre\bin;D:\Program Files\PuTTY\;C:\Program Files\Git\cmd;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;D:\Maven\maven3.5.3\bin;C:\Program Files\MySQL\MySQL Utilities 1.6\;C:\WINDOWS\System32\OpenSSH\;C:\Users\looko\AppData\Local\Microsoft\WindowsApps;D:\Program Files\Microsoft VS Code\bin;.]
-2018-05-27 10:53:34.520  INFO 6912 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2018-05-27 10:53:34.520  INFO 6912 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2026 ms
-2018-05-27 10:53:35.676  INFO 6912 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
-2018-05-27 10:53:35.692  INFO 6912 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet statViewServlet mapped to [/druid/*]
-2018-05-27 10:53:35.692  INFO 6912 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
-2018-05-27 10:53:35.692  INFO 6912 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
-2018-05-27 10:53:35.692  INFO 6912 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
-2018-05-27 10:53:35.692  INFO 6912 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
-2018-05-27 10:53:35.692  INFO 6912 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
-2018-05-27 10:53:35.692  INFO 6912 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webStatFilter' to urls: [/*]
-2018-05-27 10:53:35.692  INFO 6912 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
-2018-05-27 10:53:36.244  INFO 6912 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 
-2018-05-27 10:53:36.260  INFO 6912 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'taskExecutor'
-2018-05-27 10:53:36.353  INFO 6912 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
-2018-05-27 10:53:36.588  INFO 6912 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@60d8c9b7: startup date [Sun May 27 10:53:32 CST 2018]; root of context hierarchy
-2018-05-27 10:53:36.650  INFO 6912 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/achievements]}" onto public org.springframework.web.servlet.ModelAndView looko.looker.release.controller.AchiController.achievementsPage(java.lang.String)
-2018-05-27 10:53:36.650  INFO 6912 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/friends]}" onto public org.springframework.web.servlet.ModelAndView looko.looker.release.controller.FriendsController.friendsPage(java.lang.String)
-2018-05-27 10:53:36.650  INFO 6912 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/games/updFriendsGame],methods=[POST]}" onto public int looko.looker.release.controller.GamesController.update(java.lang.String)
-2018-05-27 10:53:36.650  INFO 6912 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/games]}" onto public org.springframework.web.servlet.ModelAndView looko.looker.release.controller.GamesController.gamesPage(java.lang.String)
-2018-05-27 10:53:36.650  INFO 6912 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/games/game]}" onto public org.springframework.web.servlet.ModelAndView looko.looker.release.controller.GamesController.gamePage(java.lang.String,int)
-2018-05-27 10:53:36.650  INFO 6912 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/loginCheck],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.Object> looko.looker.release.controller.LoginController.loginByVURL(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
-2018-05-27 10:53:36.650  INFO 6912 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login]}" onto public java.lang.String looko.looker.release.controller.LoginController.loginPage(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
-2018-05-27 10:53:36.666  INFO 6912 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/goLogin],methods=[POST]}" onto public java.lang.String looko.looker.release.controller.LoginController.goLogin(javax.servlet.http.HttpServletRequest,org.springframework.web.servlet.mvc.support.RedirectAttributes)
-2018-05-27 10:53:36.666  INFO 6912 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/profile]}" onto public org.springframework.web.servlet.ModelAndView looko.looker.release.controller.ProfileController.profilePage(java.lang.String)
-2018-05-27 10:53:36.666  INFO 6912 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
-2018-05-27 10:53:36.666  INFO 6912 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
-2018-05-27 10:53:36.713  INFO 6912 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
-2018-05-27 10:53:36.713  INFO 6912 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
-2018-05-27 10:53:36.853  INFO 6912 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
-2018-05-27 10:53:37.463  INFO 6912 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2018-05-27 10:53:37.478  INFO 6912 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
-2018-05-27 10:53:37.478  INFO 6912 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
-2018-05-27 10:53:37.478  INFO 6912 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
-2018-05-27 10:53:37.572  INFO 6912 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
-2018-05-27 10:53:37.572  INFO 6912 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
-2018-05-27 10:53:37.572  INFO 6912 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'statFilter' has been autodetected for JMX exposure
-2018-05-27 10:53:37.572  INFO 6912 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=dataSource,type=DruidDataSource]
-2018-05-27 10:53:37.572  INFO 6912 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]
-2018-05-27 10:53:37.619  INFO 6912 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2018-05-27 10:53:37.635  INFO 6912 --- [main] looko.looker.release.ReleaseApplication  : Started ReleaseApplication in 5.677 seconds (JVM running for 6.771)
-2018-05-27 10:53:38.083  INFO 6912 --- [RMI TCP Connection(9)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
-2018-05-27 10:53:38.083  INFO 6912 --- [RMI TCP Connection(9)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
-2018-05-27 10:53:38.114  INFO 6912 --- [RMI TCP Connection(9)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 31 ms
-2018-05-27 10:53:38.286  INFO 6912 --- [RMI TCP Connection(8)-127.0.0.1] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
-2018-05-27 10:53:57.418  INFO 6912 --- [http-nio-8080-exec-1] o.apache.tomcat.util.http.parser.Cookie  : A cookie header was received [0; _ga=GA1.1.871161801.1523287389] that contained an invalid cookie. That cookie will be ignored.Note: further occurrences of this error will be logged at DEBUG level.
-2018-05-27 10:54:02.236  WARN 6912 --- [http-nio-8080-exec-2] l.l.release.controller.LoginController   : code=3
-2018-05-27 10:54:03.326  WARN 6912 --- [http-nio-8080-exec-3] l.l.release.controller.LoginController   : game.size=0
-2018-05-27 10:54:03.327  INFO 6912 --- [http-nio-8080-exec-3] l.l.release.controller.LoginController   : update player : 342ms
-2018-05-27 10:54:03.329  INFO 6912 --- [http-nio-8080-exec-3] l.l.release.controller.LoginController   : update ownedgames : 312ms
-2018-05-27 10:54:03.330  INFO 6912 --- [http-nio-8080-exec-3] l.l.release.controller.LoginController   : update friends : 381ms
-2018-05-27 10:54:03.331  INFO 6912 --- [http-nio-8080-exec-3] l.l.release.controller.LoginController   : update achievements : 2ms
-2018-05-27 10:54:03.331  INFO 6912 --- [http-nio-8080-exec-3] l.l.release.controller.LoginController   : update total : 1037ms
-2018-05-27 10:54:03.778  WARN 6912 --- [http-nio-8080-exec-4] l.l.r.controller.ProfileController       : 建立ModelAndView：0ms
-2018-05-27 10:54:03.779  WARN 6912 --- [http-nio-8080-exec-4] l.l.r.controller.ProfileController       : 获取当前用户信息：3ms
-2018-05-27 10:54:03.779  WARN 6912 --- [http-nio-8080-exec-4] l.l.r.controller.ProfileController       : 获取游戏（喜好）：3ms
-2018-05-27 10:54:03.779  WARN 6912 --- [http-nio-8080-exec-4] l.l.r.controller.ProfileController       : 获取喜爱游戏大图0ms
-2018-05-27 10:54:03.782  WARN 6912 --- [http-nio-8080-exec-4] l.l.r.controller.ProfileController       : 获取好友的详细信息：4ms
-2018-05-27 10:54:03.783  WARN 6912 --- [http-nio-8080-exec-4] l.l.r.controller.ProfileController       : 获取成就详情：11ms
-2018-05-27 10:54:03.783  WARN 6912 --- [http-nio-8080-exec-4] l.l.r.controller.ProfileController       : 获取两个数量&当前时间：352ms
-2018-05-27 10:54:03.784  WARN 6912 --- [http-nio-8080-exec-4] l.l.r.controller.ProfileController       : 所有信息存入Model：0ms
-2018-05-27 10:54:10.256  INFO 6912 --- [http-nio-8080-exec-1] l.l.release.controller.GamesController   : 获取当前用户信息：2ms
-2018-05-27 10:54:10.257  INFO 6912 --- [http-nio-8080-exec-1] l.l.release.controller.GamesController   : findFavoriteById：1ms
-2018-05-27 10:54:10.258  INFO 6912 --- [http-nio-8080-exec-1] l.l.release.controller.GamesController   : 获取5个应用的大图：0ms
-2018-05-27 10:54:10.258  INFO 6912 --- [http-nio-8080-exec-1] l.l.release.controller.GamesController   : 库内游戏时间统计：1ms
-2018-05-27 10:54:10.259  INFO 6912 --- [http-nio-8080-exec-1] l.l.release.controller.GamesController   : 获取全成就游戏：7ms
-2018-05-27 10:54:10.260  INFO 6912 --- [http-nio-8080-exec-1] l.l.release.controller.GamesController   : getRecentlyGames：378ms
-2018-05-27 10:54:10.260  INFO 6912 --- [http-nio-8080-exec-1] l.l.release.controller.GamesController   : 游戏总时长：3ms
-2018-05-27 10:54:10.260  INFO 6912 --- [http-nio-8080-exec-1] l.l.release.controller.GamesController   : 游戏两周时长：2ms
-2018-05-27 10:54:10.260  INFO 6912 --- [http-nio-8080-exec-1] l.l.release.controller.GamesController   : 所有信息存入Model：0ms
-2018-05-27 10:55:44.617  WARN 6912 --- [http-nio-8080-exec-7] l.l.r.controller.ProfileController       : 建立ModelAndView：0ms
-2018-05-27 10:55:44.617  WARN 6912 --- [http-nio-8080-exec-7] l.l.r.controller.ProfileController       : 获取当前用户信息：5ms
-2018-05-27 10:55:44.617  WARN 6912 --- [http-nio-8080-exec-7] l.l.r.controller.ProfileController       : 获取游戏（喜好）：1ms
-2018-05-27 10:55:44.618  WARN 6912 --- [http-nio-8080-exec-7] l.l.r.controller.ProfileController       : 获取喜爱游戏大图0ms
-2018-05-27 10:55:44.618  WARN 6912 --- [http-nio-8080-exec-7] l.l.r.controller.ProfileController       : 获取好友的详细信息：5ms
-2018-05-27 10:55:44.618  WARN 6912 --- [http-nio-8080-exec-7] l.l.r.controller.ProfileController       : 获取成就详情：1ms
-2018-05-27 10:55:44.618  WARN 6912 --- [http-nio-8080-exec-7] l.l.r.controller.ProfileController       : 获取两个数量&当前时间：324ms
-2018-05-27 10:55:44.619  WARN 6912 --- [http-nio-8080-exec-7] l.l.r.controller.ProfileController       : 所有信息存入Model：0ms
-2018-05-27 10:55:50.169  INFO 6912 --- [http-nio-8080-exec-8] l.l.release.controller.GamesController   : 获取当前用户信息：2ms
-2018-05-27 10:55:50.170  INFO 6912 --- [http-nio-8080-exec-8] l.l.release.controller.GamesController   : findFavoriteById：1ms
-2018-05-27 10:55:50.170  INFO 6912 --- [http-nio-8080-exec-8] l.l.release.controller.GamesController   : 获取5个应用的大图：0ms
-2018-05-27 10:55:50.172  INFO 6912 --- [http-nio-8080-exec-8] l.l.release.controller.GamesController   : 库内游戏时间统计：0ms
-2018-05-27 10:55:50.173  INFO 6912 --- [http-nio-8080-exec-8] l.l.release.controller.GamesController   : 获取全成就游戏：2ms
-2018-05-27 10:55:50.173  INFO 6912 --- [http-nio-8080-exec-8] l.l.release.controller.GamesController   : getRecentlyGames：337ms
-2018-05-27 10:55:50.173  INFO 6912 --- [http-nio-8080-exec-8] l.l.release.controller.GamesController   : 游戏总时长：3ms
-2018-05-27 10:55:50.175  INFO 6912 --- [http-nio-8080-exec-8] l.l.release.controller.GamesController   : 游戏两周时长：3ms
-2018-05-27 10:55:50.176  INFO 6912 --- [http-nio-8080-exec-8] l.l.release.controller.GamesController   : 所有信息存入Model：0ms
-2018-05-27 10:57:44.461  WARN 6912 --- [http-nio-8080-exec-1] l.l.release.controller.LoginController   : code=3
-2018-05-27 10:57:45.518  WARN 6912 --- [http-nio-8080-exec-2] l.l.release.controller.LoginController   : game.size=0
-2018-05-27 10:57:45.521  INFO 6912 --- [http-nio-8080-exec-2] l.l.release.controller.LoginController   : update player : 337ms
-2018-05-27 10:57:45.521  INFO 6912 --- [http-nio-8080-exec-2] l.l.release.controller.LoginController   : update ownedgames : 316ms
-2018-05-27 10:57:45.524  INFO 6912 --- [http-nio-8080-exec-2] l.l.release.controller.LoginController   : update friends : 339ms
-2018-05-27 10:57:45.524  INFO 6912 --- [http-nio-8080-exec-2] l.l.release.controller.LoginController   : update achievements : 3ms
-2018-05-27 10:57:45.531  INFO 6912 --- [http-nio-8080-exec-2] l.l.release.controller.LoginController   : update total : 995ms
-2018-05-27 10:57:45.902  WARN 6912 --- [http-nio-8080-exec-10] l.l.r.controller.ProfileController       : 建立ModelAndView：0ms
-2018-05-27 10:57:45.902  WARN 6912 --- [http-nio-8080-exec-10] l.l.r.controller.ProfileController       : 获取当前用户信息：2ms
-2018-05-27 10:57:45.903  WARN 6912 --- [http-nio-8080-exec-10] l.l.r.controller.ProfileController       : 获取游戏（喜好）：2ms
-2018-05-27 10:57:45.905  WARN 6912 --- [http-nio-8080-exec-10] l.l.r.controller.ProfileController       : 获取喜爱游戏大图0ms
-2018-05-27 10:57:45.905  WARN 6912 --- [http-nio-8080-exec-10] l.l.r.controller.ProfileController       : 获取好友的详细信息：5ms
-2018-05-27 10:57:45.905  WARN 6912 --- [http-nio-8080-exec-10] l.l.r.controller.ProfileController       : 获取成就详情：2ms
-2018-05-27 10:57:45.905  WARN 6912 --- [http-nio-8080-exec-10] l.l.r.controller.ProfileController       : 获取两个数量&当前时间：329ms
-2018-05-27 10:57:45.905  WARN 6912 --- [http-nio-8080-exec-10] l.l.r.controller.ProfileController       : 所有信息存入Model：0ms
-2018-05-27 10:57:48.615  INFO 6912 --- [http-nio-8080-exec-6] l.l.release.controller.GamesController   : 获取当前用户信息：1ms
-2018-05-27 10:57:48.617  INFO 6912 --- [http-nio-8080-exec-6] l.l.release.controller.GamesController   : findFavoriteById：4ms
-2018-05-27 10:57:48.618  INFO 6912 --- [http-nio-8080-exec-6] l.l.release.controller.GamesController   : 获取5个应用的大图：0ms
-2018-05-27 10:57:48.619  INFO 6912 --- [http-nio-8080-exec-6] l.l.release.controller.GamesController   : 库内游戏时间统计：0ms
-2018-05-27 10:57:48.620  INFO 6912 --- [http-nio-8080-exec-6] l.l.release.controller.GamesController   : 获取全成就游戏：2ms
-2018-05-27 10:57:48.620  INFO 6912 --- [http-nio-8080-exec-6] l.l.release.controller.GamesController   : getRecentlyGames：308ms
-2018-05-27 10:57:48.620  INFO 6912 --- [http-nio-8080-exec-6] l.l.release.controller.GamesController   : 游戏总时长：3ms
-2018-05-27 10:57:48.622  INFO 6912 --- [http-nio-8080-exec-6] l.l.release.controller.GamesController   : 游戏两周时长：2ms
-2018-05-27 10:57:48.623  INFO 6912 --- [http-nio-8080-exec-6] l.l.release.controller.GamesController   : 所有信息存入Model：0ms
+2018-06-03 10:18:55.429  INFO 12500 --- [main] looko.looker.release.ReleaseApplication  : Starting ReleaseApplication on DESKTOP-0VLRDKJ with PID 12500 (D:\Users\looko\IdeaProjects\NewLooker\target\classes started by looko in D:\Users\looko\IdeaProjects\NewLooker)
+2018-06-03 10:18:55.443  INFO 12500 --- [main] looko.looker.release.ReleaseApplication  : No active profile set, falling back to default profiles: default
+2018-06-03 10:18:55.528  INFO 12500 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@433d61fb: startup date [Sun Jun 03 10:18:55 CST 2018]; root of context hierarchy
+2018-06-03 10:18:57.123  INFO 12500 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$c6be299a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-06-03 10:18:57.488  INFO 12500 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2018-06-03 10:18:57.514  INFO 12500 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-06-03 10:18:57.515  INFO 12500 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.29
+2018-06-03 10:18:57.520  INFO 12500 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_162\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Java\jdk1.8.0_162\bin;C:\Program Files\Java\jdk1.8.0_162\jre\bin;D:\Program Files\PuTTY\;C:\Program Files\Git\cmd;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;D:\Maven\maven3.5.3\bin;C:\Program Files\MySQL\MySQL Utilities 1.6\;C:\WINDOWS\System32\OpenSSH\;C:\Users\looko\AppData\Local\Microsoft\WindowsApps;D:\Program Files\Microsoft VS Code\bin;.]
+2018-06-03 10:18:57.680  INFO 12500 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-06-03 10:18:57.681  INFO 12500 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2153 ms
+2018-06-03 10:18:58.861  INFO 12500 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2018-06-03 10:18:58.863  INFO 12500 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet statViewServlet mapped to [/druid/*]
+2018-06-03 10:18:58.867  INFO 12500 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-06-03 10:18:58.868  INFO 12500 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-06-03 10:18:58.868  INFO 12500 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-06-03 10:18:58.868  INFO 12500 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-06-03 10:18:58.868  INFO 12500 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
+2018-06-03 10:18:58.869  INFO 12500 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webStatFilter' to urls: [/*]
+2018-06-03 10:18:58.869  INFO 12500 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2018-06-03 10:18:59.478  INFO 12500 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 
+2018-06-03 10:18:59.484  INFO 12500 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'taskExecutor'
+2018-06-03 10:18:59.577  INFO 12500 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-03 10:18:59.836  INFO 12500 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@433d61fb: startup date [Sun Jun 03 10:18:55 CST 2018]; root of context hierarchy
+2018-06-03 10:18:59.911  INFO 12500 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/achievements]}" onto public org.springframework.web.servlet.ModelAndView looko.looker.release.controller.AchiController.achievementsPage(java.lang.String)
+2018-06-03 10:18:59.913  INFO 12500 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/friends]}" onto public org.springframework.web.servlet.ModelAndView looko.looker.release.controller.FriendsController.friendsPage(java.lang.String)
+2018-06-03 10:18:59.915  INFO 12500 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/games/updFriendsGame],methods=[POST]}" onto public int looko.looker.release.controller.GamesController.update(java.lang.String)
+2018-06-03 10:18:59.916  INFO 12500 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/games]}" onto public org.springframework.web.servlet.ModelAndView looko.looker.release.controller.GamesController.gamesPage(java.lang.String)
+2018-06-03 10:18:59.916  INFO 12500 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/games/game]}" onto public org.springframework.web.servlet.ModelAndView looko.looker.release.controller.GamesController.gamePage(java.lang.String,int)
+2018-06-03 10:18:59.916  INFO 12500 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login]}" onto public java.lang.String looko.looker.release.controller.LoginController.loginPage(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-06-03 10:18:59.917  INFO 12500 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/loginCheck],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.Object> looko.looker.release.controller.LoginController.loginByVURL(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-06-03 10:18:59.917  INFO 12500 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/goLogin],methods=[POST]}" onto public java.lang.String looko.looker.release.controller.LoginController.goLogin(javax.servlet.http.HttpServletRequest,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+2018-06-03 10:18:59.918  INFO 12500 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/profile]}" onto public org.springframework.web.servlet.ModelAndView looko.looker.release.controller.ProfileController.profilePage(java.lang.String)
+2018-06-03 10:18:59.920  INFO 12500 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-06-03 10:18:59.922  INFO 12500 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-06-03 10:18:59.972  INFO 12500 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-03 10:18:59.972  INFO 12500 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-06-03 10:19:00.142  INFO 12500 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2018-06-03 10:19:00.746  INFO 12500 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2018-06-03 10:19:00.759  INFO 12500 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2018-06-03 10:19:00.760  INFO 12500 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2018-06-03 10:19:00.761  INFO 12500 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-06-03 10:19:00.846  INFO 12500 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2018-06-03 10:19:00.847  INFO 12500 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2018-06-03 10:19:00.848  INFO 12500 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'statFilter' has been autodetected for JMX exposure
+2018-06-03 10:19:00.856  INFO 12500 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=dataSource,type=DruidDataSource]
+2018-06-03 10:19:00.859  INFO 12500 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]
+2018-06-03 10:19:00.905  INFO 12500 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2018-06-03 10:19:00.909  INFO 12500 --- [main] looko.looker.release.ReleaseApplication  : Started ReleaseApplication in 6.04 seconds (JVM running for 7.514)
+2018-06-03 10:19:01.428  INFO 12500 --- [RMI TCP Connection(7)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-06-03 10:19:01.429  INFO 12500 --- [RMI TCP Connection(7)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2018-06-03 10:19:01.455  INFO 12500 --- [RMI TCP Connection(7)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 26 ms
+2018-06-03 10:19:01.677  INFO 12500 --- [RMI TCP Connection(2)-127.0.0.1] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2018-06-03 11:22:16.192  INFO 12500 --- [http-nio-8080-exec-1] o.apache.tomcat.util.http.parser.Cookie  : A cookie header was received [0; _ga=GA1.1.871161801.1523287389] that contained an invalid cookie. That cookie will be ignored.Note: further occurrences of this error will be logged at DEBUG level.
+2018-06-03 12:26:40.633  WARN 12500 --- [http-nio-8080-exec-4] l.l.release.controller.LoginController   : code=3
+2018-06-03 12:26:43.912  WARN 12500 --- [http-nio-8080-exec-9] l.l.release.controller.LoginController   : game.size=510
+2018-06-03 12:26:43.923  INFO 12500 --- [http-nio-8080-exec-9] l.l.release.controller.LoginController   : update player : 372ms
+2018-06-03 12:26:43.925  INFO 12500 --- [http-nio-8080-exec-9] l.l.release.controller.LoginController   : update ownedgames : 2268ms
+2018-06-03 12:26:43.926  INFO 12500 --- [http-nio-8080-exec-9] l.l.release.controller.LoginController   : update friends : 590ms
+2018-06-03 12:26:43.927  INFO 12500 --- [http-nio-8080-exec-9] l.l.release.controller.LoginController   : update achievements : 11ms
+2018-06-03 12:26:43.927  INFO 12500 --- [http-nio-8080-exec-9] l.l.release.controller.LoginController   : update total : 3241ms
+2018-06-03 12:26:44.986  WARN 12500 --- [http-nio-8080-exec-8] l.l.r.controller.ProfileController       : 建立ModelAndView：0ms
+2018-06-03 12:26:44.987  WARN 12500 --- [http-nio-8080-exec-8] l.l.r.controller.ProfileController       : 获取当前用户信息：8ms
+2018-06-03 12:26:44.988  WARN 12500 --- [http-nio-8080-exec-8] l.l.r.controller.ProfileController       : 获取游戏（喜好）：19ms
+2018-06-03 12:26:44.989  WARN 12500 --- [http-nio-8080-exec-8] l.l.r.controller.ProfileController       : 获取喜爱游戏大图9ms
+2018-06-03 12:26:44.989  WARN 12500 --- [http-nio-8080-exec-8] l.l.r.controller.ProfileController       : 获取好友的详细信息：19ms
+2018-06-03 12:26:44.990  WARN 12500 --- [http-nio-8080-exec-8] l.l.r.controller.ProfileController       : 获取成就详情：439ms
+2018-06-03 12:26:44.990  WARN 12500 --- [http-nio-8080-exec-8] l.l.r.controller.ProfileController       : 获取两个数量&当前时间：520ms
+2018-06-03 12:26:44.990  WARN 12500 --- [http-nio-8080-exec-8] l.l.r.controller.ProfileController       : 所有信息存入Model：0ms
+2018-06-03 12:32:15.359  WARN 12500 --- [http-nio-8080-exec-5] l.l.release.controller.LoginController   : code=3
+2018-06-03 12:32:18.260  WARN 12500 --- [http-nio-8080-exec-6] l.l.release.controller.LoginController   : game.size=510
+2018-06-03 12:32:18.265  INFO 12500 --- [http-nio-8080-exec-6] l.l.release.controller.LoginController   : update player : 377ms
+2018-06-03 12:32:18.267  INFO 12500 --- [http-nio-8080-exec-6] l.l.release.controller.LoginController   : update ownedgames : 1742ms
+2018-06-03 12:32:18.267  INFO 12500 --- [http-nio-8080-exec-6] l.l.release.controller.LoginController   : update friends : 702ms
+2018-06-03 12:32:18.268  INFO 12500 --- [http-nio-8080-exec-6] l.l.release.controller.LoginController   : update achievements : 6ms
+2018-06-03 12:32:18.269  INFO 12500 --- [http-nio-8080-exec-6] l.l.release.controller.LoginController   : update total : 2827ms
+2018-06-03 12:32:19.229  WARN 12500 --- [http-nio-8080-exec-10] l.l.r.controller.ProfileController       : 建立ModelAndView：0ms
+2018-06-03 12:32:19.230  WARN 12500 --- [http-nio-8080-exec-10] l.l.r.controller.ProfileController       : 获取当前用户信息：2ms
+2018-06-03 12:32:19.231  WARN 12500 --- [http-nio-8080-exec-10] l.l.r.controller.ProfileController       : 获取游戏（喜好）：20ms
+2018-06-03 12:32:19.231  WARN 12500 --- [http-nio-8080-exec-10] l.l.r.controller.ProfileController       : 获取喜爱游戏大图5ms
+2018-06-03 12:32:19.232  WARN 12500 --- [http-nio-8080-exec-10] l.l.r.controller.ProfileController       : 获取好友的详细信息：16ms
+2018-06-03 12:32:19.232  WARN 12500 --- [http-nio-8080-exec-10] l.l.r.controller.ProfileController       : 获取成就详情：407ms
+2018-06-03 12:32:19.233  WARN 12500 --- [http-nio-8080-exec-10] l.l.r.controller.ProfileController       : 获取两个数量&当前时间：490ms
+2018-06-03 12:32:19.233  WARN 12500 --- [http-nio-8080-exec-10] l.l.r.controller.ProfileController       : 所有信息存入Model：0ms
+2018-06-03 12:32:36.509  WARN 12500 --- [http-nio-8080-exec-1] l.l.release.controller.LoginController   : code=3
+2018-06-03 12:32:46.541  WARN 12500 --- [http-nio-8080-exec-4] l.l.release.controller.LoginController   : game.size=510
+2018-06-03 12:32:46.543  INFO 12500 --- [http-nio-8080-exec-4] l.l.release.controller.LoginController   : update player : 571ms
+2018-06-03 12:32:46.543  INFO 12500 --- [http-nio-8080-exec-4] l.l.release.controller.LoginController   : update ownedgames : 2265ms
+2018-06-03 12:32:46.544  INFO 12500 --- [http-nio-8080-exec-4] l.l.release.controller.LoginController   : update friends : 393ms
+2018-06-03 12:32:46.544  INFO 12500 --- [http-nio-8080-exec-4] l.l.release.controller.LoginController   : update achievements : 2ms
+2018-06-03 12:32:46.545  INFO 12500 --- [http-nio-8080-exec-4] l.l.release.controller.LoginController   : update total : 3231ms
+2018-06-03 12:32:47.641  WARN 12500 --- [http-nio-8080-exec-6] l.l.r.controller.ProfileController       : 建立ModelAndView：0ms
+2018-06-03 12:32:47.642  WARN 12500 --- [http-nio-8080-exec-6] l.l.r.controller.ProfileController       : 获取当前用户信息：8ms
+2018-06-03 12:32:47.642  WARN 12500 --- [http-nio-8080-exec-6] l.l.r.controller.ProfileController       : 获取游戏（喜好）：13ms
+2018-06-03 12:32:47.642  WARN 12500 --- [http-nio-8080-exec-6] l.l.r.controller.ProfileController       : 获取喜爱游戏大图13ms
+2018-06-03 12:32:47.642  WARN 12500 --- [http-nio-8080-exec-6] l.l.r.controller.ProfileController       : 获取好友的详细信息：31ms
+2018-06-03 12:32:47.643  WARN 12500 --- [http-nio-8080-exec-6] l.l.r.controller.ProfileController       : 获取成就详情：559ms
+2018-06-03 12:32:47.643  WARN 12500 --- [http-nio-8080-exec-6] l.l.r.controller.ProfileController       : 获取两个数量&当前时间：468ms
+2018-06-03 12:32:47.643  WARN 12500 --- [http-nio-8080-exec-6] l.l.r.controller.ProfileController       : 所有信息存入Model：0ms
+2018-06-03 12:35:45.964  WARN 12500 --- [http-nio-8080-exec-10] l.l.release.controller.LoginController   : code=3
+2018-06-03 12:35:53.134  WARN 12500 --- [http-nio-8080-exec-6] l.l.release.controller.LoginController   : game.size=510
+2018-06-03 12:35:53.138  INFO 12500 --- [http-nio-8080-exec-6] l.l.release.controller.LoginController   : update player : 411ms
+2018-06-03 12:35:53.140  INFO 12500 --- [http-nio-8080-exec-6] l.l.release.controller.LoginController   : update ownedgames : 2303ms
+2018-06-03 12:35:53.140  INFO 12500 --- [http-nio-8080-exec-6] l.l.release.controller.LoginController   : update friends : 605ms
+2018-06-03 12:35:53.142  INFO 12500 --- [http-nio-8080-exec-6] l.l.release.controller.LoginController   : update achievements : 4ms
+2018-06-03 12:35:53.142  INFO 12500 --- [http-nio-8080-exec-6] l.l.release.controller.LoginController   : update total : 3323ms
+2018-06-03 12:35:54.161  WARN 12500 --- [http-nio-8080-exec-5] l.l.r.controller.ProfileController       : 建立ModelAndView：0ms
+2018-06-03 12:35:54.162  WARN 12500 --- [http-nio-8080-exec-5] l.l.r.controller.ProfileController       : 获取当前用户信息：2ms
+2018-06-03 12:35:54.163  WARN 12500 --- [http-nio-8080-exec-5] l.l.r.controller.ProfileController       : 获取游戏（喜好）：22ms
+2018-06-03 12:35:54.163  WARN 12500 --- [http-nio-8080-exec-5] l.l.r.controller.ProfileController       : 获取喜爱游戏大图8ms
+2018-06-03 12:35:54.164  WARN 12500 --- [http-nio-8080-exec-5] l.l.r.controller.ProfileController       : 获取好友的详细信息：23ms
+2018-06-03 12:35:54.164  WARN 12500 --- [http-nio-8080-exec-5] l.l.r.controller.ProfileController       : 获取成就详情：422ms
+2018-06-03 12:35:54.164  WARN 12500 --- [http-nio-8080-exec-5] l.l.r.controller.ProfileController       : 获取两个数量&当前时间：531ms
+2018-06-03 12:35:54.164  WARN 12500 --- [http-nio-8080-exec-5] l.l.r.controller.ProfileController       : 所有信息存入Model：0ms
+2018-06-03 13:04:56.021  WARN 12500 --- [http-nio-8080-exec-7] l.l.release.controller.LoginController   : code=3
+2018-06-03 13:05:01.804  WARN 12500 --- [http-nio-8080-exec-2] l.l.release.controller.LoginController   : game.size=510
+2018-06-03 13:05:01.808  INFO 12500 --- [http-nio-8080-exec-2] l.l.release.controller.LoginController   : update player : 359ms
+2018-06-03 13:05:01.810  INFO 12500 --- [http-nio-8080-exec-2] l.l.release.controller.LoginController   : update ownedgames : 1859ms
+2018-06-03 13:05:01.812  INFO 12500 --- [http-nio-8080-exec-2] l.l.release.controller.LoginController   : update friends : 426ms
+2018-06-03 13:05:01.812  INFO 12500 --- [http-nio-8080-exec-2] l.l.release.controller.LoginController   : update achievements : 4ms
+2018-06-03 13:05:01.813  INFO 12500 --- [http-nio-8080-exec-2] l.l.release.controller.LoginController   : update total : 2648ms
+2018-06-03 13:05:02.697  WARN 12500 --- [http-nio-8080-exec-10] l.l.r.controller.ProfileController       : 建立ModelAndView：0ms
+2018-06-03 13:05:02.698  WARN 12500 --- [http-nio-8080-exec-10] l.l.r.controller.ProfileController       : 获取当前用户信息：2ms
+2018-06-03 13:05:02.698  WARN 12500 --- [http-nio-8080-exec-10] l.l.r.controller.ProfileController       : 获取游戏（喜好）：25ms
+2018-06-03 13:05:02.698  WARN 12500 --- [http-nio-8080-exec-10] l.l.r.controller.ProfileController       : 获取喜爱游戏大图7ms
+2018-06-03 13:05:02.698  WARN 12500 --- [http-nio-8080-exec-10] l.l.r.controller.ProfileController       : 获取好友的详细信息：19ms
+2018-06-03 13:05:02.699  WARN 12500 --- [http-nio-8080-exec-10] l.l.r.controller.ProfileController       : 获取成就详情：412ms
+2018-06-03 13:05:02.699  WARN 12500 --- [http-nio-8080-exec-10] l.l.r.controller.ProfileController       : 获取两个数量&当前时间：404ms
+2018-06-03 13:05:02.699  WARN 12500 --- [http-nio-8080-exec-10] l.l.r.controller.ProfileController       : 所有信息存入Model：0ms
+2018-06-03 13:05:16.831  WARN 12500 --- [http-nio-8080-exec-9] l.l.release.controller.LoginController   : code=3
+2018-06-03 13:05:20.004  WARN 12500 --- [http-nio-8080-exec-7] l.l.release.controller.LoginController   : game.size=510
+2018-06-03 13:05:20.005  INFO 12500 --- [http-nio-8080-exec-7] l.l.release.controller.LoginController   : update player : 318ms
+2018-06-03 13:05:20.007  INFO 12500 --- [http-nio-8080-exec-7] l.l.release.controller.LoginController   : update ownedgames : 2450ms
+2018-06-03 13:05:20.007  INFO 12500 --- [http-nio-8080-exec-7] l.l.release.controller.LoginController   : update friends : 382ms
+2018-06-03 13:05:20.007  INFO 12500 --- [http-nio-8080-exec-7] l.l.release.controller.LoginController   : update achievements : 1ms
+2018-06-03 13:05:20.007  INFO 12500 --- [http-nio-8080-exec-7] l.l.release.controller.LoginController   : update total : 3151ms
+2018-06-03 13:05:20.995  WARN 12500 --- [http-nio-8080-exec-8] l.l.r.controller.ProfileController       : 建立ModelAndView：0ms
+2018-06-03 13:05:20.996  WARN 12500 --- [http-nio-8080-exec-8] l.l.r.controller.ProfileController       : 获取当前用户信息：3ms
+2018-06-03 13:05:20.997  WARN 12500 --- [http-nio-8080-exec-8] l.l.r.controller.ProfileController       : 获取游戏（喜好）：16ms
+2018-06-03 13:05:20.997  WARN 12500 --- [http-nio-8080-exec-8] l.l.r.controller.ProfileController       : 获取喜爱游戏大图6ms
+2018-06-03 13:05:20.997  WARN 12500 --- [http-nio-8080-exec-8] l.l.r.controller.ProfileController       : 获取好友的详细信息：19ms
+2018-06-03 13:05:20.997  WARN 12500 --- [http-nio-8080-exec-8] l.l.r.controller.ProfileController       : 获取成就详情：531ms
+2018-06-03 13:05:20.997  WARN 12500 --- [http-nio-8080-exec-8] l.l.r.controller.ProfileController       : 获取两个数量&当前时间：403ms
+2018-06-03 13:05:20.997  WARN 12500 --- [http-nio-8080-exec-8] l.l.r.controller.ProfileController       : 所有信息存入Model：0ms
+2018-06-03 13:31:37.443  WARN 12500 --- [http-nio-8080-exec-4] l.l.release.controller.LoginController   : code=3
+2018-06-03 13:31:42.513  WARN 12500 --- [http-nio-8080-exec-9] l.l.release.controller.LoginController   : game.size=510
+2018-06-03 13:31:42.517  INFO 12500 --- [http-nio-8080-exec-9] l.l.release.controller.LoginController   : update player : 366ms
+2018-06-03 13:31:42.517  INFO 12500 --- [http-nio-8080-exec-9] l.l.release.controller.LoginController   : update ownedgames : 1623ms
+2018-06-03 13:31:42.519  INFO 12500 --- [http-nio-8080-exec-9] l.l.release.controller.LoginController   : update friends : 503ms
+2018-06-03 13:31:42.519  INFO 12500 --- [http-nio-8080-exec-9] l.l.release.controller.LoginController   : update achievements : 4ms
+2018-06-03 13:31:42.521  INFO 12500 --- [http-nio-8080-exec-9] l.l.release.controller.LoginController   : update total : 2496ms
+2018-06-03 13:31:43.353  WARN 12500 --- [http-nio-8080-exec-2] l.l.r.controller.ProfileController       : 建立ModelAndView：0ms
+2018-06-03 13:31:43.355  WARN 12500 --- [http-nio-8080-exec-2] l.l.r.controller.ProfileController       : 获取当前用户信息：9ms
+2018-06-03 13:31:43.355  WARN 12500 --- [http-nio-8080-exec-2] l.l.r.controller.ProfileController       : 获取游戏（喜好）：22ms
+2018-06-03 13:31:43.355  WARN 12500 --- [http-nio-8080-exec-2] l.l.r.controller.ProfileController       : 获取喜爱游戏大图5ms
+2018-06-03 13:31:43.355  WARN 12500 --- [http-nio-8080-exec-2] l.l.r.controller.ProfileController       : 获取好友的详细信息：15ms
+2018-06-03 13:31:43.355  WARN 12500 --- [http-nio-8080-exec-2] l.l.r.controller.ProfileController       : 获取成就详情：397ms
+2018-06-03 13:31:43.356  WARN 12500 --- [http-nio-8080-exec-2] l.l.r.controller.ProfileController       : 获取两个数量&当前时间：369ms
+2018-06-03 13:31:43.356  WARN 12500 --- [http-nio-8080-exec-2] l.l.r.controller.ProfileController       : 所有信息存入Model：0ms
+2018-06-03 13:32:02.035  WARN 12500 --- [http-nio-8080-exec-4] l.l.release.controller.LoginController   : code=3
+2018-06-03 13:32:05.007  WARN 12500 --- [http-nio-8080-exec-7] l.l.release.controller.LoginController   : game.size=510
+2018-06-03 13:32:05.009  INFO 12500 --- [http-nio-8080-exec-7] l.l.release.controller.LoginController   : update player : 388ms
+2018-06-03 13:32:05.010  INFO 12500 --- [http-nio-8080-exec-7] l.l.release.controller.LoginController   : update ownedgames : 2093ms
+2018-06-03 13:32:05.010  INFO 12500 --- [http-nio-8080-exec-7] l.l.release.controller.LoginController   : update friends : 444ms
+2018-06-03 13:32:05.010  INFO 12500 --- [http-nio-8080-exec-7] l.l.release.controller.LoginController   : update achievements : 2ms
+2018-06-03 13:32:05.010  INFO 12500 --- [http-nio-8080-exec-7] l.l.release.controller.LoginController   : update total : 2927ms
+2018-06-03 13:32:05.919  WARN 12500 --- [http-nio-8080-exec-6] l.l.r.controller.ProfileController       : 建立ModelAndView：0ms
+2018-06-03 13:32:05.920  WARN 12500 --- [http-nio-8080-exec-6] l.l.r.controller.ProfileController       : 获取当前用户信息：2ms
+2018-06-03 13:32:05.921  WARN 12500 --- [http-nio-8080-exec-6] l.l.r.controller.ProfileController       : 获取游戏（喜好）：18ms
+2018-06-03 13:32:05.922  WARN 12500 --- [http-nio-8080-exec-6] l.l.r.controller.ProfileController       : 获取喜爱游戏大图7ms
+2018-06-03 13:32:05.923  WARN 12500 --- [http-nio-8080-exec-6] l.l.r.controller.ProfileController       : 获取好友的详细信息：15ms
+2018-06-03 13:32:05.923  WARN 12500 --- [http-nio-8080-exec-6] l.l.r.controller.ProfileController       : 获取成就详情：462ms
+2018-06-03 13:32:05.923  WARN 12500 --- [http-nio-8080-exec-6] l.l.r.controller.ProfileController       : 获取两个数量&当前时间：394ms
+2018-06-03 13:32:05.923  WARN 12500 --- [http-nio-8080-exec-6] l.l.r.controller.ProfileController       : 所有信息存入Model：0ms
+2018-06-03 13:32:17.034  WARN 12500 --- [http-nio-8080-exec-4] l.l.release.controller.LoginController   : code=3
+2018-06-03 13:32:20.301  WARN 12500 --- [http-nio-8080-exec-7] l.l.release.controller.LoginController   : game.size=510
+2018-06-03 13:32:20.303  INFO 12500 --- [http-nio-8080-exec-7] l.l.release.controller.LoginController   : update player : 372ms
+2018-06-03 13:32:20.303  INFO 12500 --- [http-nio-8080-exec-7] l.l.release.controller.LoginController   : update ownedgames : 2456ms
+2018-06-03 13:32:20.304  INFO 12500 --- [http-nio-8080-exec-7] l.l.release.controller.LoginController   : update friends : 351ms
+2018-06-03 13:32:20.304  INFO 12500 --- [http-nio-8080-exec-7] l.l.release.controller.LoginController   : update achievements : 2ms
+2018-06-03 13:32:20.304  INFO 12500 --- [http-nio-8080-exec-7] l.l.release.controller.LoginController   : update total : 3181ms
+2018-06-03 13:32:21.376  WARN 12500 --- [http-nio-8080-exec-6] l.l.r.controller.ProfileController       : 建立ModelAndView：0ms
+2018-06-03 13:32:21.377  WARN 12500 --- [http-nio-8080-exec-6] l.l.r.controller.ProfileController       : 获取当前用户信息：3ms
+2018-06-03 13:32:21.377  WARN 12500 --- [http-nio-8080-exec-6] l.l.r.controller.ProfileController       : 获取游戏（喜好）：15ms
+2018-06-03 13:32:21.377  WARN 12500 --- [http-nio-8080-exec-6] l.l.r.controller.ProfileController       : 获取喜爱游戏大图19ms
+2018-06-03 13:32:21.377  WARN 12500 --- [http-nio-8080-exec-6] l.l.r.controller.ProfileController       : 获取好友的详细信息：36ms
+2018-06-03 13:32:21.378  WARN 12500 --- [http-nio-8080-exec-6] l.l.r.controller.ProfileController       : 获取成就详情：616ms
+2018-06-03 13:32:21.378  WARN 12500 --- [http-nio-8080-exec-6] l.l.r.controller.ProfileController       : 获取两个数量&当前时间：370ms
+2018-06-03 13:32:21.378  WARN 12500 --- [http-nio-8080-exec-6] l.l.r.controller.ProfileController       : 所有信息存入Model：0ms

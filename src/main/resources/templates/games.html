@@ -110,7 +110,7 @@
                             <a th:href="@{/profile(steamid=${steamid})}"><i class="fa fa-th-list fa-fw"></i> 主页</a>
                         </li>
                         <li>
-                            <a th:href="@{/games(steamid=${steamid})}"><i class="fa fa-gamepad fa-fw"></i> 游戏</a>
+                            <a th:href="@{/games.html(steamid=${steamid})}"><i class="fa fa-gamepad fa-fw"></i> 游戏</a>
                         </li>
                         <li>
                             <a th:href="@{/friends(steamid=${steamid})}"><i class="fa fa-users fa-fw"></i> 好友</a>
@@ -277,42 +277,7 @@
                                                         style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 393.5px; height: 400px;"></canvas>
                                                 <div class="legend">
                                                     <div style="position: absolute; width: 59px; height: 68px; top: 5px; right: 5px; background-color: rgb(255, 255, 255); opacity: 0.85;"></div>
-                                                    <table style="position:absolute;top:5px;right:5px;;font-size:smaller;color:#545454">
-                                                        <tbody>
-                                                        <tr>
-                                                            <td class="legendColorBox">
-                                                                <div style="border:1px solid #ccc;padding:1px">
-                                                                    <div style="width:4px;height:0;border:5px solid rgb(237,194,64);overflow:hidden"></div>
-                                                                </div>
-                                                            </td>
-                                                            <td class="legendLabel">Series 0</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="legendColorBox">
-                                                                <div style="border:1px solid #ccc;padding:1px">
-                                                                    <div style="width:4px;height:0;border:5px solid rgb(175,216,248);overflow:hidden"></div>
-                                                                </div>
-                                                            </td>
-                                                            <td class="legendLabel">Series 1</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="legendColorBox">
-                                                                <div style="border:1px solid #ccc;padding:1px">
-                                                                    <div style="width:4px;height:0;border:5px solid rgb(203,75,75);overflow:hidden"></div>
-                                                                </div>
-                                                            </td>
-                                                            <td class="legendLabel">Series 2</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="legendColorBox">
-                                                                <div style="border:1px solid #ccc;padding:1px">
-                                                                    <div style="width:4px;height:0;border:5px solid rgb(77,167,77);overflow:hidden"></div>
-                                                                </div>
-                                                            </td>
-                                                            <td class="legendLabel">Series 3</td>
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -418,6 +383,8 @@
     <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
     <!-- Metis Menu Plugin JavaScript -->
     <script src="/vendor/metisMenu/metisMenu.min.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="/dist/js/sb-admin-2.js"></script>
     <!-- DataTables JavaScript -->
     <script src="/vendor/datatables/js/jquery.dataTables.min.js"></script>
     <script src="/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
@@ -430,10 +397,10 @@
     <script src="/vendor/flot/jquery.flot.time.js"></script>
     <script src="/vendor/flot-tooltip/jquery.flot.tooltip.min.js"></script>
     <!--<script src="/data/flot-data.js"></script>-->
-    <!-- Custom Theme JavaScript -->
-    <script src="/dist/js/sb-admin-2.js"></script>
+
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script src="/javascript/games.js"></script>
+
     <script>
         $(document).ready(function () {
             $('#dataTables-example').DataTable({

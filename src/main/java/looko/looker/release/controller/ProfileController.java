@@ -22,8 +22,6 @@ public class ProfileController {
     @Autowired
     GetServerInfo getServerInfo;
     @Autowired
-    GetRecentlyGames getRecentlyGames;
-    @Autowired
     DB_PlayerService playerService;
     @Autowired
     DB_OwnedGameService ownedGameService;

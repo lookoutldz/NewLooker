@@ -29,6 +29,8 @@ public interface OwnedGameMapper {
 
     List<OwnedGame> selectNotPlayed(String steamid);
 
+    List<OwnedGame> selectRecentlyGame(String steamid);
+
     List<OwnedGame> selectPerfectGame(String steamid);
 
     List<GameRankModel> selectRankGame(OwnedGameKey key);

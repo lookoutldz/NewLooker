@@ -21,6 +21,8 @@ public interface DB_OwnedGameService {
 
     List<OwnedGame> findNotPlayedById(String steamid);
 
+    List<OwnedGame> findRecentlyGame(String steamid);
+
     List<OwnedGame> findPerfectGame(String steamid);
 
     List<GameRankModel> findRankGame(String steamid, int appid);
